@@ -8,23 +8,23 @@
 import UIKit
 
 enum Font {
-    var title1: UIFont {
+    static var title1: UIFont {
         UIFont.boldSystemFont(ofSize: 22)
     }
     
-    var title2: UIFont {
+    static var title2: UIFont {
         UIFont.boldSystemFont(ofSize: 14)
     }
     
-    var bodyBold: UIFont {
+    static var bodyBold: UIFont {
         UIFont.boldSystemFont(ofSize: 13)
     }
     
-    var body: UIFont {
+    static var body: UIFont {
         UIFont.systemFont(ofSize: 13)
     }
     
-    var caption: UIFont {
+    static var caption: UIFont {
         UIFont.systemFont(ofSize: 12)
     }
 }
