@@ -14,6 +14,7 @@
 		F4F8AD342B456C6E00317F08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4F8AD322B456C6E00317F08 /* LaunchScreen.storyboard */; };
 		F4F8AD3D2B456F2E00317F08 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD3C2B456F2E00317F08 /* Font.swift */; };
 		F4F8AD3F2B4570FA00317F08 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD3E2B4570FA00317F08 /* Color.swift */; };
+		F4F8AD422B4575BF00317F08 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F4F8AD412B4575BF00317F08 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4F8AD422B4575BF00317F08 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +96,9 @@
 			dependencies = (
 			);
 			name = mojitalk;
+			packageProductDependencies = (
+				F4F8AD412B4575BF00317F08 /* SnapKit */,
+			);
 			productName = mojitalk;
 			productReference = F4F8AD242B456C6C00317F08 /* mojitalk.app */;
 			productType = "com.apple.product-type.application";
@@ -122,6 +127,9 @@
 				Base,
 			);
 			mainGroup = F4F8AD1B2B456C6C00317F08;
+			packageReferences = (
+				F4F8AD402B4575BF00317F08 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = F4F8AD252B456C6C00317F08 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -301,7 +309,6 @@
 				INFOPLIST_FILE = mojitalk/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -333,7 +340,6 @@
 				INFOPLIST_FILE = mojitalk/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -375,6 +381,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F4F8AD402B4575BF00317F08 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F4F8AD412B4575BF00317F08 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4F8AD402B4575BF00317F08 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F4F8AD1C2B456C6C00317F08 /* Project object */;
 }
