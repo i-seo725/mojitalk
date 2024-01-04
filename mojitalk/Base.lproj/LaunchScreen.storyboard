@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash" translatesAutoresizingMaskIntoConstraints="NO" id="2Ij-bt-3s9">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding" translatesAutoresizingMaskIntoConstraints="NO" id="2Ij-bt-3s9">
                                 <rect key="frame" x="12.666666666666657" y="242" width="368" height="368"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="368" id="63p-9b-eM8"/>
@@ -32,7 +32,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" name="Primary"/>
+                        <color key="backgroundColor" name="BackgroundPrimary"/>
                         <constraints>
                             <constraint firstItem="hi3-3k-YDL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="73Q-Kg-pgR"/>
                             <constraint firstItem="hi3-3k-YDL" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="39" id="9vw-D7-IFg"/>
@@ -48,8 +48,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Splash" width="368" height="368"/>
-        <namedColor name="Primary">
+        <image name="onboarding" width="368" height="368"/>
+        <namedColor name="BackgroundPrimary">
             <color red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
