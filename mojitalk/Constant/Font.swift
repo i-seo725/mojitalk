@@ -9,22 +9,22 @@ import UIKit
 
 enum Font {
     static var title1: UIFont {
-        UIFont.boldSystemFont(ofSize: 22)
+        UIFont.systemFont(ofSize: 22, weight: .bold)
     }
     
     static var title2: UIFont {
-        UIFont.boldSystemFont(ofSize: 14)
+        UIFont.systemFont(ofSize: 14, weight: .bold)
     }
     
     static var bodyBold: UIFont {
-        UIFont.boldSystemFont(ofSize: 13)
+        UIFont.systemFont(ofSize: 13, weight: .bold)
     }
     
     static var body: UIFont {
-        UIFont.systemFont(ofSize: 13)
+        UIFont.systemFont(ofSize: 13, weight: .regular)
     }
     
     static var caption: UIFont {
-        UIFont.systemFont(ofSize: 12)
+        UIFont.systemFont(ofSize: 12, weight: .regular)
     }
 }
