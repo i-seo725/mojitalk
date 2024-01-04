@@ -9,13 +9,12 @@ import UIKit
 
 class OnboardingViewController: BaseViewController {
 
-//    let onboardingImage = {
-//        let view = UIImage(named: <#T##String#>)
-//    }
+    let onboardingImage = {
+        let view = UIImage(named: <#T##String#>)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = Color.Brand.green
     }
 
 
