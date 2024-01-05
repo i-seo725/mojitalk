@@ -14,6 +14,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         configureView()
         setConstraints()
+        bind()
     }
     
     func configureView() {
@@ -21,5 +22,7 @@ class BaseViewController: UIViewController {
     }
     
     func setConstraints() { }
+    
+    func bind() { }
     
 }
