@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContinuButton: UIButton {
+class ContinueButton: UIButton {
     
     var image: UIImage
     
