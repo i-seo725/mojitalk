@@ -27,16 +27,7 @@ class OnboardingViewController: BaseViewController {
         return view
     }()
     
-    let startButton = {
-        let view = UIButton()
-        view.setTitle("시작하기", for: .normal)
-        view.backgroundColor = .brandGreen
-        view.setTitleColor(.brandWhite, for: .normal)
-        view.titleLabel?.font = Font.title2
-        view.layer.cornerRadius = 8
-        view.configuration?.contentInsets = .init(top: 11, leading: 16, bottom: 11, trailing: 16)
-        return view
-    }()
+    let startButton = ContinueButton(frame: .zero, image: .active)
     
     let bgView = UIView()
     var nextButtonTapped = BehaviorRelay<Bool>(value: false)
@@ -95,7 +86,7 @@ class OnboardingViewController: BaseViewController {
                 guard let sheet = vc.sheetPresentationController else { return }
                 if #available(iOS 16.0, *) {
                     sheet.detents = [.custom(resolver: { context in
-                        return 290
+                        return 269
                     })]
                 } else {
                     sheet.detents = [.medium()]

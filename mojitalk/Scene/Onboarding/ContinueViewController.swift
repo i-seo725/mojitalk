@@ -11,12 +11,22 @@ import RxCocoa
 
 class ContinueViewController: BaseViewController {
     
-    let appleLoginButton = {
-        let button = UIButton()
-        button.setImage(.appleLogin, for: .normal)
-        button.layer.cornerRadius = 8
-        button.configuration?.contentInsets = .init(top: 12, leading: 16, bottom: 12, trailing: 16)
-        return button
+    let appleLoginButton = ContinueButton(frame: .zero, image: .appleLogin)
+    let kakaoLoginButton = ContinueButton(frame: .zero, image: .kakaoLogin)
+    let emailLoginButton = ContinueButton(frame: .zero, image: .activeWithIcon)
+    let joinButton = {
+        let fullText = "또는 새롭게 회원가입 하기"
+        let attributedString = NSMutableAttributedString(string: fullText)
+        
+        let range = (fullText as NSString).range(of: "또는")
+        
+        attributedString.addAttribute(.foregroundColor, value: UIColor.brandBlack, range: range)
+        
+        let view = UIButton()
+        view.setAttributedTitle(attributedString, for: .normal)
+        view.setTitleColor(.brandGreen, for: .normal)
+        view.titleLabel?.font = Font.title2
+        return view
     }()
     
     var isDisappear: ((Bool) -> ())?
@@ -33,12 +43,36 @@ class ContinueViewController: BaseViewController {
     override func configureView() {
         super.configureView()
         view.addSubview(appleLoginButton)
+        view.addSubview(kakaoLoginButton)
+        view.addSubview(emailLoginButton)
+        view.addSubview(joinButton)
     }
     
     override func setConstraints() {
         appleLoginButton.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview().inset(35)
-            make.top.equalToSuperview().offset(42)
+            make.top.equalToSuperview().inset(44)
+            make.width.equalTo(323)
+            make.height.equalTo(44)
+            make.centerX.equalToSuperview()
+        }
+        
+        kakaoLoginButton.snp.makeConstraints { make in
+            make.top.equalTo(appleLoginButton.snp.bottom).offset(16)
+            make.width.height.equalTo(appleLoginButton)
+            make.centerX.equalToSuperview()
+        }
+        
+        emailLoginButton.snp.makeConstraints { make in
+            make.top.equalTo(kakaoLoginButton.snp.bottom).offset(16)
+            make.width.height.equalTo(appleLoginButton)
+            make.centerX.equalToSuperview()
+        }
+        
+        joinButton.snp.makeConstraints { make in
+            make.top.equalTo(emailLoginButton.snp.bottom).offset(16)
+            make.width.equalTo(appleLoginButton)
+            make.height.equalTo(20)
+            make.centerX.equalToSuperview()
         }
     }
     
