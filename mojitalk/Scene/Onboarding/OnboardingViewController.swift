@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class OnboardingViewController: BaseViewController {
 
@@ -36,6 +38,12 @@ class OnboardingViewController: BaseViewController {
         return view
     }()
     
+    let bgView = UIView()
+    var nextButtonTapped = BehaviorRelay<Bool>(value: false)
+
+    
+    let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -44,6 +52,7 @@ class OnboardingViewController: BaseViewController {
         super.configureView()
         view.addSubview(contentLabel)
         view.addSubview(onboardingImage)
+        view.addSubview(bgView)
         view.addSubview(startButton)
     }
     
@@ -64,6 +73,45 @@ class OnboardingViewController: BaseViewController {
             make.horizontalEdges.equalToSuperview().inset(24)
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
         }
+        
+        bgView.snp.makeConstraints { make in
+            make.size.equalToSuperview()
+        }
+    }
+    
+    override func bind() {
+        startButton.rx.tap
+            .subscribe(with: self, onNext: { owner, _ in
+                owner.bgView.backgroundColor = .alpha
+                owner.nextButtonTapped.accept(true)
+                
+                let vc = ContinueViewController()
+                vc.modalPresentationStyle = .pageSheet
+                vc.sheetPresentationController?.prefersGrabberVisible = true
+                vc.isDisappear = { value in
+                    owner.nextButtonTapped.accept(!value)
+                }
+                
+                guard let sheet = vc.sheetPresentationController else { return }
+                if #available(iOS 16.0, *) {
+                    sheet.detents = [.custom(resolver: { context in
+                        return 290
+                    })]
+                } else {
+                    sheet.detents = [.medium()]
+                }
+                
+                
+                owner.present(vc, animated: true)
+            })
+
+            .disposed(by: disposeBag)
+        
+        nextButtonTapped
+            .bind(with: self) { owner, value in
+                owner.bgView.backgroundColor = value ? .alpha : .clear
+            }
+            .disposed(by: disposeBag)
     }
 
 
