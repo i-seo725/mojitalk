@@ -21,7 +21,7 @@
 		F4F8AD452B45B3AD00317F08 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD442B45B3AD00317F08 /* BaseViewController.swift */; };
 		F4F8AD472B45B4C000317F08 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD462B45B4C000317F08 /* Image.swift */; };
 		F4F8AD5E2B492D7300317F08 /* ContinueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD5D2B492D7300317F08 /* ContinueViewController.swift */; };
-		F4F8AD602B4986B300317F08 /* ContinuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD5F2B4986B200317F08 /* ContinuButton.swift */; };
+		F4F8AD602B4986B300317F08 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD5F2B4986B200317F08 /* ImageButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +38,7 @@
 		F4F8AD442B45B3AD00317F08 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F4F8AD462B45B4C000317F08 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		F4F8AD5D2B492D7300317F08 /* ContinueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueViewController.swift; sourceTree = "<group>"; };
-		F4F8AD5F2B4986B200317F08 /* ContinuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinuButton.swift; sourceTree = "<group>"; };
+		F4F8AD5F2B4986B200317F08 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				F4F8AD442B45B3AD00317F08 /* BaseViewController.swift */,
-				F4F8AD5F2B4986B200317F08 /* ContinuButton.swift */,
+				F4F8AD5F2B4986B200317F08 /* ImageButton.swift */,
 				F4CFD8982B4AE08A0024E28B /* JoinView.swift */,
 			);
 			path = BaseView;
@@ -212,7 +212,7 @@
 			files = (
 				F4F8AD5E2B492D7300317F08 /* ContinueViewController.swift in Sources */,
 				F4F8AD472B45B4C000317F08 /* Image.swift in Sources */,
-				F4F8AD602B4986B300317F08 /* ContinuButton.swift in Sources */,
+				F4F8AD602B4986B300317F08 /* ImageButton.swift in Sources */,
 				F4F8AD3D2B456F2E00317F08 /* Font.swift in Sources */,
 				F4CFD8972B4ADF8C0024E28B /* JoinViewController.swift in Sources */,
 				F4F8AD2C2B456C6C00317F08 /* OnboardingViewController.swift in Sources */,
