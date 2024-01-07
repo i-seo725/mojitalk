@@ -11,6 +11,7 @@
 		F4CFD8942B4ADD700024E28B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4CFD8932B4ADD700024E28B /* RxSwift */; };
 		F4CFD8972B4ADF8C0024E28B /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */; };
 		F4CFD8992B4AE08A0024E28B /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD8982B4AE08A0024E28B /* JoinView.swift */; };
+		F4CFD89B2B4B00510024E28B /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD89A2B4B00510024E28B /* TextButton.swift */; };
 		F4F8AD282B456C6C00317F08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD272B456C6C00317F08 /* AppDelegate.swift */; };
 		F4F8AD2A2B456C6C00317F08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD292B456C6C00317F08 /* SceneDelegate.swift */; };
 		F4F8AD2C2B456C6C00317F08 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD2B2B456C6C00317F08 /* OnboardingViewController.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		F4CFD8982B4AE08A0024E28B /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
+		F4CFD89A2B4B00510024E28B /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		F4F8AD242B456C6C00317F08 /* mojitalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mojitalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4F8AD272B456C6C00317F08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4F8AD292B456C6C00317F08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				F4F8AD442B45B3AD00317F08 /* BaseViewController.swift */,
 				F4F8AD5F2B4986B200317F08 /* ImageButton.swift */,
 				F4CFD8982B4AE08A0024E28B /* JoinView.swift */,
+				F4CFD89A2B4B00510024E28B /* TextButton.swift */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4CFD89B2B4B00510024E28B /* TextButton.swift in Sources */,
 				F4F8AD5E2B492D7300317F08 /* ContinueViewController.swift in Sources */,
 				F4F8AD472B45B4C000317F08 /* Image.swift in Sources */,
 				F4F8AD602B4986B300317F08 /* ImageButton.swift in Sources */,
