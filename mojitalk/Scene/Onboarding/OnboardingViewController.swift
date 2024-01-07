@@ -75,6 +75,7 @@ class OnboardingViewController: BaseViewController {
             .subscribe(with: self, onNext: { owner, _ in
                 owner.bgView.backgroundColor = .alpha
                 owner.nextButtonTapped.accept(true)
+                owner.startButton.isHidden = true
                 
                 let vc = ContinueViewController()
                 vc.modalPresentationStyle = .pageSheet
@@ -101,6 +102,7 @@ class OnboardingViewController: BaseViewController {
         nextButtonTapped
             .bind(with: self) { owner, value in
                 owner.bgView.backgroundColor = value ? .alpha : .clear
+                owner.startButton.isHidden = value
             }
             .disposed(by: disposeBag)
     }
