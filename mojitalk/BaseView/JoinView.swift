@@ -11,10 +11,11 @@ import SnapKit
 class JoinView: UIView {
     
     let title: String
+    let placeholder: String
     
     lazy var titleLabel = {
         let view = UILabel()
-        view.text = convertString(text: title)
+        view.text = title
         view.font = Font.title2
         view.textColor = .brandBlack
         return view
@@ -22,15 +23,16 @@ class JoinView: UIView {
     
     lazy var textField = {
         let view = UITextField()
-        view.placeholder = "\(convertString(text: title))"
+        view.placeholder = "\(placeholder)"
         view.font = Font.body
         view.backgroundColor = UIColor.backgroundSecondary
         view.layer.cornerRadius = 8
         return view
     }()
     
-    init(title: String) {
+    init(title: String, placeholder: String) {
         self.title = title
+        self.placeholder = placeholder
         super.init(frame: .zero)
         
         configureView()
@@ -38,11 +40,6 @@ class JoinView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func convertString(text: String) -> String {
-        let arrStr = text.trimmingCharacters(in: ["을", "를"])
-        return arrStr
     }
     
     func configureView() {
