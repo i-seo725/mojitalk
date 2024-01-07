@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F4CFD8922B4ADD700024E28B /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F4CFD8912B4ADD700024E28B /* RxCocoa */; };
 		F4CFD8942B4ADD700024E28B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4CFD8932B4ADD700024E28B /* RxSwift */; };
+		F4CFD8972B4ADF8C0024E28B /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */; };
 		F4F8AD282B456C6C00317F08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD272B456C6C00317F08 /* AppDelegate.swift */; };
 		F4F8AD2A2B456C6C00317F08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD292B456C6C00317F08 /* SceneDelegate.swift */; };
 		F4F8AD2C2B456C6C00317F08 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD2B2B456C6C00317F08 /* OnboardingViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		F4F8AD242B456C6C00317F08 /* mojitalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mojitalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4F8AD272B456C6C00317F08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4F8AD292B456C6C00317F08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F4CFD8952B4ADF810024E28B /* Join */ = {
+			isa = PBXGroup;
+			children = (
+				F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */,
+			);
+			path = Join;
+			sourceTree = "<group>";
+		};
 		F4F8AD1B2B456C6C00317F08 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +113,7 @@
 		F4F8AD482B46E98B00317F08 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				F4CFD8952B4ADF810024E28B /* Join */,
 				F4F8AD5C2B492D5200317F08 /* Onboarding */,
 			);
 			path = Scene;
@@ -200,6 +211,7 @@
 				F4F8AD472B45B4C000317F08 /* Image.swift in Sources */,
 				F4F8AD602B4986B300317F08 /* ContinuButton.swift in Sources */,
 				F4F8AD3D2B456F2E00317F08 /* Font.swift in Sources */,
+				F4CFD8972B4ADF8C0024E28B /* JoinViewController.swift in Sources */,
 				F4F8AD2C2B456C6C00317F08 /* OnboardingViewController.swift in Sources */,
 				F4F8AD282B456C6C00317F08 /* AppDelegate.swift in Sources */,
 				F4F8AD2A2B456C6C00317F08 /* SceneDelegate.swift in Sources */,
