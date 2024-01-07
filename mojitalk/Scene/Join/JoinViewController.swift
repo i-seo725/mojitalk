@@ -45,6 +45,8 @@ class JoinViewController: BaseViewController {
         view.addSubview(emailCheckButton)
         view.addSubview(joinButton)
         view.addSubview(validLabel)
+        password.textField.isSecureTextEntry = true
+        checkPW.textField.isSecureTextEntry = true
     }
     
     func configNavBar() {
