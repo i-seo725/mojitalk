@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class JoinViewController: BaseViewController {
     
@@ -25,6 +26,9 @@ class JoinViewController: BaseViewController {
         view.isEnabled = false
         return view
     }()
+    
+    let isEmptyEmail = BehaviorSubject<Bool>(value: true)
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,6 +112,39 @@ class JoinViewController: BaseViewController {
             make.bottom.equalTo(joinButton.snp.top).offset(-16)
             make.height.equalTo(36)
         }
+    }
+    
+    override func bind() {
+        email.textField.rx.text.orEmpty
+            .map { $0.isEmpty }
+            .bind(to: isEmptyEmail)
+            .disposed(by: disposeBag)
+        
+        isEmptyEmail
+            .bind(with: self) { owner, value in
+                owner.emailCheckButton.isEnabled = !value
+                owner.emailCheckButton.backgroundColor = value ? .brandInactive : .brandGreen
+            }
+            .disposed(by: disposeBag)
+        
+        let isEnableJoin = Observable.combineLatest(email.textField.rx.text.orEmpty, nickname.textField.rx.text.orEmpty, password.textField.rx.text.orEmpty, checkPW.textField.rx.text.orEmpty) {
+            return !$0.isEmpty && !$1.isEmpty && !$2.isEmpty && !$3.isEmpty
+        }
+            
+        isEnableJoin
+            .bind(with: self) { owner, value in
+                owner.joinButton.isEnabled = value
+                owner.joinButton.backgroundColor = value ? .brandGreen : .brandInactive
+            }
+            .disposed(by: disposeBag)
+        
+        
+        
+        emailCheckButton.rx.tap
+            .subscribe { _ in
+                print("check")
+            }
+            .disposed(by: disposeBag)
     }
     
 }
