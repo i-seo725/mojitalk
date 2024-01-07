@@ -26,3 +26,14 @@ class BaseViewController: UIViewController {
     func bind() { }
     
 }
+
+extension BaseViewController {
+    
+    func showToast(view: UIView) {
+        UIView.animate(withDuration: 1.2, delay: 1.5, options: .curveEaseOut) {
+            view.alpha = 0
+        } completion: { _ in
+            view.removeFromSuperview()
+        }
+    }
+}
