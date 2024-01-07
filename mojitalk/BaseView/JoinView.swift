@@ -27,6 +27,13 @@ class JoinView: UIView {
         view.font = Font.body
         view.backgroundColor = UIColor.backgroundSecondary
         view.layer.cornerRadius = 8
+        
+        let padding = UIView(frame: .init(x: 0, y: 0, width: 12, height: 44))
+        view.leftView = padding
+        view.leftViewMode = .always
+        view.rightView = padding
+        view.rightViewMode = .always
+        
         return view
     }()
     
@@ -36,6 +43,7 @@ class JoinView: UIView {
         super.init(frame: .zero)
         
         configureView()
+        setConstraints()
     }
     
     required init?(coder: NSCoder) {
