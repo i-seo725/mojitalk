@@ -24,6 +24,7 @@ class JoinViewController: BaseViewController {
         let view = TextButton(title: "사용 가능한 이메일입니다.", bgColor: .brandGreen, textColor: .brandWhite)
         view.configuration?.contentInsets = .init(top: 5, leading: 16, bottom: 5, trailing: 16)
         view.isEnabled = false
+        view.isHidden = true
         return view
     }()
     
@@ -143,9 +144,10 @@ class JoinViewController: BaseViewController {
         
         
         emailCheckButton.rx.tap
-            .subscribe { _ in
-                print("check")
-            }
+            .bind(with: self, onNext: { owner, _ in
+                owner.validLabel.isHidden = false
+                owner.showToast(view: owner.validLabel)
+            })
             .disposed(by: disposeBag)
     }
     
