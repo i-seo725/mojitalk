@@ -19,6 +19,7 @@
 		F4A2E8742B4D696700D9E721 /* DeviceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E8732B4D696700D9E721 /* DeviceToken.swift */; };
 		F4A2E8762B4D69BC00D9E721 /* MyEdit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E8752B4D69BC00D9E721 /* MyEdit.swift */; };
 		F4A2E8782B4D6A4800D9E721 /* MyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E8772B4D6A4800D9E721 /* MyImage.swift */; };
+		F4A2E87B2B4D72FF00D9E721 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E87A2B4D72FF00D9E721 /* Common.swift */; };
 		F4B353F02B56795100CC75E8 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F4B353EF2B56795100CC75E8 /* Moya */; };
 		F4B353F22B56795100CC75E8 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F4B353F12B56795100CC75E8 /* RxMoya */; };
 		F4B353F52B56796B00CC75E8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B353F42B56796B00CC75E8 /* NetworkManager.swift */; };
@@ -56,6 +57,7 @@
 		F4A2E8732B4D696700D9E721 /* DeviceToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceToken.swift; sourceTree = "<group>"; };
 		F4A2E8752B4D69BC00D9E721 /* MyEdit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEdit.swift; sourceTree = "<group>"; };
 		F4A2E8772B4D6A4800D9E721 /* MyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImage.swift; sourceTree = "<group>"; };
+		F4A2E87A2B4D72FF00D9E721 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		F4B353F42B56796B00CC75E8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F4B353F62B5679BB00CC75E8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F4B353FA2B567C0E00CC75E8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -128,9 +130,18 @@
 			path = Users;
 			sourceTree = "<group>";
 		};
+		F4A2E8792B4D72F000D9E721 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				F4A2E87A2B4D72FF00D9E721 /* Common.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		F4B353F32B56796200CC75E8 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				F4A2E8792B4D72F000D9E721 /* Error */,
 				F4A2E8672B4D650000D9E721 /* Model */,
 				F4B353F42B56796B00CC75E8 /* NetworkManager.swift */,
 				F4B353FA2B567C0E00CC75E8 /* Router.swift */,
@@ -318,6 +329,7 @@
 				F4F8AD602B4986B300317F08 /* ImageButton.swift in Sources */,
 				F4F8AD3D2B456F2E00317F08 /* Font.swift in Sources */,
 				F4CFD8972B4ADF8C0024E28B /* JoinViewController.swift in Sources */,
+				F4A2E87B2B4D72FF00D9E721 /* Common.swift in Sources */,
 				F4A2E8762B4D69BC00D9E721 /* MyEdit.swift in Sources */,
 				F4A2E8702B4D68DC00D9E721 /* KakaoLogin.swift in Sources */,
 				F4B353FD2B567C6C00CC75E8 /* Secret.swift in Sources */,
