@@ -9,15 +9,15 @@ import Foundation
 import Moya
 
 enum UserRouter {
-    case join
-    case email
-    case login
-    case kakao
-    case apple
+    case join(data: Join.Request)
+    case email(data: Email.Request)
+    case login(data: Login.Request)
+    case kakao(data: KakaoLogin.Request)
+    case apple(data: AppleLogin.Request)
     case logout
-    case deviceToken
+    case deviceToken(data: DeviceToken.Request)
     case myView
-    case myEdit
+    case myEdit(data: MyEdit.Request)
     case image
     case users(id: String)
 }
@@ -78,33 +78,34 @@ extension UserRouter: TargetType {
     
     var task: Moya.Task {
         switch self {
-        case .join:
-            <#code#>
-        case .email:
-            <#code#>
-        case .login:
-            <#code#>
-        case .kakao:
-            <#code#>
-        case .apple:
-            <#code#>
+        case .join(let data):
+            return .requestJSONEncodable(data)
+        case .email(let data):
+            return .requestJSONEncodable(data)
+        case .login(let data):
+            return .requestJSONEncodable(data)
+        case .kakao(let data):
+            return .requestJSONEncodable(data)
+        case .apple(let data):
+            return .requestJSONEncodable(data)
         case .logout:
-            <#code#>
-        case .deviceToken:
-            <#code#>
+            return .requestPlain
+        case .deviceToken(let data):
+            return .requestJSONEncodable(data)
         case .myView:
-            <#code#>
-        case .myEdit:
-            <#code#>
+            return .requestPlain
+        case .myEdit(let data):
+            return .requestJSONEncodable(data)
         case .image:
-            <#code#>
+            return .uploadMultipart([])
         case .users(let id):
-            <#code#>
+            return .requestPlain
         }
     }
     
+    
     var headers: [String : String]? {
-        <#code#>
+        return ["SesacKey": Secret.APIKey]
     }
     
     
