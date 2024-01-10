@@ -86,6 +86,16 @@ class ContinueViewController: BaseViewController {
                 owner.present(nav, animated: true)
             }
             .disposed(by: disposeBag)
+        
+        emailLoginButton.rx.tap
+            .bind(with: self) { owner, _ in
+                let vc = LoginViewController()
+                let nav = UINavigationController(rootViewController: vc)
+                nav.sheetPresentationController?.prefersGrabberVisible = true
+                owner.present(nav, animated: true)
+            }
+            .disposed(by: disposeBag)
+            
     }
     
 }
