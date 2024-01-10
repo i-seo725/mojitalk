@@ -11,6 +11,11 @@ import RxCocoa
 
 class JoinViewController: BaseViewController {
     
+    let scroll = UIScrollView()
+    let backView = {
+        let view = UIView(frame: .init(x: 0, y: 0, width: 0, height: UIScreen().bounds.height))
+        return view
+    }()
     let email = JoinView(title: "이메일", placeholder: "이메일을 입력하세요")
     let nickname = JoinView(title: "닉네임", placeholder: "닉네임을 입력하세요")
     let contact = JoinView(title: "연락처", placeholder: "전화번호를 입력하세요")
@@ -33,21 +38,26 @@ class JoinViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        email.textField.becomeFirstResponder()
     }
     
     override func configureView() {
         super.configureView()
         configNavBar()
-        view.addSubview(email)
-        view.addSubview(nickname)
-        view.addSubview(contact)
-        view.addSubview(password)
-        view.addSubview(checkPW)
-        view.addSubview(emailCheckButton)
-        view.addSubview(joinButton)
-        view.addSubview(validLabel)
+        view.addSubview(scroll)
+        scroll.addSubview(backView)
+        backView.addSubview(email)
+        backView.addSubview(nickname)
+        backView.addSubview(contact)
+        backView.addSubview(password)
+        backView.addSubview(checkPW)
+        backView.addSubview(emailCheckButton)
+        backView.addSubview(joinButton)
+        backView.addSubview(validLabel)
         password.textField.isSecureTextEntry = true
         checkPW.textField.isSecureTextEntry = true
+        joinButton.isEnabled = false
+        
     }
     
     func configNavBar() {
@@ -67,6 +77,15 @@ class JoinViewController: BaseViewController {
     }
     
     override func setConstraints() {
+        scroll.snp.makeConstraints { make in
+            make.top.leading.bottom.trailing.equalTo(view.safeAreaLayoutGuide)
+        }
+        
+        backView.snp.makeConstraints { make in
+            make.width.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.leading.trailing.equalTo(scroll.contentLayoutGuide)
+        }
         
         emailCheckButton.snp.makeConstraints { make in
             make.width.equalTo(100)
@@ -76,7 +95,7 @@ class JoinViewController: BaseViewController {
         }
         
         email.snp.makeConstraints { make in
-            make.top.leading.equalTo(view.safeAreaLayoutGuide).inset(24)
+            make.top.leading.equalTo(backView.safeAreaLayoutGuide).inset(24)
             make.height.equalTo(76)
             make.trailing.equalTo(emailCheckButton.snp.leading).offset(-12)
         }
@@ -106,7 +125,7 @@ class JoinViewController: BaseViewController {
         }
         
         joinButton.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
+            make.horizontalEdges.bottom.equalTo(backView.safeAreaLayoutGuide).inset(24)
             make.height.equalTo(44)
         }
         
@@ -148,6 +167,22 @@ class JoinViewController: BaseViewController {
                 owner.validLabel.isHidden = false
                 owner.showToast(view: owner.validLabel)
             })
+            .disposed(by: disposeBag)
+        
+        let validEmail = email.textField.rx.text.orEmpty
+            .map { $0.contains("[A-Z0-9a-z]+@[A-Za-z0-9.-]+\\.com") }
+        
+        let validNickname = nickname.textField.rx.text.orEmpty
+            .map { $0.count >= 1 && $0.count <= 30 }
+        
+        let isValidJoin = Observable.zip(validEmail, validNickname) {
+            $0 && $1
+        }
+        
+        joinButton.rx.tap
+            .bind { _ in
+                print("taptap")
+            }
             .disposed(by: disposeBag)
     }
     
