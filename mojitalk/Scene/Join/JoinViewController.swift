@@ -11,9 +11,9 @@ import RxCocoa
 
 class JoinViewController: BaseViewController {
     
-    let scroll = UIScrollView()
-    let backView = {
-        let view = UIView(frame: .init(x: 0, y: 0, width: 0, height: UIScreen().bounds.height))
+    let scrollView = UIScrollView()
+    let contentView = {
+        let view = UIStackView(frame: .init(x: 0, y: 0, width: 0, height: UIScreen().bounds.height))
         return view
     }()
     let email = JoinView(title: "이메일", placeholder: "이메일을 입력하세요")
@@ -21,10 +21,8 @@ class JoinViewController: BaseViewController {
     let contact = JoinView(title: "연락처", placeholder: "전화번호를 입력하세요")
     let password = JoinView(title: "비밀번호", placeholder: "비밀번호를 입력하세요")
     let checkPW = JoinView(title: "비밀번호 확인", placeholder: "비밀번호를 한 번 더 입력하세요")
-    
     let emailCheckButton = TextButton(title: "중복 확인", bgColor: .brandInactive, textColor: .brandWhite)
     let joinButton = TextButton(title: "가입하기", bgColor: .brandInactive, textColor: .brandWhite)
-    
     let validLabel = {
         let view = TextButton(title: "사용 가능한 이메일입니다.", bgColor: .brandGreen, textColor: .brandWhite)
         view.configuration?.contentInsets = .init(top: 5, leading: 16, bottom: 5, trailing: 16)
@@ -38,26 +36,35 @@ class JoinViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        email.textField.becomeFirstResponder()
+        configureKeyboardObserver()
     }
     
     override func configureView() {
         super.configureView()
         configNavBar()
-        view.addSubview(scroll)
-        scroll.addSubview(backView)
-        backView.addSubview(email)
-        backView.addSubview(nickname)
-        backView.addSubview(contact)
-        backView.addSubview(password)
-        backView.addSubview(checkPW)
-        backView.addSubview(emailCheckButton)
-        backView.addSubview(joinButton)
-        backView.addSubview(validLabel)
+        view.addSubview(scrollView)
+        emailCheckButton.addTarget(self, action: #selector(checkTapped), for: .touchUpInside)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(email)
+        contentView.addSubview(nickname)
+        contentView.addSubview(contact)
+        contentView.addSubview(password)
+        contentView.addSubview(checkPW)
+        contentView.addSubview(emailCheckButton)
+        contentView.addSubview(joinButton)
+        contentView.addSubview(validLabel)
         password.textField.isSecureTextEntry = true
         checkPW.textField.isSecureTextEntry = true
         joinButton.isEnabled = false
+        email.textField.becomeFirstResponder()
+//        scroll.isScrollEnabled = false
+//        scroll.delaysContentTouches = false
+//        scroll.canCancelContentTouches = false
         
+    }
+    
+    @objc func checkTapped() {
+        print("@")
     }
     
     func configNavBar() {
@@ -77,14 +84,12 @@ class JoinViewController: BaseViewController {
     }
     
     override func setConstraints() {
-        scroll.snp.makeConstraints { make in
+        scrollView.snp.makeConstraints { make in
             make.top.leading.bottom.trailing.equalTo(view.safeAreaLayoutGuide)
         }
         
-        backView.snp.makeConstraints { make in
-            make.width.equalToSuperview()
-            make.centerX.equalToSuperview()
-            make.leading.trailing.equalTo(scroll.contentLayoutGuide)
+        contentView.snp.makeConstraints { make in
+            make.width.height.edges.equalToSuperview()
         }
         
         emailCheckButton.snp.makeConstraints { make in
@@ -95,7 +100,7 @@ class JoinViewController: BaseViewController {
         }
         
         email.snp.makeConstraints { make in
-            make.top.leading.equalTo(backView.safeAreaLayoutGuide).inset(24)
+            make.top.leading.equalTo(contentView.safeAreaLayoutGuide).inset(24)
             make.height.equalTo(76)
             make.trailing.equalTo(emailCheckButton.snp.leading).offset(-12)
         }
@@ -125,7 +130,7 @@ class JoinViewController: BaseViewController {
         }
         
         joinButton.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalTo(backView.safeAreaLayoutGuide).inset(24)
+            make.horizontalEdges.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(24)
             make.height.equalTo(44)
         }
         
@@ -186,4 +191,51 @@ class JoinViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
+    func configureKeyboardObserver() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ sender: Notification) {
+       
+        guard let userInfo = sender.userInfo as NSDictionary?,
+                      let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+                      let currentTextField = UIResponder.currentResponder as? UITextField else {
+                          return
+                      }
+        /// 키보드의 높이
+        let keyboardHeight = keyboardFrame.size.height
+                
+        // Y축으로 키보드의 상단 위치
+           let keyboardTopY = keyboardFrame.origin.y
+           // 현재 선택한 텍스트 필드의 Frame 값
+           let convertedTextFieldFrame = view.convert(currentTextField.frame, from: currentTextField.superview)
+           // Y축으로 현재 텍스트 필드의 하단 위치
+           let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
+           
+           // Y축으로 텍스트필드 하단 위치가 키보드 상단 위치보다 클 때 (즉, 텍스트필드가 키보드에 가려질 때가 되겠죠!)
+        
+        if let superviewY = currentTextField.superview?.frame.origin.y,
+           let superviewHeight = currentTextField.superview?.frame.height {
+            print(superviewY + superviewHeight, "@@", view.window?.windowScene?.screen.bounds.midY)
+                if Float(superviewY + superviewHeight + 30) > Float(view.window?.windowScene?.screen.bounds.midY ?? 0) {
+                    self.scrollView.contentOffset.y += superviewY - 20
+                }
+        }
+        
+        UIView.animate(withDuration: 0.3, animations: { self.view.layoutIfNeeded()}, completion: nil)
+    }
+    
+    @objc func keyboardWillHide(_ sender: Notification) {
+        scrollView.contentOffset.y = 0
+        UIView.animate(withDuration: 0.3, animations: { self.view.layoutIfNeeded()}, completion: nil)
+    }
 }

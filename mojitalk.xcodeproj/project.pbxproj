@@ -12,6 +12,7 @@
 		F4CFD8972B4ADF8C0024E28B /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */; };
 		F4CFD8992B4AE08A0024E28B /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD8982B4AE08A0024E28B /* JoinView.swift */; };
 		F4CFD89B2B4B00510024E28B /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD89A2B4B00510024E28B /* TextButton.swift */; };
+		F4CFD89E2B4EF7690024E28B /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD89D2B4EF7690024E28B /* UIResponder+Extension.swift */; };
 		F4F8AD282B456C6C00317F08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD272B456C6C00317F08 /* AppDelegate.swift */; };
 		F4F8AD2A2B456C6C00317F08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD292B456C6C00317F08 /* SceneDelegate.swift */; };
 		F4F8AD2C2B456C6C00317F08 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD2B2B456C6C00317F08 /* OnboardingViewController.swift */; };
@@ -29,6 +30,7 @@
 		F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		F4CFD8982B4AE08A0024E28B /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
 		F4CFD89A2B4B00510024E28B /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
+		F4CFD89D2B4EF7690024E28B /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
 		F4F8AD242B456C6C00317F08 /* mojitalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mojitalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4F8AD272B456C6C00317F08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4F8AD292B456C6C00317F08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,14 @@
 			path = Join;
 			sourceTree = "<group>";
 		};
+		F4CFD89C2B4EF75F0024E28B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F4CFD89D2B4EF7690024E28B /* UIResponder+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		F4F8AD1B2B456C6C00317F08 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +94,7 @@
 		F4F8AD262B456C6C00317F08 /* mojitalk */ = {
 			isa = PBXGroup;
 			children = (
+				F4CFD89C2B4EF75F0024E28B /* Extension */,
 				F4F8AD482B46E98B00317F08 /* Scene */,
 				F4F8AD432B45B3A400317F08 /* BaseView */,
 				F4F8AD3B2B456F2300317F08 /* Constant */,
@@ -215,6 +226,7 @@
 			files = (
 				F4CFD89B2B4B00510024E28B /* TextButton.swift in Sources */,
 				F4F8AD5E2B492D7300317F08 /* ContinueViewController.swift in Sources */,
+				F4CFD89E2B4EF7690024E28B /* UIResponder+Extension.swift in Sources */,
 				F4F8AD472B45B4C000317F08 /* Image.swift in Sources */,
 				F4F8AD602B4986B300317F08 /* ImageButton.swift in Sources */,
 				F4F8AD3D2B456F2E00317F08 /* Font.swift in Sources */,
