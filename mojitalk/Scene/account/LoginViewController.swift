@@ -11,18 +11,24 @@ class LoginViewController: BaseViewController {
     
     let email = JoinView(title: "이메일", placeholder: "이메일을 입력하세요")
     let password = JoinView(title: "비밀번호", placeholder: "비밀번호를 입력하세요")
+    
+    let buttonView = {
+        let view = UIView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 68))
+        view.backgroundColor = .backgroundPrimary
+        return view
+    }()
     let loginButton = TextButton(title: "로그인", bgColor: .brandInactive, textColor: .brandWhite)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func configureView() {
         super.configureView()
         view.addSubview(email)
         view.addSubview(password)
-        view.addSubview(loginButton)
+        view.addSubview(buttonView)
+        buttonView.addSubview(loginButton)
         password.textField.isSecureTextEntry = true
         configNavBar()
     }
@@ -55,10 +61,15 @@ class LoginViewController: BaseViewController {
             make.height.equalTo(76)
         }
         
+        buttonView.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view.keyboardLayoutGuide.snp.top)
+        }
+        
         loginButton.snp.makeConstraints { make in
-            make.bottom.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(24)
+            make.horizontalEdges.equalTo(buttonView.safeAreaLayoutGuide).inset(24)
+            make.bottom.equalToSuperview().inset(12)
             make.height.equalTo(44)
         }
     }
-    
 }

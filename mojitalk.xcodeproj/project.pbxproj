@@ -63,12 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F4CFD8952B4ADF810024E28B /* Join */ = {
+		F43E394D2B52800B00C6F1DE /* account */ = {
 			isa = PBXGroup;
 			children = (
+				F43E394B2B52800B00C6F1DE /* LoginViewController.swift */,
 				F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */,
+				F4F8AD5D2B492D7300317F08 /* ContinueViewController.swift */,
 			);
-			path = Join;
+			path = account;
 			sourceTree = "<group>";
 		};
 		F4CFD89C2B4EF75F0024E28B /* Extension */ = {
@@ -134,9 +136,8 @@
 		F4F8AD482B46E98B00317F08 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				F4CFD8952B4ADF810024E28B /* Join */,
+				F43E394D2B52800B00C6F1DE /* account */,
 				F4F8AD5C2B492D5200317F08 /* Onboarding */,
-				F43E394B2B52800B00C6F1DE /* LoginViewController.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -145,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				F4F8AD2B2B456C6C00317F08 /* OnboardingViewController.swift */,
-				F4F8AD5D2B492D7300317F08 /* ContinueViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
