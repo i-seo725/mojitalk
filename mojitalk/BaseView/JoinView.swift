@@ -33,9 +33,11 @@ class JoinView: UIView {
         view.leftViewMode = .always
         view.rightView = padding
         view.rightViewMode = .always
-        
         return view
     }()
+    
+//    let buttonInputView = UIView(frame: .init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 68))
+//    let joinButton = TextButton(title: "가입하기", bgColor: .brandInactive, textColor: .brandWhite)
     
     init(title: String, placeholder: String) {
         self.title = title
@@ -53,6 +55,9 @@ class JoinView: UIView {
     func configureView() {
         addSubview(titleLabel)
         addSubview(textField)
+//        textField.inputAccessoryView = buttonInputView
+//        buttonInputView.backgroundColor = .backgroundPrimary
+//        buttonInputView.addSubview(joinButton)
     }
     
     func setConstraints() {
@@ -67,6 +72,12 @@ class JoinView: UIView {
             make.height.equalTo(44)
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
         }
+        
+//        joinButton.snp.makeConstraints { make in
+//            make.height.equalTo(44)
+//            make.horizontalEdges.equalToSuperview().inset(24)
+//            make.centerY.equalToSuperview()
+//        }
     }
     
 }
