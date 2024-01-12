@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class LoginViewController: BaseViewController {
     
@@ -71,5 +72,10 @@ class LoginViewController: BaseViewController {
             make.bottom.equalToSuperview().inset(12)
             make.height.equalTo(44)
         }
+    }
+    
+    override func bind() {
+        let validEmail = email.textField.rx.text.orEmpty
+            .map { $0.contains("[A-Z0-9a-z]+@[A-Za-z0-9.-]+\\.com") }
     }
 }
