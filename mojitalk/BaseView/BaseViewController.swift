@@ -38,9 +38,9 @@ extension BaseViewController {
     }
 }
 
-extension BaseViewController {
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-}
+//extension BaseViewController {
+//    
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        view.endEditing(true)
+//    }
+//}

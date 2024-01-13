@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F43E394A2B52800B00C6F1DE /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F43E39492B52800B00C6F1DE /* IQKeyboardManagerSwift */; };
 		F4CFD8922B4ADD700024E28B /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F4CFD8912B4ADD700024E28B /* RxCocoa */; };
 		F4CFD8942B4ADD700024E28B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4CFD8932B4ADD700024E28B /* RxSwift */; };
 		F4CFD8972B4ADF8C0024E28B /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */; };
@@ -51,6 +52,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4CFD8942B4ADD700024E28B /* RxSwift in Frameworks */,
+				F43E394A2B52800B00C6F1DE /* IQKeyboardManagerSwift in Frameworks */,
 				F4CFD8922B4ADD700024E28B /* RxCocoa in Frameworks */,
 				F4F8AD422B4575BF00317F08 /* SnapKit in Frameworks */,
 			);
@@ -165,6 +167,7 @@
 				F4F8AD412B4575BF00317F08 /* SnapKit */,
 				F4CFD8912B4ADD700024E28B /* RxCocoa */,
 				F4CFD8932B4ADD700024E28B /* RxSwift */,
+				F43E39492B52800B00C6F1DE /* IQKeyboardManagerSwift */,
 			);
 			productName = mojitalk;
 			productReference = F4F8AD242B456C6C00317F08 /* mojitalk.app */;
@@ -197,6 +200,7 @@
 			packageReferences = (
 				F4F8AD402B4575BF00317F08 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				F4CFD8902B4ADD700024E28B /* XCRemoteSwiftPackageReference "RxSwift" */,
+				F43E39482B52800B00C6F1DE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = F4F8AD252B456C6C00317F08 /* Products */;
 			projectDirPath = "";
@@ -458,6 +462,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		F43E39482B52800B00C6F1DE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		F4CFD8902B4ADD700024E28B /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -477,6 +489,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F43E39492B52800B00C6F1DE /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F43E39482B52800B00C6F1DE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
 		F4CFD8912B4ADD700024E28B /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F4CFD8902B4ADD700024E28B /* XCRemoteSwiftPackageReference "RxSwift" */;

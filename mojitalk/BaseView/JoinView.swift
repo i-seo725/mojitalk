@@ -55,9 +55,6 @@ class JoinView: UIView {
     func configureView() {
         addSubview(titleLabel)
         addSubview(textField)
-//        textField.inputAccessoryView = buttonInputView
-//        buttonInputView.backgroundColor = .backgroundPrimary
-//        buttonInputView.addSubview(joinButton)
     }
     
     func setConstraints() {
@@ -72,12 +69,12 @@ class JoinView: UIView {
             make.height.equalTo(44)
             make.top.equalTo(titleLabel.snp.bottom).offset(8)
         }
-        
-//        joinButton.snp.makeConstraints { make in
-//            make.height.equalTo(44)
-//            make.horizontalEdges.equalToSuperview().inset(24)
-//            make.centerY.equalToSuperview()
-//        }
     }
     
+}
+
+extension JoinView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        endEditing(true)
+    }
 }
