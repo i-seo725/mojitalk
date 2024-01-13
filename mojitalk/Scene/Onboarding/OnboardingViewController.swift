@@ -27,7 +27,7 @@ class OnboardingViewController: BaseViewController {
         return view
     }()
     
-    let startButton = ContinueButton(frame: .zero, image: .active)
+    let startButton = ImageButton(frame: .zero, image: .active)
     
     let bgView = UIView()
     var nextButtonTapped = BehaviorRelay<Bool>(value: false)
