@@ -29,12 +29,17 @@ class BaseViewController: UIViewController {
 
 extension BaseViewController {
     
-    func showToast(view: UIView) {
+    func showToast(view: UILabel, title: String) {
+        view.text = title
+        view.isHidden = false
         UIView.animate(withDuration: 1.2, delay: 1.5, options: .curveEaseOut) {
             view.alpha = 0
         } completion: { _ in
-            view.removeFromSuperview()
+            view.isHidden = true
+            view.alpha = 1
         }
+        
+        
     }
 }
 

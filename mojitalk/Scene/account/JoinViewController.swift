@@ -12,11 +12,6 @@ import IQKeyboardManagerSwift
 
 class JoinViewController: BaseViewController {
     
-//    let scrollView = UIScrollView()
-//    let contentView = {
-//        let view = UIStackView(frame: .init(x: 0, y: 0, width: 0, height: UIScreen().bounds.height))
-//        return view
-//    }()
     let email = JoinView(title: "이메일", placeholder: "이메일을 입력하세요")
     let nickname = JoinView(title: "닉네임", placeholder: "닉네임을 입력하세요")
     let contact = JoinView(title: "연락처", placeholder: "전화번호를 입력하세요")
@@ -29,13 +24,7 @@ class JoinViewController: BaseViewController {
         return view
     }()
     let joinButton = TextButton(title: "가입하기", bgColor: .brandInactive, textColor: .brandWhite)
-    let validLabel = {
-        let view = TextButton(title: "사용 가능한 이메일입니다.", bgColor: .brandGreen, textColor: .brandWhite)
-        view.configuration?.contentInsets = .init(top: 5, leading: 16, bottom: 5, trailing: 16)
-        view.isEnabled = false
-        view.isHidden = true
-        return view
-    }()
+    let validLabel = ToastView()
     
     let isEmptyEmail = BehaviorSubject<Bool>(value: true)
     let disposeBag = DisposeBag()
@@ -129,9 +118,9 @@ class JoinViewController: BaseViewController {
         }
         
         validLabel.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(joinButton.snp.horizontalEdges).inset(85)
             make.bottom.equalTo(joinButton.snp.top).offset(-16)
             make.height.equalTo(36)
+            make.centerX.equalToSuperview()
         }
         
         buttonView.snp.makeConstraints { make in
@@ -177,7 +166,7 @@ class JoinViewController: BaseViewController {
         emailCheckButton.rx.tap
             .bind(with: self, onNext: { owner, _ in
                 owner.validLabel.isHidden = false
-                owner.showToast(view: owner.validLabel)
+                owner.showToast(view: owner.validLabel, title: "사용 가능한 이메일입니다")
             })
             .disposed(by: disposeBag)
         
