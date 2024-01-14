@@ -82,9 +82,17 @@ class LoginViewController: BaseViewController {
     override func bind() {
         let validEmail = email.textField.rx.text.orEmpty
             .map {
-                let reg = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[\bcom\b\bco\\.kr\b\bnet\b]"
+                let reg = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.((com)|(co\\.kr)|(net))"
                 let emailPredicate = NSPredicate(format: "SELF MATCHES %@", reg)
                 let result = emailPredicate.evaluate(with: $0)
+                return result
+            }
+        
+        let validPW = password.textField.rx.text.orEmpty
+            .map {
+                let reg = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%*^&?]).{8,20}"
+                let pwPredicate = NSPredicate(format: "SELF MATCHES %@", reg)
+                let result = pwPredicate.evaluate(with: $0)
                 return result
             }
         
@@ -102,11 +110,17 @@ class LoginViewController: BaseViewController {
         loginButton.rx.tap
             .bind(with: self) { owner, _ in
                 //유효성 검증해서 토스트 메시지 띄우기
-                validEmail
-                    .bind(with: self) { owner, value in
-                        owner.loginButton.backgroundColor = value ? .yellow : .red
-                    }
-                    .disposed(by: owner.disposeBag)
+                validEmail.bind(with: self) { owner, value in
+                    let text = value ? "이메일 유효성 검사 통과" : "이메일 형식 이상함"
+                    print(text)
+                }
+                .disposed(by: owner.disposeBag)
+                
+                validPW.bind(with: self) { owner, value in
+                    let text = value ? "비밀번호 유효성 검사 통과" : "비밀번호 형식 틀림"
+                    print(text)
+                }
+                .disposed(by: owner.disposeBag)
             }
             .disposed(by: disposeBag)
     }
