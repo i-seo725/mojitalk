@@ -10,6 +10,7 @@
 		F43E394A2B52800B00C6F1DE /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F43E39492B52800B00C6F1DE /* IQKeyboardManagerSwift */; };
 		F43E394C2B52800B00C6F1DE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43E394B2B52800B00C6F1DE /* LoginViewController.swift */; };
 		F48235A32B53D8D200C9768A /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48235A22B53D8D200C9768A /* ToastView.swift */; };
+		F48235A52B556DA200C9768A /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48235A42B556DA200C9768A /* Regex.swift */; };
 		F4CFD8922B4ADD700024E28B /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F4CFD8912B4ADD700024E28B /* RxCocoa */; };
 		F4CFD8942B4ADD700024E28B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4CFD8932B4ADD700024E28B /* RxSwift */; };
 		F4CFD8972B4ADF8C0024E28B /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		F43E394B2B52800B00C6F1DE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F48235A22B53D8D200C9768A /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		F48235A42B556DA200C9768A /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		F4CFD8982B4AE08A0024E28B /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
 		F4CFD89A2B4B00510024E28B /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			children = (
 				F4F8AD3C2B456F2E00317F08 /* Font.swift */,
 				F4F8AD462B45B4C000317F08 /* Image.swift */,
+				F48235A42B556DA200C9768A /* Regex.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				F4F8AD2A2B456C6C00317F08 /* SceneDelegate.swift in Sources */,
 				F4CFD8992B4AE08A0024E28B /* JoinView.swift in Sources */,
 				F43E394C2B52800B00C6F1DE /* LoginViewController.swift in Sources */,
+				F48235A52B556DA200C9768A /* Regex.swift in Sources */,
 				F4F8AD452B45B3AD00317F08 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

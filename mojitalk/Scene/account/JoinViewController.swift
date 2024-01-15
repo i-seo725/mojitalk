@@ -12,6 +12,13 @@ import IQKeyboardManagerSwift
 
 class JoinViewController: BaseViewController {
     
+    enum ToastMessage {
+        enum Email: String {
+            case incorrectFormat = "이메일 형식이 올바르지 않습니다."
+            case validEmail = "사용 가능한 이메일입니다. "
+        }
+    }
+    
     let email = JoinView(title: "이메일", placeholder: "이메일을 입력하세요")
     let nickname = JoinView(title: "닉네임", placeholder: "닉네임을 입력하세요")
     let contact = JoinView(title: "연락처", placeholder: "전화번호를 입력하세요")
@@ -37,16 +44,16 @@ class JoinViewController: BaseViewController {
     override func configureView() {
         super.configureView()
         configNavBar()
-        emailCheckButton.addTarget(self, action: #selector(checkTapped), for: .touchUpInside)
+        emailCheckButton.addTarget(self, action: #selector(emailCheckButtonTapped), for: .touchUpInside)
         view.addSubview(email)
         view.addSubview(nickname)
         view.addSubview(contact)
         view.addSubview(password)
         view.addSubview(checkPW)
         view.addSubview(emailCheckButton)
-        view.addSubview(validLabel)
         view.addSubview(buttonView)
         buttonView.addSubview(joinButton)
+        view.addSubview(validLabel)
         password.textField.isSecureTextEntry = true
         checkPW.textField.isSecureTextEntry = true
         joinButton.isEnabled = false
@@ -56,11 +63,16 @@ class JoinViewController: BaseViewController {
         for (index, item) in tags.enumerated() {
             item.textField.tag = index
         }
-        
     }
     
-    @objc func checkTapped() {
-        print("@")
+    @objc func emailCheckButtonTapped() {
+        if emailValidate() == true {
+            //네트워크 요청
+        } else {
+            email.titleLabel.textColor = .brandError
+            email.textField.becomeFirstResponder()
+            showToast(view: validLabel, title: ToastMessage.Email.incorrectFormat.rawValue)
+        }
     }
     
     func configNavBar() {
@@ -119,9 +131,10 @@ class JoinViewController: BaseViewController {
         
         validLabel.snp.makeConstraints { make in
             make.bottom.equalTo(joinButton.snp.top).offset(-16)
-            make.height.equalTo(36)
             make.centerX.equalToSuperview()
+            make.height.greaterThanOrEqualTo(36)
         }
+        validLabel.sizeToFit()
         
         buttonView.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
@@ -159,15 +172,6 @@ class JoinViewController: BaseViewController {
                 owner.joinButton.isEnabled = value
                 owner.joinButton.backgroundColor = value ? .brandGreen : .brandInactive
             }
-            .disposed(by: disposeBag)
-        
-        
-        
-        emailCheckButton.rx.tap
-            .bind(with: self, onNext: { owner, _ in
-                owner.validLabel.isHidden = false
-                owner.showToast(view: owner.validLabel, title: "사용 가능한 이메일입니다")
-            })
             .disposed(by: disposeBag)
         
         let validEmail = email.textField.rx.text.orEmpty
@@ -222,5 +226,13 @@ class JoinViewController: BaseViewController {
         IQKeyboardManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
         IQKeyboardManager.shared.toolbarConfiguration.manageBehavior = .byPosition
         IQKeyboardManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
+    }
+    
+    func emailValidate() -> Bool {
+        guard let email = email.textField.text else { return false }
+        let reg = Regex.email
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", reg)
+        let result = emailPredicate.evaluate(with: email)
+        return result
     }
 }

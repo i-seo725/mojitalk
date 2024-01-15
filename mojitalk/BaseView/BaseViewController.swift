@@ -34,12 +34,10 @@ extension BaseViewController {
         view.isHidden = false
         UIView.animate(withDuration: 1.2, delay: 1.5, options: .curveEaseOut) {
             view.alpha = 0
-        } completion: { _ in
-            view.isHidden = true
-            view.alpha = 1
+        } completion: { value in
+            view.alpha = value ? 1 : 0
+            view.isHidden = value
         }
-        
-        
     }
 }
 

@@ -129,7 +129,7 @@ class LoginViewController: BaseViewController {
     
     func emailValidate() -> Bool {
         guard let email = email.textField.text else { return false }
-        let reg = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.((com)|(co\\.kr)|(net))"
+        let reg = Regex.email
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", reg)
         let result = emailPredicate.evaluate(with: email)
         return result
@@ -137,7 +137,7 @@ class LoginViewController: BaseViewController {
     
     func pwValidate() -> Bool {
         guard let pw = password.textField.text else { return false }
-        let reg = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%*^&?]).{8,20}"
+        let reg = Regex.password
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", reg)
         let result = emailPredicate.evaluate(with: pw)
         return result
