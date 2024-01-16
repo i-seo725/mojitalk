@@ -11,6 +11,10 @@
 		F43E394C2B52800B00C6F1DE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43E394B2B52800B00C6F1DE /* LoginViewController.swift */; };
 		F48235A32B53D8D200C9768A /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48235A22B53D8D200C9768A /* ToastView.swift */; };
 		F48235A52B556DA200C9768A /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48235A42B556DA200C9768A /* Regex.swift */; };
+		F4B353F02B56795100CC75E8 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F4B353EF2B56795100CC75E8 /* Moya */; };
+		F4B353F22B56795100CC75E8 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F4B353F12B56795100CC75E8 /* RxMoya */; };
+		F4B353F52B56796B00CC75E8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B353F42B56796B00CC75E8 /* NetworkManager.swift */; };
+		F4B353F72B5679BB00CC75E8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F4B353F62B5679BB00CC75E8 /* .gitignore */; };
 		F4CFD8922B4ADD700024E28B /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F4CFD8912B4ADD700024E28B /* RxCocoa */; };
 		F4CFD8942B4ADD700024E28B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4CFD8932B4ADD700024E28B /* RxSwift */; };
 		F4CFD8972B4ADF8C0024E28B /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */; };
@@ -34,6 +38,8 @@
 		F43E394B2B52800B00C6F1DE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F48235A22B53D8D200C9768A /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		F48235A42B556DA200C9768A /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		F4B353F42B56796B00CC75E8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F4B353F62B5679BB00CC75E8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		F4CFD8982B4AE08A0024E28B /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
 		F4CFD89A2B4B00510024E28B /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
@@ -57,9 +63,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4B353F22B56795100CC75E8 /* RxMoya in Frameworks */,
 				F4CFD8942B4ADD700024E28B /* RxSwift in Frameworks */,
 				F43E394A2B52800B00C6F1DE /* IQKeyboardManagerSwift in Frameworks */,
 				F4CFD8922B4ADD700024E28B /* RxCocoa in Frameworks */,
+				F4B353F02B56795100CC75E8 /* Moya in Frameworks */,
 				F4F8AD422B4575BF00317F08 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,6 +83,15 @@
 				F4F8AD5D2B492D7300317F08 /* ContinueViewController.swift */,
 			);
 			path = account;
+			sourceTree = "<group>";
+		};
+		F4B353F32B56796200CC75E8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F4B353F42B56796B00CC75E8 /* NetworkManager.swift */,
+				F4B353F62B5679BB00CC75E8 /* .gitignore */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		F4CFD89C2B4EF75F0024E28B /* Extension */ = {
@@ -104,6 +121,7 @@
 		F4F8AD262B456C6C00317F08 /* mojitalk */ = {
 			isa = PBXGroup;
 			children = (
+				F4B353F32B56796200CC75E8 /* Network */,
 				F4CFD89C2B4EF75F0024E28B /* Extension */,
 				F4F8AD482B46E98B00317F08 /* Scene */,
 				F4F8AD432B45B3A400317F08 /* BaseView */,
@@ -177,6 +195,8 @@
 				F4CFD8912B4ADD700024E28B /* RxCocoa */,
 				F4CFD8932B4ADD700024E28B /* RxSwift */,
 				F43E39492B52800B00C6F1DE /* IQKeyboardManagerSwift */,
+				F4B353EF2B56795100CC75E8 /* Moya */,
+				F4B353F12B56795100CC75E8 /* RxMoya */,
 			);
 			productName = mojitalk;
 			productReference = F4F8AD242B456C6C00317F08 /* mojitalk.app */;
@@ -210,6 +230,7 @@
 				F4F8AD402B4575BF00317F08 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				F4CFD8902B4ADD700024E28B /* XCRemoteSwiftPackageReference "RxSwift" */,
 				F43E39482B52800B00C6F1DE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				F4B353EE2B56795100CC75E8 /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = F4F8AD252B456C6C00317F08 /* Products */;
 			projectDirPath = "";
@@ -226,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4F8AD342B456C6E00317F08 /* LaunchScreen.storyboard in Resources */,
+				F4B353F72B5679BB00CC75E8 /* .gitignore in Resources */,
 				F4F8AD312B456C6E00317F08 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,6 +263,7 @@
 				F4F8AD5E2B492D7300317F08 /* ContinueViewController.swift in Sources */,
 				F4CFD89E2B4EF7690024E28B /* UIResponder+Extension.swift in Sources */,
 				F4F8AD472B45B4C000317F08 /* Image.swift in Sources */,
+				F4B353F52B56796B00CC75E8 /* NetworkManager.swift in Sources */,
 				F4F8AD602B4986B300317F08 /* ImageButton.swift in Sources */,
 				F4F8AD3D2B456F2E00317F08 /* Font.swift in Sources */,
 				F4CFD8972B4ADF8C0024E28B /* JoinViewController.swift in Sources */,
@@ -482,6 +505,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		F4B353EE2B56795100CC75E8 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
 		F4CFD8902B4ADD700024E28B /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -505,6 +536,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F43E39482B52800B00C6F1DE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		F4B353EF2B56795100CC75E8 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4B353EE2B56795100CC75E8 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		F4B353F12B56795100CC75E8 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4B353EE2B56795100CC75E8 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
 		};
 		F4CFD8912B4ADD700024E28B /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
