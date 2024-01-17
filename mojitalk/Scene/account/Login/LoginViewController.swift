@@ -10,13 +10,7 @@ import RxSwift
 
 class LoginViewController: BaseViewController {
     
-    enum Toast: String {
-        case email = "이메일 형식이 올바르지 않습니다."
-        case pw = "비밀번호는 최소 8자 이상,\n하나 이상의 대소문자/숫자/특수 문자를 설정해주세요."
-        case failed = "이메일 또는 비밀번호가 올바르지 않습니다."
-        case etc = "에러가 발생했어요. 잠시 후 다시 시도해주세요."
-    }
-    
+    let viewModel = LoginViewModel()
     let email = JoinView(title: "이메일", placeholder: "이메일을 입력하세요")
     let password = JoinView(title: "비밀번호", placeholder: "비밀번호를 입력하세요")
     
@@ -61,19 +55,23 @@ class LoginViewController: BaseViewController {
     }
     
     @objc func loginButtonTapped() {
-        if emailValidate() && pwValidate() {
+        guard let emailValue = email.textField.text, let pwValue = password.textField.text else { return }
+        let emailValidate = viewModel.emailValidate(email: emailValue)
+        let pwValidate = viewModel.pwValidate(pw: pwValue)
+        
+        if emailValidate && pwValidate {
             //네트워크 로그인 요청
             email.titleLabel.textColor = .brandBlack
             password.titleLabel.textColor = .brandBlack
             print("형식 굿")
-        } else if emailValidate() == false && pwValidate() == false {
+        } else if emailValidate == false && pwValidate == false {
             showEmailToast()
             password.titleLabel.textColor = .brandError
-        } else if emailValidate() == true && pwValidate() == false {
+        } else if emailValidate == true && pwValidate == false {
             email.titleLabel.textColor = .brandBlack
             password.textField.becomeFirstResponder()
             showPWToast()
-        } else if emailValidate() == false && pwValidate() == true {
+        } else if emailValidate == false && pwValidate == true {
             password.titleLabel.textColor = .brandBlack
             showEmailToast()
         }
@@ -129,30 +127,16 @@ class LoginViewController: BaseViewController {
             .disposed(by: disposeBag)
     }
     
-    func emailValidate() -> Bool {
-        guard let email = email.textField.text else { return false }
-        let reg = Regex.email
-        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", reg)
-        let result = emailPredicate.evaluate(with: email)
-        return result
-    }
-    
-    func pwValidate() -> Bool {
-        guard let pw = password.textField.text else { return false }
-        let reg = Regex.password
-        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", reg)
-        let result = emailPredicate.evaluate(with: pw)
-        return result
-    }
+
     
     func showEmailToast() {
         email.titleLabel.textColor = .brandError
         email.textField.becomeFirstResponder()
-        showToast(view: toastLabel, title: Toast.email.rawValue)
+        showToast(view: toastLabel, title: viewModel.toast.email.rawValue)
     }
     
     func showPWToast() {
         password.titleLabel.textColor = .brandError
-        showToast(view: toastLabel, title: Toast.pw.rawValue)
+        showToast(view: toastLabel, title: viewModel.toast.pw.rawValue)
     }
 }
