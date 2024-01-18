@@ -43,25 +43,25 @@ extension UserRouter: TargetType {
     var path: String {
         switch self {
         case .join:
-            "/join"
+            "/v1/users/join"
         case .email:
-            "/validation/email"
+            "/v1/users/validation/email"
         case .login:
-            "/login"
+            "/v2/users/login"
         case .kakao:
-            "/login/kakao"
+            "/v1/users/login/kakao"
         case .apple:
-            "/login/apple"
+            "/v1/users/login/apple"
         case .logout:
-            "/logout"
+            "/v1/users/logout"
         case .deviceToken:
-            "/deviceToken"
+            "/v1/users/deviceToken"
         case .myView, .myEdit:
-            "/my"
+            "/v1/users/my"
         case .image:
-            "/my/image"
+            "/v1/users/my/image"
         case .users(let id):
-            "/\(id)"
+            "/v1/users/\(id)"
         }
     }
     
@@ -98,7 +98,7 @@ extension UserRouter: TargetType {
             return .requestJSONEncodable(data)
         case .image:
             return .uploadMultipart([])
-        case .users(let id):
+        case .users(_):
             return .requestPlain
         }
     }

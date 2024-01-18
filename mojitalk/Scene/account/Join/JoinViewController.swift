@@ -184,6 +184,16 @@ class JoinViewController: BaseViewController {
                 print("taptap")
             }
             .disposed(by: disposeBag)
+        
+        emailCheckButton.rx.tap
+            .bind(with: self) { owner, _ in
+                owner.viewModel.emailValidateAPI(owner.email.textField.text!) {
+                    DispatchQueue.main.async {
+                        owner.showToast(view: self.validLabel, title: self.viewModel.toast.Email.validEmail.rawValue)
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     func configureKeyboardObserver() {

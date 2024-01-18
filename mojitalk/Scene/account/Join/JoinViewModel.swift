@@ -34,4 +34,13 @@ class JoinViewModel {
         let result = emailPredicate.evaluate(with: email)
         return result
     }
+    
+    func emailValidateAPI(_ value: String, handler: @escaping () -> Void) {
+        let data = Email.Request(email: value)
+        NetworkManager.shared.request(endpoint: .email(data: data)) { result in
+            dump(result.data)
+        }
+    }
+    
+    func joinAPI(email: String, password: String, nickname: String, )
 }

@@ -27,11 +27,12 @@
 		F4A2E8882B596AA400D9E721 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F4A2E8872B596AA400D9E721 /* KakaoSDKAuth */; };
 		F4A2E88A2B596AA400D9E721 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = F4A2E8892B596AA400D9E721 /* KakaoSDKUser */; };
 		F4A2E88D2B596ADF00D9E721 /* ContinueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E88C2B596ADF00D9E721 /* ContinueViewModel.swift */; };
+		F4A2E88F2B59780B00D9E721 /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E88E2B59780B00D9E721 /* Interceptor.swift */; };
 		F4B353F02B56795100CC75E8 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F4B353EF2B56795100CC75E8 /* Moya */; };
 		F4B353F22B56795100CC75E8 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F4B353F12B56795100CC75E8 /* RxMoya */; };
 		F4B353F52B56796B00CC75E8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B353F42B56796B00CC75E8 /* NetworkManager.swift */; };
 		F4B353F72B5679BB00CC75E8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F4B353F62B5679BB00CC75E8 /* .gitignore */; };
-		F4B353FB2B567C0E00CC75E8 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B353FA2B567C0E00CC75E8 /* Router.swift */; };
+		F4B353FB2B567C0E00CC75E8 /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B353FA2B567C0E00CC75E8 /* UserRouter.swift */; };
 		F4B353FD2B567C6C00CC75E8 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B353FC2B567C6C00CC75E8 /* Secret.swift */; };
 		F4CFD8922B4ADD700024E28B /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F4CFD8912B4ADD700024E28B /* RxCocoa */; };
 		F4CFD8942B4ADD700024E28B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4CFD8932B4ADD700024E28B /* RxSwift */; };
@@ -69,9 +70,10 @@
 		F4A2E87E2B4D77F600D9E721 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		F4A2E8822B4D7A4300D9E721 /* JoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewModel.swift; sourceTree = "<group>"; };
 		F4A2E88C2B596ADF00D9E721 /* ContinueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueViewModel.swift; sourceTree = "<group>"; };
+		F4A2E88E2B59780B00D9E721 /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
 		F4B353F42B56796B00CC75E8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F4B353F62B5679BB00CC75E8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		F4B353FA2B567C0E00CC75E8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		F4B353FA2B567C0E00CC75E8 /* UserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
 		F4B353FC2B567C6C00CC75E8 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		F4CFD8982B4AE08A0024E28B /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
@@ -186,8 +188,9 @@
 				F4A2E8792B4D72F000D9E721 /* Error */,
 				F4A2E8672B4D650000D9E721 /* Model */,
 				F4B353F42B56796B00CC75E8 /* NetworkManager.swift */,
-				F4B353FA2B567C0E00CC75E8 /* Router.swift */,
+				F4B353FA2B567C0E00CC75E8 /* UserRouter.swift */,
 				F4B353FC2B567C6C00CC75E8 /* Secret.swift */,
+				F4A2E88E2B59780B00D9E721 /* Interceptor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -368,7 +371,7 @@
 				F4CFD89E2B4EF7690024E28B /* UIResponder+Extension.swift in Sources */,
 				F4F8AD472B45B4C000317F08 /* Image.swift in Sources */,
 				F4A2E8742B4D696700D9E721 /* DeviceToken.swift in Sources */,
-				F4B353FB2B567C0E00CC75E8 /* Router.swift in Sources */,
+				F4B353FB2B567C0E00CC75E8 /* UserRouter.swift in Sources */,
 				F4A2E8722B4D691B00D9E721 /* AppleLogin.swift in Sources */,
 				F4B353F52B56796B00CC75E8 /* NetworkManager.swift in Sources */,
 				F4A2E86C2B4D67EF00D9E721 /* Email.swift in Sources */,
@@ -389,6 +392,7 @@
 				F4A2E8782B4D6A4800D9E721 /* MyImage.swift in Sources */,
 				F4F8AD2A2B456C6C00317F08 /* SceneDelegate.swift in Sources */,
 				F4CFD8992B4AE08A0024E28B /* JoinView.swift in Sources */,
+				F4A2E88F2B59780B00D9E721 /* Interceptor.swift in Sources */,
 				F43E394C2B52800B00C6F1DE /* LoginViewController.swift in Sources */,
 				F4A2E86A2B4D653600D9E721 /* Join.swift in Sources */,
 				F48235A52B556DA200C9768A /* Regex.swift in Sources */,
