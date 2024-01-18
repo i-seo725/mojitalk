@@ -7,6 +7,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import KakaoSDKCommon
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.resignOnTouchOutside = true
         IQKeyboardManager.shared.toolbarConfiguration.previousNextDisplayMode = .default
+        
+        KakaoSDK.initSDK(appKey: "079cb05cb1f8d56c71b4b45c73897748")
         
         return true
     }

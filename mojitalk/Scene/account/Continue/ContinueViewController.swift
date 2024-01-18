@@ -11,6 +11,7 @@ import RxCocoa
 
 class ContinueViewController: BaseViewController {
     
+    let viewModel = ContinueViewModel()
     let appleLoginButton = ImageButton(frame: .zero, image: .appleLogin)
     let kakaoLoginButton = ImageButton(frame: .zero, image: .kakaoLogin)
     let emailLoginButton = ImageButton(frame: .zero, image: .activeWithIcon)
@@ -96,6 +97,11 @@ class ContinueViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
             
+        kakaoLoginButton.rx.tap
+            .bind(with: self) { owner, _ in
+                owner.viewModel.loginWithKakaotalk()
+            }
+            .disposed(by: disposeBag)
     }
     
 }
