@@ -42,5 +42,4 @@ class JoinViewModel {
         }
     }
     
-    func joinAPI(email: String, password: String, nickname: String, )
 }
