@@ -28,7 +28,10 @@ class JoinViewController: BaseViewController {
     let validLabel = ToastView()
     
     let isEmptyEmail = BehaviorSubject<Bool>(value: true)
+    let numText = PublishSubject<String>()
     let disposeBag = DisposeBag()
+    
+    var emailCheck = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +41,6 @@ class JoinViewController: BaseViewController {
     override func configureView() {
         super.configureView()
         configNavBar()
-        emailCheckButton.addTarget(self, action: #selector(emailCheckButtonTapped), for: .touchUpInside)
         view.addSubview(email)
         view.addSubview(nickname)
         view.addSubview(contact)
@@ -51,6 +53,9 @@ class JoinViewController: BaseViewController {
         password.textField.isSecureTextEntry = true
         checkPW.textField.isSecureTextEntry = true
         joinButton.isEnabled = false
+        email.textField.keyboardType = .emailAddress
+        contact.textField.keyboardType = .numberPad
+//        joinButton.addTarget(self, action: #selector(joinButtonTapped), for: .touchUpInside)
         
         let tags = [email, nickname, contact, password, checkPW]
         
@@ -58,18 +63,7 @@ class JoinViewController: BaseViewController {
             item.textField.tag = index
         }
     }
-    
-    @objc func emailCheckButtonTapped() {
-        let emailValidate = viewModel.emailValidate(email: email.textField.text ?? "")
-        if emailValidate == true {
-            //네트워크 요청
-        } else {
-            email.titleLabel.textColor = .brandError
-            email.textField.becomeFirstResponder()
-            showToast(view: validLabel, title: viewModel.toast.Email.incorrectFormat.rawValue)
-        }
-    }
-    
+        
     func configNavBar() {
         guard let navBar = self.navigationController?.navigationBar else {
             return
@@ -85,6 +79,9 @@ class JoinViewController: BaseViewController {
     @objc func closeButtonTapped() {
         self.presentingViewController?.presentingViewController?.dismiss(animated: true)
     }
+//    @objc func joinButtonTapped() {
+//        if emailCheck == true
+//    }
     
     override func setConstraints() {
         emailCheckButton.snp.makeConstraints { make in
@@ -146,6 +143,7 @@ class JoinViewController: BaseViewController {
     }
     
     override func bind() {
+        //이메일 중복 검사, 회원가입 버튼 활성화 검사
         email.textField.rx.text.orEmpty
             .map { $0.isEmpty }
             .bind(to: isEmptyEmail)
@@ -168,32 +166,57 @@ class JoinViewController: BaseViewController {
                 owner.joinButton.backgroundColor = value ? .brandGreen : .brandInactive
             }
             .disposed(by: disposeBag)
+        //
         
-        let validEmail = email.textField.rx.text.orEmpty
-            .map { $0.contains(self.viewModel.emailRegex) }
         
-        let validNickname = nickname.textField.rx.text.orEmpty
+        //유효성 검사
+        let isEmailOK = BehaviorSubject<Bool>(value: false)
+        let isNicknameOK = nickname.textField.rx.text.orEmpty
             .map { $0.count >= 1 && $0.count <= 30 }
-        
-        let isValidJoin = Observable.zip(validEmail, validNickname) {
-            $0 && $1
+        let isContactOK = BehaviorSubject<Bool>(value: true)
+        let isPasswordOK = Observable.zip(password.textField.rx.text.orEmpty, checkPW.textField.rx.text.orEmpty) {
+            $0 == $1
         }
         
-        joinButton.rx.tap
-            .bind { _ in
-                print("taptap")
-            }
-            .disposed(by: disposeBag)
+        let isJoinOK = Observable.zip(isEmailOK, isNicknameOK, isContactOK, isPasswordOK) {
+            return $0 && $1 && $2 && $3
+        }
         
         emailCheckButton.rx.tap
             .bind(with: self) { owner, _ in
-                owner.viewModel.emailValidateAPI(owner.email.textField.text!) {
-                    DispatchQueue.main.async {
-                        owner.showToast(view: self.validLabel, title: self.viewModel.toast.Email.validEmail.rawValue)
+                let emailValidate = owner.viewModel.emailValidate(email: owner.email.textField.text ?? "")
+                if emailValidate == true {
+                    owner.email.titleLabel.textColor = .brandBlack
+                    isEmailOK.onNext(true)
+                    owner.viewModel.emailValidateAPI(owner.email.textField.text!) { code in
+                        if code == 200 {
+                            owner.showToast(view: owner.validLabel, title: owner.viewModel.toast.Email.validEmail.rawValue)
+                        } else if code == 400 {
+                            owner.showToast(view: owner.validLabel, title: UserError.E12.errorDescription)
+                        }
                     }
+                } else {
+                    owner.email.titleLabel.textColor = .brandError
+                    owner.email.textField.becomeFirstResponder()
+                    owner.showToast(view: owner.validLabel, title: owner.viewModel.toast.Email.incorrectFormat.rawValue)
                 }
             }
             .disposed(by: disposeBag)
+        
+//        joinButton.rx.tap
+//            .bind(with: self) { owner, _ in
+//                isJoinOK
+//                    .bind(with: self) { owner, value in
+//                        if value == true {
+//                            //네트워크
+//                        } else if isEmailOK.value() == false {
+//                            owner.showToast(view: owner.validLabel, title: owner.viewModel.toast.Join.notChecked.rawValue)
+//
+//                        }
+//                    }
+//            }
+//            .disposed(by: disposeBag)
+
     }
     
     func configureKeyboardObserver() {

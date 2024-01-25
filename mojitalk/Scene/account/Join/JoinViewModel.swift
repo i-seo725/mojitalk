@@ -26,7 +26,8 @@ class JoinViewModel {
     }
 
     let toast = ToastMessage.self
-    let emailRegex = "[A-Z0-9a-z]+@[A-Za-z0-9.-]+\\.com"
+//    let emailRegex = "[A-Z0-9a-z]+@[A-Za-z0-9.-]+\\.com"
+    let contactRegex = "^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$"
     
     func emailValidate(email: String) -> Bool {
         let reg = Regex.email
@@ -35,11 +36,42 @@ class JoinViewModel {
         return result
     }
     
-    func emailValidateAPI(_ value: String, handler: @escaping () -> Void) {
+    func pwValidate(_ pw: String) -> Bool {
+        let pwPredicate = NSPredicate(format: "SELF MATCHES %@", Regex.password)
+        let result = pwPredicate.evaluate(with: pw)
+        return result
+    }
+    
+    func contactValidate(num: String) -> Bool {
+        let numberPredicate = NSPredicate(format: "SELF MATCHES %@", contactRegex)
+        let result = numberPredicate.evaluate(with: num)
+        return result
+    }
+    
+    func emailValidateAPI(_ value: String, handler: @escaping (Int) -> Void) {
         let data = Email.Request(email: value)
         NetworkManager.shared.request(endpoint: .email(data: data)) { result in
-            dump(result.data)
+            DispatchQueue.main.async {
+                handler(result.statusCode)
+            }
         }
+    }
+    
+    func contactFormatted(_ value: String) -> String {
+        //010 등등 검증
+        let firstPredicate = NSPredicate(format: "SELF MATCHES %@", "01(0|1|6|7|8|9)")
+        let firstResult = firstPredicate.evaluate(with: value.prefix(3))
+//        value.insert("-", at: value.index(value.startIndex, offsetBy: 3))
+//        value.insert("-", at: value.index(value.endIndex, offsetBy: -4))
+        
+        //
+        let secondPredicate = NSPredicate(format: "SELF MATCHES %@", "[0-9]{7,8}")
+        let secondValueIndex = value.index(value.startIndex, offsetBy: 2)
+        let secondValue = String(value[secondValueIndex...])
+        
+        let secondResult = secondPredicate.evaluate(with: secondValue)
+
+        return ""
     }
     
 }

@@ -12,7 +12,7 @@ enum UserError: Error, LocalizedError {
     case E12
     case E03(isEmail: Bool)
     
-    var errorDescription: String? {
+    var errorDescription: String {
         switch self {
         case .E11:
             "잘못된 요청입니다. 다시 시도해주세요."
