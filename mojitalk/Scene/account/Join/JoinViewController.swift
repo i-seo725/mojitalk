@@ -31,6 +31,8 @@ class JoinViewController: BaseViewController {
     let numText = PublishSubject<String>()
     let disposeBag = DisposeBag()
     
+    var emailText = ""
+    
     lazy var joinViews = [email, nickname, contact, password, checkPW]
     
     override func viewDidLoad() {
@@ -209,13 +211,25 @@ class JoinViewController: BaseViewController {
         //유효성 검사
         emailCheckButton.rx.tap
             .bind(with: self) { owner, _ in
+                let currentEmail = owner.email.textField.text ?? ""
                 let emailValidate = owner.viewModel.emailValidate(email: owner.email.textField.text ?? "")
+                
                 if emailValidate == true {
+                    guard owner.emailText != currentEmail else {
+                        switch owner.viewModel.isEmailOK {
+                        case true:
+                            owner.showToast(view: owner.validLabel, title: owner.viewModel.toast.Email.validEmail.rawValue)
+                        case false:
+                            owner.showToast(view: owner.validLabel, title: owner.viewModel.toast.Email.incorrectFormat.rawValue)
+                        }
+                        return
+                    }
                     owner.email.titleLabel.textColor = .brandBlack
                     owner.viewModel.isEmailOK = true
                     owner.viewModel.emailValidateAPI(owner.email.textField.text!) { code in
                         if code == 200 {
                             owner.showToast(view: owner.validLabel, title: owner.viewModel.toast.Email.validEmail.rawValue)
+                            owner.emailText = currentEmail
                         } else if code == 400 {
                             owner.showToast(view: owner.validLabel, title: UserError.E12.errorDescription)
                             owner.updateUIOnValidationFailure(owner.email)
