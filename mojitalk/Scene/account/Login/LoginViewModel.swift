@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Moya
 
 class LoginViewModel {
     enum Toast: String {
@@ -29,5 +30,22 @@ class LoginViewModel {
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", reg)
         let result = emailPredicate.evaluate(with: pw)
         return result
+    }
+    
+    func loginAPI(email: String, pw: String, handler: @escaping (Result<Decodable, Error>) -> Void) {
+        let data = Login.Request(email: email, password: pw, deviceToken: nil)
+        
+        NetworkManager.shared.request(endpoint: .login(data: data), type: Login.Response.self) { result in
+            switch result {
+            case .success(let success):
+                Token.access = success.token.accessToken
+                Token.refresh = success.token.refreshToken
+                DispatchQueue.main.async {
+                    handler(.success(success))
+                }
+            case .failure(let failure):
+                handler(.failure(failure))
+            }
+        }
     }
 }

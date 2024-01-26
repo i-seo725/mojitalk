@@ -61,9 +61,26 @@ class LoginViewController: BaseViewController {
         
         if emailValidate && pwValidate {
             //네트워크 로그인 요청
+            viewModel.loginAPI(email: emailValue, pw: pwValue) { result in
+                switch result {
+                case .success(let success):
+                    print("로그인 성공")
+                    //뷰 넘겨주기
+                case .failure(let failure):
+                    if let error = failure as? CommonError400 {
+                        if error.rawValue == "E03" {
+                            self.showToast(view: self.toastLabel, title: self.viewModel.toast.failed.rawValue)
+                        } else {
+                            self.showToast(view: self.toastLabel, title: self.viewModel.toast.etc.rawValue)
+                        }
+                    } else {
+                        self.showToast(view: self.toastLabel, title: self.viewModel.toast.etc.rawValue)
+                    }
+                    
+                }
+            }
             email.titleLabel.textColor = .brandBlack
             password.titleLabel.textColor = .brandBlack
-            print("형식 굿")
         } else if emailValidate == false && pwValidate == false {
             showEmailToast()
             password.titleLabel.textColor = .brandError

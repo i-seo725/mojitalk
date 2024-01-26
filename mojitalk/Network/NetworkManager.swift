@@ -22,7 +22,7 @@ class NetworkManager {
                 let result = response
                 handler(result)
             case .failure(let error):
-                    print(error)
+                print(error)
             }
         }
     }
@@ -52,7 +52,6 @@ class NetworkManager {
                         }
                     default:
                         print("알 수 없는 에러 발생@@@\n", error)
-                        handler(.failure(error))
                     }
                 }
             }
