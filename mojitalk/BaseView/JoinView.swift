@@ -27,6 +27,7 @@ class JoinView: UIView {
         view.font = Font.body
         view.backgroundColor = UIColor.backgroundSecondary
         view.layer.cornerRadius = 8
+        view.clearButtonMode = .always
         
         let padding = UIView(frame: .init(x: 0, y: 0, width: 12, height: 44))
         view.leftView = padding
