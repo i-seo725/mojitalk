@@ -31,7 +31,7 @@ class JoinViewController: BaseViewController {
     let numText = PublishSubject<String>()
     let disposeBag = DisposeBag()
     
-    var emailCheck = false
+    lazy var joinViews = [email, nickname, contact, password, checkPW]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,7 @@ class JoinViewController: BaseViewController {
         joinButton.isEnabled = false
         email.textField.keyboardType = .emailAddress
         contact.textField.keyboardType = .numberPad
-//        joinButton.addTarget(self, action: #selector(joinButtonTapped), for: .touchUpInside)
+        joinButton.addTarget(self, action: #selector(joinButtonTapped), for: .touchUpInside)
         
         let tags = [email, nickname, contact, password, checkPW]
         
@@ -79,9 +79,41 @@ class JoinViewController: BaseViewController {
     @objc func closeButtonTapped() {
         self.presentingViewController?.presentingViewController?.dismiss(animated: true)
     }
-//    @objc func joinButtonTapped() {
-//        if emailCheck == true
-//    }
+    @objc func joinButtonTapped() {
+        if !viewModel.isEmailOK {
+            rollBackJoinView()
+            showToast(view: validLabel, title: viewModel.toast.Join.notChecked.rawValue)
+            updateUIOnValidationFailure(email)
+        } else if !viewModel.isNicknameOK {
+            rollBackJoinView()
+            showToast(view: validLabel, title: viewModel.toast.Join.incorrectNickname.rawValue)
+            updateUIOnValidationFailure(nickname)
+        } else if !viewModel.isContactOK {
+            rollBackJoinView()
+            showToast(view: validLabel, title: viewModel.toast.Join.incorrectPhoneNum.rawValue)
+            updateUIOnValidationFailure(contact)
+        } else if !viewModel.isPasswordOK {
+            rollBackJoinView()
+            showToast(view: validLabel, title: viewModel.toast.Join.incorrectPW.rawValue)
+            updateUIOnValidationFailure(password)
+        } else if !viewModel.isCheckedPW {
+            rollBackJoinView()
+            showToast(view: validLabel, title: viewModel.toast.Join.diffPW.rawValue)
+            updateUIOnValidationFailure(checkPW)
+        } else {
+            rollBackJoinView()
+            if let email = email.textField.text, let nickname = nickname.textField.text, let contact = contact.textField.text, let pw = password.textField.text {
+                viewModel.joinAPI(email: email, nickname: nickname, contact: contact, password: pw) { result in
+                    switch result {
+                    case .success(let success):
+                        print(success)
+                    case .failure(let failure):
+                        print(failure)
+                    }
+                }
+            }
+        }
+    }
     
     override func setConstraints() {
         emailCheckButton.snp.makeConstraints { make in
@@ -170,53 +202,50 @@ class JoinViewController: BaseViewController {
         
         
         //유효성 검사
-        let isEmailOK = BehaviorSubject<Bool>(value: false)
-        let isNicknameOK = nickname.textField.rx.text.orEmpty
-            .map { $0.count >= 1 && $0.count <= 30 }
-        let isContactOK = BehaviorSubject<Bool>(value: true)
-        let isPasswordOK = Observable.zip(password.textField.rx.text.orEmpty, checkPW.textField.rx.text.orEmpty) {
-            $0 == $1
-        }
-        
-        let isJoinOK = Observable.zip(isEmailOK, isNicknameOK, isContactOK, isPasswordOK) {
-            return $0 && $1 && $2 && $3
-        }
-        
         emailCheckButton.rx.tap
             .bind(with: self) { owner, _ in
                 let emailValidate = owner.viewModel.emailValidate(email: owner.email.textField.text ?? "")
                 if emailValidate == true {
                     owner.email.titleLabel.textColor = .brandBlack
-                    isEmailOK.onNext(true)
+                    owner.viewModel.isEmailOK = true
                     owner.viewModel.emailValidateAPI(owner.email.textField.text!) { code in
                         if code == 200 {
                             owner.showToast(view: owner.validLabel, title: owner.viewModel.toast.Email.validEmail.rawValue)
                         } else if code == 400 {
                             owner.showToast(view: owner.validLabel, title: UserError.E12.errorDescription)
+                            owner.updateUIOnValidationFailure(owner.email)
                         }
                     }
                 } else {
-                    owner.email.titleLabel.textColor = .brandError
-                    owner.email.textField.becomeFirstResponder()
+                    owner.updateUIOnValidationFailure(owner.email)
                     owner.showToast(view: owner.validLabel, title: owner.viewModel.toast.Email.incorrectFormat.rawValue)
                 }
             }
             .disposed(by: disposeBag)
         
-//        joinButton.rx.tap
-//            .bind(with: self) { owner, _ in
-//                isJoinOK
-//                    .bind(with: self) { owner, value in
-//                        if value == true {
-//                            //네트워크
-//                        } else if isEmailOK.value() == false {
-//                            owner.showToast(view: owner.validLabel, title: owner.viewModel.toast.Join.notChecked.rawValue)
-//
-//                        }
-//                    }
-//            }
-//            .disposed(by: disposeBag)
-
+        nickname.textField.rx.text.orEmpty
+            .bind(with: self) { owner, nickname in
+                owner.viewModel.isNicknameOK = owner.viewModel.nicknameValidate(nickname)
+            }
+            .disposed(by: disposeBag)
+        
+        contact.textField.rx.text.orEmpty
+            .bind(with: self) { owner, contact in
+                owner.viewModel.isContactOK = owner.viewModel.contactValidate(num: contact)
+            }
+            .disposed(by: disposeBag)
+        
+        password.textField.rx.text.orEmpty
+            .bind(with: self) { owner, value in
+                owner.viewModel.isPasswordOK = owner.viewModel.pwValidate(value)
+            }
+            .disposed(by: disposeBag)
+        
+        checkPW.textField.rx.text.orEmpty
+            .bind(with: self) { owner, value in
+                owner.viewModel.isCheckedPW = owner.password.textField.text! == value
+            }
+            .disposed(by: disposeBag)
     }
     
     func configureKeyboardObserver() {
@@ -247,5 +276,10 @@ class JoinViewController: BaseViewController {
         IQKeyboardManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
     }
     
+    func rollBackJoinView() {
+        for i in joinViews {
+            i.titleLabel.textColor = .brandBlack
+        }
+    }
 
 }
