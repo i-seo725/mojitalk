@@ -39,6 +39,11 @@ extension BaseViewController {
             view.isHidden = value
         }
     }
+    
+    func updateUIOnValidationFailure(_ view: JoinView) {
+        view.titleLabel.textColor = .brandError
+        view.textField.becomeFirstResponder()
+    }
 }
 
 //extension BaseViewController {
