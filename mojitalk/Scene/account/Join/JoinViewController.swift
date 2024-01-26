@@ -38,6 +38,11 @@ class JoinViewController: BaseViewController {
         configureKeyboardObserver()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func configureView() {
         super.configureView()
         configNavBar()
