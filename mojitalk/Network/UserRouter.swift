@@ -108,7 +108,9 @@ extension UserRouter: TargetType {
         return ["SesacKey": Secret.APIKey]
     }
     
-    
+    var validationType: ValidationType {
+        .successCodes
+    }
     
     
 }
