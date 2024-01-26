@@ -49,7 +49,7 @@ class JoinViewModel {
     func contactValidate(num: String) -> Bool {
         let numberPredicate = NSPredicate(format: "SELF MATCHES %@", contactRegex)
         let result = numberPredicate.evaluate(with: num)
-        return result
+        return result || num.isEmpty
     }
     
     func pwValidate(_ pw: String) -> Bool {
@@ -78,15 +78,14 @@ class JoinViewModel {
         }
     }
     
-
-    
-
-    
     func emailValidateAPI(_ value: String, handler: @escaping (Int) -> Void) {
         let data = Email.Request(email: value)
         NetworkManager.shared.requestEmailValidate(endpoint: .email(data: data)) { result in
-            DispatchQueue.main.async {
-                handler(result.statusCode)
+            switch result {
+            case .success(let success):
+                handler(200)
+            case .failure(let failure):
+                handler(400)
             }
         }
     }

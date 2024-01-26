@@ -15,14 +15,17 @@ class NetworkManager {
     
     let provider = MoyaProvider<UserRouter>()
     
-    func requestEmailValidate(endpoint: UserRouter, handler: @escaping ((Response) -> Void)) {
+    func requestEmailValidate(endpoint: UserRouter, handler: @escaping (Result<Int, Error>) -> Void) {
         provider.request(endpoint) { result in
             switch result {
             case .success(let response):
-                let result = response
-                handler(result)
-            case .failure(let error):
-                print(error)
+                handler(.success(response.statusCode))
+            case .failure(let failure):
+                if let errorData = failure.response?.data, let data = try? JSONDecoder().decode(ErrorResponse.self, from: errorData), let error = UserError(rawValue: data.errorCode) {
+                    handler(.failure(error))
+                } else {
+                    handler(.failure(failure))
+                }
             }
         }
     }
