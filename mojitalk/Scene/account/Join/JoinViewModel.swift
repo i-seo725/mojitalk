@@ -66,6 +66,8 @@ class JoinViewModel {
                 print(result)
                 switch result {
                 case .success(let success):
+                    Token.access = success.token.accessToken
+                    Token.refresh = success.token.refreshToken
                     handler(.success(success))
                 case .failure(let failure):
                     handler(.failure(failure))
