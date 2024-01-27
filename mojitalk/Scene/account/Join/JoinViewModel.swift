@@ -68,6 +68,7 @@ class JoinViewModel {
                 case .success(let success):
                     Token.access = success.token.accessToken
                     Token.refresh = success.token.refreshToken
+                    Account.nickname = success.nickname
                     handler(.success(success))
                 case .failure(let failure):
                     handler(.failure(failure))

@@ -40,6 +40,7 @@ class LoginViewModel {
             case .success(let success):
                 Token.access = success.token.accessToken
                 Token.refresh = success.token.refreshToken
+                Account.nickname = success.nickname
                 DispatchQueue.main.async {
                     handler(.success(success))
                 }
