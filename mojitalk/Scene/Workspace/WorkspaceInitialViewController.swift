@@ -73,7 +73,7 @@ class WorkspaceInitialViewController: BaseViewController {
     }
     
     @objc func closeButtonTapped() {
-        
+        changeRootView(WorkspaceHomeViewController())
     }
     
     override func bind() {

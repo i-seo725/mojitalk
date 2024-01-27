@@ -13,6 +13,7 @@
 		F4281DD02B64BE7100E7D517 /* WorkspaceInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4281DCF2B64BE7100E7D517 /* WorkspaceInitialViewController.swift */; };
 		F4281DD22B64D11100E7D517 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4281DD12B64D11100E7D517 /* AccountManager.swift */; };
 		F4281DD42B64D30800E7D517 /* WorkspaceAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4281DD32B64D30800E7D517 /* WorkspaceAddViewController.swift */; };
+		F4281DD62B6A47C500E7D517 /* WorkspaceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4281DD52B6A47C500E7D517 /* WorkspaceListViewController.swift */; };
 		F43E394A2B52800B00C6F1DE /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F43E39492B52800B00C6F1DE /* IQKeyboardManagerSwift */; };
 		F43E394C2B52800B00C6F1DE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43E394B2B52800B00C6F1DE /* LoginViewController.swift */; };
 		F48235A32B53D8D200C9768A /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48235A22B53D8D200C9768A /* ToastView.swift */; };
@@ -66,6 +67,7 @@
 		F4281DCF2B64BE7100E7D517 /* WorkspaceInitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceInitialViewController.swift; sourceTree = "<group>"; };
 		F4281DD12B64D11100E7D517 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
 		F4281DD32B64D30800E7D517 /* WorkspaceAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceAddViewController.swift; sourceTree = "<group>"; };
+		F4281DD52B6A47C500E7D517 /* WorkspaceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceListViewController.swift; sourceTree = "<group>"; };
 		F43E394B2B52800B00C6F1DE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F48235A22B53D8D200C9768A /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		F48235A42B556DA200C9768A /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				F4281DCF2B64BE7100E7D517 /* WorkspaceInitialViewController.swift */,
 				F4281DD32B64D30800E7D517 /* WorkspaceAddViewController.swift */,
+				F4281DD52B6A47C500E7D517 /* WorkspaceListViewController.swift */,
 			);
 			path = Workspace;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				F4281DD42B64D30800E7D517 /* WorkspaceAddViewController.swift in Sources */,
 				F4A2E86A2B4D653600D9E721 /* Join.swift in Sources */,
 				F48235A52B556DA200C9768A /* Regex.swift in Sources */,
+				F4281DD62B6A47C500E7D517 /* WorkspaceListViewController.swift in Sources */,
 				F4F8AD452B45B3AD00317F08 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
