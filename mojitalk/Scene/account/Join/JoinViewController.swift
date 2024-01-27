@@ -47,7 +47,6 @@ class JoinViewController: BaseViewController {
     
     override func configureView() {
         super.configureView()
-        configNavBar()
         view.addSubview(email)
         view.addSubview(nickname)
         view.addSubview(contact)
@@ -71,16 +70,11 @@ class JoinViewController: BaseViewController {
         }
     }
         
-    func configNavBar() {
-        guard let navBar = self.navigationController?.navigationBar else {
-            return
-        }
-        navBar.backgroundColor = .brandWhite
-        navBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold)]
+    override func configureNavBar() {
+        super.configureNavBar()
         navigationItem.title = "회원가입"
         let closeButton = UIBarButtonItem(image: .closeIcon, style: .plain, target: self, action: #selector(closeButtonTapped))
         navigationItem.leftBarButtonItem = closeButton
-        navBar.tintColor = .brandBlack
     }
     
     @objc func closeButtonTapped() {
