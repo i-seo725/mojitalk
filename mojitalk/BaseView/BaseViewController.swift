@@ -19,11 +19,21 @@ class BaseViewController: UIViewController {
     
     func configureView() {
         view.backgroundColor = .backgroundPrimary
+        configureNavBar()
     }
     
     func setConstraints() { }
     
     func bind() { }
+    
+    func configureNavBar() {
+        guard let navBar = self.navigationController?.navigationBar else {
+            return
+        }
+        navBar.backgroundColor = .brandWhite
+        navBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold)]
+        navBar.tintColor = .brandBlack
+    }
     
 }
 
