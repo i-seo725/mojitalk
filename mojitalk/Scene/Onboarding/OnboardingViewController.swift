@@ -45,6 +45,7 @@ class OnboardingViewController: BaseViewController {
         view.addSubview(onboardingImage)
         view.addSubview(bgView)
         view.addSubview(startButton)
+        navigationController?.navigationBar.isHidden = true
     }
     
     override func setConstraints() {

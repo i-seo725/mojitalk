@@ -47,7 +47,6 @@ class JoinViewController: BaseViewController {
     
     override func configureView() {
         super.configureView()
-        configureNavBar()
         view.addSubview(email)
         view.addSubview(nickname)
         view.addSubview(contact)
@@ -69,10 +68,6 @@ class JoinViewController: BaseViewController {
         for (index, item) in tags.enumerated() {
             item.textField.tag = index
         }
-    }
-        
-    override func configureNavBar() {
-        super.configureNavBar()
         navigationItem.title = "회원가입"
         let closeButton = UIBarButtonItem(image: .closeIcon, style: .plain, target: self, action: #selector(closeButtonTapped))
         navigationItem.leftBarButtonItem = closeButton
@@ -108,9 +103,16 @@ class JoinViewController: BaseViewController {
                 viewModel.joinAPI(email: email, nickname: nickname, contact: contact, password: pw) { result in
                     switch result {
                     case .success(let success):
-                        print(success)
+                        self.changeRootView(WorkspaceInitialViewController())
                     case .failure(let failure):
-                        print(failure)
+                        if let error = failure as? UserError {
+                            switch error {
+                            case .E11:
+                                self.showToast(view: self.validLabel, title: self.viewModel.toast.Join.etc.rawValue)
+                            case .E12, .E03:
+                                self.showToast(view: self.validLabel, title: self.viewModel.toast.Join.exist.rawValue)
+                            }
+                        }
                     }
                 }
             }

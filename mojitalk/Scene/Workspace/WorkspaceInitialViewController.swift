@@ -43,6 +43,9 @@ class WorkspaceInitialViewController: BaseViewController {
         view.addSubview(welcomeLabel)
         view.addSubview(launchingImage)
         view.addSubview(createButton)
+        navigationItem.title = "시작하기"
+        let closeButton = UIBarButtonItem(image: .closeIcon, style: .plain, target: self, action: #selector(closeButtonTapped))
+        navigationItem.leftBarButtonItem = closeButton
     }
     
     override func setConstraints() {
@@ -65,13 +68,6 @@ class WorkspaceInitialViewController: BaseViewController {
             make.bottom.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(24)
             make.height.equalTo(44)
         }
-    }
-    
-    override func configureNavBar() {
-        super.configureNavBar()
-        navigationItem.title = "시작하기"
-        let closeButton = UIBarButtonItem(image: .closeIcon, style: .plain, target: self, action: #selector(closeButtonTapped))
-        navigationItem.leftBarButtonItem = closeButton
     }
     
     @objc func closeButtonTapped() {

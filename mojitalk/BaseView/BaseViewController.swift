@@ -19,20 +19,12 @@ class BaseViewController: UIViewController {
     
     func configureView() {
         view.backgroundColor = .backgroundPrimary
+        navigationController?.navigationBar.tintColor = .brandBlack
     }
     
     func setConstraints() { }
     
     func bind() { }
-    
-    func configureNavBar() {
-        guard let navBar = self.navigationController?.navigationBar else {
-            return
-        }
-        navBar.backgroundColor = .brandWhite
-        navBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold)]
-        navBar.tintColor = .brandBlack
-    }
     
 }
 
@@ -53,6 +45,15 @@ extension BaseViewController {
         view.titleLabel.textColor = .brandError
         view.textField.becomeFirstResponder()
     }
+    
+    func changeRootView(_ vc: UIViewController) {
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        let next = UINavigationController(rootViewController: vc)
+        sceneDelegate?.window?.rootViewController = next
+        sceneDelegate?.window?.makeKeyAndVisible()
+    }
+
 }
 
 //extension BaseViewController {

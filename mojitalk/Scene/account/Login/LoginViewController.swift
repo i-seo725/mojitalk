@@ -38,12 +38,7 @@ class LoginViewController: BaseViewController {
         view.addSubview(toastLabel)
         loginButton.isEnabled = false
         password.textField.isSecureTextEntry = true
-        configureNavBar()
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-    }
-    
-    override func configureNavBar() {
-        super.configureNavBar()
         navigationItem.title = "로그인"
         let closeButton = UIBarButtonItem(image: .closeIcon, style: .plain, target: self, action: #selector(closeButtonTapped))
         navigationItem.leftBarButtonItem = closeButton
@@ -58,9 +53,8 @@ class LoginViewController: BaseViewController {
             //네트워크 로그인 요청
             viewModel.loginAPI(email: emailValue, pw: pwValue) { result in
                 switch result {
-                case .success(let success):
-                    print("로그인 성공")
-                    //뷰 넘겨주기
+                case .success(_):
+                    self.changeRootView(WorkspaceInitialViewController())
                 case .failure(let failure):
                     if let error = failure as? CommonError400 {
                         if error.rawValue == "E03" {
