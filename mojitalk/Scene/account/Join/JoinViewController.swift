@@ -47,6 +47,7 @@ class JoinViewController: BaseViewController {
     
     override func configureView() {
         super.configureView()
+        configureNavBar()
         view.addSubview(email)
         view.addSubview(nickname)
         view.addSubview(contact)

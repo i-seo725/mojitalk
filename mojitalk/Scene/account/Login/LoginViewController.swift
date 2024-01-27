@@ -38,20 +38,15 @@ class LoginViewController: BaseViewController {
         view.addSubview(toastLabel)
         loginButton.isEnabled = false
         password.textField.isSecureTextEntry = true
-        configNavBar()
+        configureNavBar()
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
     
-    func configNavBar() {
-        guard let navBar = self.navigationController?.navigationBar else {
-            return
-        }
-        navBar.backgroundColor = .brandWhite
-        navBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold)]
+    override func configureNavBar() {
+        super.configureNavBar()
         navigationItem.title = "로그인"
         let closeButton = UIBarButtonItem(image: .closeIcon, style: .plain, target: self, action: #selector(closeButtonTapped))
         navigationItem.leftBarButtonItem = closeButton
-        navBar.tintColor = .brandBlack
     }
     
     @objc func loginButtonTapped() {

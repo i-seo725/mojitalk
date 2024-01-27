@@ -19,7 +19,6 @@ class BaseViewController: UIViewController {
     
     func configureView() {
         view.backgroundColor = .backgroundPrimary
-        configureNavBar()
     }
     
     func setConstraints() { }
