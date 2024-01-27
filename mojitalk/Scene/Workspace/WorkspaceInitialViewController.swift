@@ -22,7 +22,7 @@ class WorkspaceInitialViewController: BaseViewController {
     
     let welcomeLabel = {
         let view = UILabel()
-        view.text = ""
+        view.text = "\(Account.nickname!)님의 조직을 위해 새로운 새싹톡 워크스페이스를 시작할 준비가 완료되었어요!"
         view.font = Font.body
         view.textColor = .brandBlack
         view.textAlignment = .center
@@ -62,6 +62,7 @@ class WorkspaceInitialViewController: BaseViewController {
         launchingImage.snp.makeConstraints { make in
             make.size.equalTo(368)
             make.top.equalTo(welcomeLabel.snp.bottom).offset(15)
+            make.centerX.equalToSuperview()
         }
         
         createButton.snp.makeConstraints { make in
