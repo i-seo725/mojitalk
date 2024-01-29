@@ -99,7 +99,11 @@ class ContinueViewController: BaseViewController {
             
         kakaoLoginButton.rx.tap
             .bind(with: self) { owner, _ in
-                owner.viewModel.loginWithKakaotalk()
+                self.viewModel.loginWithKakaotalk() {
+                    print("444")
+                    owner.changeRootView(WorkspaceInitialViewController())
+                }
+                
             }
             .disposed(by: disposeBag)
     }

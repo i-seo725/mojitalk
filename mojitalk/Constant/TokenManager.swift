@@ -26,7 +26,6 @@ enum Token {
     enum Key: String {
         case access
         case refresh
-        case oauth
         case idToken
     }
     
@@ -35,9 +34,6 @@ enum Token {
     
     @TokenManager(key: Key.refresh.rawValue)
     static var refresh
-    
-    @TokenManager(key: Key.oauth.rawValue)
-    static var oauth
     
     @TokenManager(key: Key.idToken.rawValue)
     static var idToken
