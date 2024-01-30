@@ -54,7 +54,11 @@ class LoginViewController: BaseViewController {
             viewModel.loginAPI(email: emailValue, pw: pwValue) { result in
                 switch result {
                 case .success(_):
-                    self.changeRootView(WorkspaceInitialViewController())
+                    UIView.animate(withDuration: 0.2) {
+                        self.view.alpha = 0
+                    } completion: { _ in
+                        self.changeRootView(WorkspaceInitialViewController())
+                    }
                 case .failure(let failure):
                     if let error = failure as? CommonError400 {
                         if error.rawValue == "E03" {
