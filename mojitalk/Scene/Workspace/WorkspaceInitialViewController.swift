@@ -32,6 +32,7 @@ class WorkspaceInitialViewController: BaseViewController {
     
     let launchingImage = UIImageView(image: .launching)
     let createButton = TextButton(title: "워크스페이스 생성")
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +74,20 @@ class WorkspaceInitialViewController: BaseViewController {
     
     @objc func closeButtonTapped() {
         
+    }
+    
+    override func bind() {
+        createButton.rx.tap
+            .bind(with: self) { owner, _ in
+                let vc = WorkspaceAddViewController()
+                vc.modalPresentationStyle = .pageSheet
+                vc.sheetPresentationController?.prefersGrabberVisible = true
+                
+                guard let sheet = vc.sheetPresentationController else { return }
+                sheet.detents = [.medium()]
+                owner.present(vc, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
     
 }
