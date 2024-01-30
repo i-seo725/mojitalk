@@ -101,7 +101,7 @@ class ContinueViewController: BaseViewController {
             .bind(with: self) { owner, _ in
                 self.viewModel.loginWithKakaotalk() {
                     print("444")
-                    UIView.animate(withDuration: 0.2) {
+                    UIView.animate(withDuration: 0.3) {
                         owner.view.alpha = 0
                     } completion: { _ in
                         owner.changeRootView(WorkspaceInitialViewController())

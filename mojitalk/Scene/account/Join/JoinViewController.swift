@@ -103,7 +103,7 @@ class JoinViewController: BaseViewController {
                 viewModel.joinAPI(email: email, nickname: nickname, contact: contact, password: pw) { result in
                     switch result {
                     case .success(let success):
-                        UIView.animate(withDuration: 0.2) {
+                        UIView.animate(withDuration: 0.3) {
                             self.view.alpha = 0
                         } completion: { _ in
                             self.changeRootView(WorkspaceInitialViewController())
