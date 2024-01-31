@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.resignOnTouchOutside = true
         IQKeyboardManager.shared.toolbarConfiguration.previousNextDisplayMode = .default
+        IQKeyboardManager.shared.toolbarConfiguration.placeholderConfiguration.showPlaceholder = false
         
         KakaoSDK.initSDK(appKey: "079cb05cb1f8d56c71b4b45c73897748")
         
