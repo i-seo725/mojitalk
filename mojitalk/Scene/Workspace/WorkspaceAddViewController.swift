@@ -24,8 +24,9 @@ class WorkspaceAddViewController: BaseViewController {
     }
     
     func configureNavBar() {
-        navigationController?.title = "워크스페이스 생성"
+        navigationItem.title = "워크스페이스 생성"
         let closeButton = UIBarButtonItem(image: .closeIcon, style: .plain, target: self, action: #selector(closeButtonTapped))
+        navigationItem.leftBarButtonItem = closeButton
     }
     
     @objc func closeButtonTapped() {

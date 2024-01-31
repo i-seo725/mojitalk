@@ -102,7 +102,7 @@ class JoinViewController: BaseViewController {
             if let email = email.textField.text, let nickname = nickname.textField.text, let contact = contact.textField.text, let pw = password.textField.text {
                 viewModel.joinAPI(email: email, nickname: nickname, contact: contact, password: pw) { result in
                     switch result {
-                    case .success(let success):
+                    case .success(_):
                         UIView.animate(withDuration: 0.3) {
                             self.view.alpha = 0
                         } completion: { _ in

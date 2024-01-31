@@ -80,12 +80,9 @@ class WorkspaceInitialViewController: BaseViewController {
         createButton.rx.tap
             .bind(with: self) { owner, _ in
                 let vc = WorkspaceAddViewController()
-                vc.modalPresentationStyle = .pageSheet
-                vc.sheetPresentationController?.prefersGrabberVisible = true
+                let nav = UINavigationController(rootViewController: vc)
                 
-                guard let sheet = vc.sheetPresentationController else { return }
-                sheet.detents = [.medium()]
-                owner.present(vc, animated: true)
+                owner.present(nav, animated: true)
             }
             .disposed(by: disposeBag)
     }
