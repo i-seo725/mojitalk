@@ -31,13 +31,15 @@ class BaseViewController: UIViewController {
 extension BaseViewController {
     
     func showToast(view: UILabel, title: String) {
-        view.text = title
-        view.isHidden = false
-        UIView.animate(withDuration: 1.2, delay: 1.5, options: .curveEaseOut) {
-            view.alpha = 0
-        } completion: { value in
-            view.alpha = value ? 1 : 0
-            view.isHidden = value
+        DispatchQueue.main.async {
+            view.text = title
+            view.isHidden = false
+            UIView.animate(withDuration: 1.2, delay: 1.5, options: .curveEaseOut) {
+                view.alpha = 0
+            } completion: { value in
+                view.alpha = value ? 1 : 0
+                view.isHidden = value
+            }
         }
     }
     
