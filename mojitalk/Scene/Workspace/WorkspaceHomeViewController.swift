@@ -38,6 +38,30 @@ class WorkspaceHomeViewController: BaseViewController {
         return view
     }()
     
+    let firstLabel = {
+        let view = UILabel()
+        view.text = "워크스페이스를 찾을 수 없어요."
+        view.font = Font.title1
+        return view
+    }()
+    
+    let secondLabel = {
+        let view = UILabel()
+        view.text = "관리자에게 초대를 요청하거나, 다른 이메일로 시도하거나\n새로운 워크스페이스를 생성해주세요."
+        view.font = Font.body
+        view.numberOfLines = 2
+        return view
+    }()
+    
+    let emptyImageView = {
+        let view = UIImageView()
+        view.image = .workspaceEmpty
+        view.contentMode = .scaleAspectFit
+        return view
+    }()
+    
+    let createButton = TextButton(title: "워크스페이스 생성")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -51,6 +75,10 @@ class WorkspaceHomeViewController: BaseViewController {
         view.addSubview(rightImage)
         view.addSubview(titleSeparatorView)
         titleSeparatorView.backgroundColor = .seperator
+        view.addSubview(firstLabel)
+        view.addSubview(secondLabel)
+        view.addSubview(emptyImageView)
+        view.addSubview(createButton)
     }
     
     func configureNavBar() {
@@ -80,6 +108,27 @@ class WorkspaceHomeViewController: BaseViewController {
             make.top.equalTo(leftImage.snp.bottom).offset(16)
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(1)
+        }
+        
+        firstLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleSeparatorView.snp.bottom).offset(35)
+            make.centerX.equalToSuperview()
+        }
+        
+        secondLabel.snp.makeConstraints { make in
+            make.top.equalTo(firstLabel.snp.bottom).offset(24)
+            make.centerX.equalToSuperview()
+        }
+        
+        emptyImageView.snp.makeConstraints { make in
+            make.top.equalTo(secondLabel.snp.bottom).offset(15)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(368)
+        }
+        
+        createButton.snp.makeConstraints { make in
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
+            make.height.equalTo(44)
         }
     }
 }
