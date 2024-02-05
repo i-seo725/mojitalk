@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class WorkspaceHomeViewController: BaseViewController {
     
@@ -61,6 +63,8 @@ class WorkspaceHomeViewController: BaseViewController {
     }()
     
     let createButton = TextButton(title: "워크스페이스 생성")
+    
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,5 +134,14 @@ class WorkspaceHomeViewController: BaseViewController {
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide).inset(24)
             make.height.equalTo(44)
         }
+    }
+    
+    override func bind() {
+        createButton.rx.tap
+            .bind(with: self) { owner, _ in
+                let vc = UINavigationController(rootViewController: WorkspaceAddViewController())
+                owner.present(vc, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
 }
