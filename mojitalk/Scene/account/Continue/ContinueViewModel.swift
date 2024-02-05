@@ -43,9 +43,9 @@ class ContinueViewModel {
                     print("else문 실행")
                     if let user = user {
                         let nickname = user.kakaoAccount?.profile?.nickname
-                        print(nickname)
+//                        print(nickname)
                         Account.nickname = user.kakaoAccount?.profile?.nickname
-                        print("leave2", Account.nickname)
+//                        print("leave2", Account.nickname)
                         nameGroup.leave()
                     } else {
                         print("실패")
