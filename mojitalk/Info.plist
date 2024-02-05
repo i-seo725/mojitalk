@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>워스크페이스 및 프로필 사진 업로드를 위해 권한이 필요합니다</string>
+	<key>NSCameraUsageDescription</key>
+	<string>워스크페이스 및 프로필 사진 업로드를 위해 권한이 필요합니다</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
