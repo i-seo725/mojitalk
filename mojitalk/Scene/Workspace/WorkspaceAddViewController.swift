@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 import RxSwift
 import RxCocoa
 
@@ -17,6 +18,7 @@ class WorkspaceAddViewController: BaseViewController {
         view.tintColor = .brandGreen
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
+        view.contentMode = .scaleAspectFill
         return view
     }()
     
@@ -26,7 +28,7 @@ class WorkspaceAddViewController: BaseViewController {
         view.tintColor = .brandWhite
         return view
     }()
-    
+
     let cameraImage = {
         let image = UIImage(named: "Camera")
         let view = UIImageView(image: image)
@@ -126,8 +128,33 @@ class WorkspaceAddViewController: BaseViewController {
     override func bind() {
         clearButton.rx.tap
             .bind(with: self) { owner, _ in
-                print("클릭클릭")
+                var configuration = PHPickerConfiguration()
+                configuration.filter = .any(of: [.images, .screenshots])
+                
+                let picker = PHPickerViewController(configuration: configuration)
+                picker.delegate = owner
+                owner.present(picker, animated: true)
             }
             .disposed(by: disposeBag)
     }
+}
+
+extension WorkspaceAddViewController: PHPickerViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        
+        let itemProvider = results.first?.itemProvider
+        
+        if let itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
+                DispatchQueue.main.async {
+                    self.profileImage.image = image as? UIImage
+                    self.cameraImage.isHidden = true
+                    self.bubbleImage.isHidden = true
+                }
+            }
+        }
+    }
+        
 }
