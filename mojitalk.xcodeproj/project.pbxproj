@@ -137,6 +137,15 @@
 			path = Workspace;
 			sourceTree = "<group>";
 		};
+		F4281DD72B7284CC00E7D517 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				F4B353F42B56796B00CC75E8 /* UserNetworkManager.swift */,
+				F4B353FA2B567C0E00CC75E8 /* UserRouter.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		F43E394D2B52800B00C6F1DE /* account */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,10 +219,9 @@
 		F4B353F32B56796200CC75E8 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				F4281DD72B7284CC00E7D517 /* User */,
 				F4A2E8792B4D72F000D9E721 /* Error */,
 				F4A2E8672B4D650000D9E721 /* Model */,
-				F4B353F42B56796B00CC75E8 /* UserNetworkManager.swift */,
-				F4B353FA2B567C0E00CC75E8 /* UserRouter.swift */,
 				F4B353FC2B567C6C00CC75E8 /* Secret.swift */,
 				F4A2E88E2B59780B00D9E721 /* Interceptor.swift */,
 			);
