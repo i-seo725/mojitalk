@@ -18,6 +18,38 @@
             endingLineNumber = "15"
             landmarkName = "loginWithKakaotalk(handler:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1EE269E5-B2F1-48A0-8933-0DA93493117B - d47a703824799781"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mojitalk.ContinueViewModel.loginWithKakaotalk(handler: () -&gt; ()) -&gt; ()"
+                  moduleName = "mojitalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ieunseo/Documents/project/%E1%84%89%E1%85%A2%E1%84%8A%E1%85%A1%E1%86%A8%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8/mojitalk/mojitalk/Scene/account/Continue/ContinueViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "180">
+               </Location>
+               <Location
+                  uuid = "1EE269E5-B2F1-48A0-8933-0DA93493117B - d47a703824799781"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mojitalk.ContinueViewModel.loginWithKakaotalk(handler: () -&gt; ()) -&gt; ()"
+                  moduleName = "mojitalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ieunseo/Documents/project/%E1%84%89%E1%85%A2%E1%84%8A%E1%85%A1%E1%86%A8%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8/mojitalk/mojitalk/Scene/account/Continue/ContinueViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "220">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

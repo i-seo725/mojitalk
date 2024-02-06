@@ -46,10 +46,13 @@ class WorkspaceAddViewController: BaseViewController {
         return view
     }()
     
+    let validLabel = ToastView()
+    
     let name = JoinView(title: "워크스페이스 이름", placeholder: "워크스페이스 이름을 입력하세요 (필수)")
     let desc = JoinView(title: "워크스페이스 설명", placeholder: "워크스페이스를 설명하세요 (옵션)")
     let completeButton = TextButton(title: "완료")
     
+    var isChangedImage = BehaviorSubject(value: false)
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -66,6 +69,7 @@ class WorkspaceAddViewController: BaseViewController {
         view.addSubview(desc)
         view.addSubview(completeButton)
         view.addSubview(clearButton)
+        view.addSubview(validLabel)
         name.textField.becomeFirstResponder()
     }
     
@@ -123,6 +127,13 @@ class WorkspaceAddViewController: BaseViewController {
             make.horizontalEdges.equalToSuperview().inset(24)
             make.bottom.equalTo(view.keyboardLayoutGuide.snp.top)
         }
+        
+        validLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(completeButton.snp.top).offset(-16)
+            make.centerX.equalToSuperview()
+            make.height.greaterThanOrEqualTo(36)
+        }
+        validLabel.sizeToFit()
     }
     
     override func bind() {
@@ -134,6 +145,27 @@ class WorkspaceAddViewController: BaseViewController {
                 let picker = PHPickerViewController(configuration: configuration)
                 picker.delegate = owner
                 owner.present(picker, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        let isValidName = BehaviorSubject(value: false)
+        
+        name.textField.rx.text.orEmpty
+            .map { !$0.isEmpty && $0.count <= 30 }
+            .debug()
+            .bind(to: isValidName)
+            .disposed(by: disposeBag)
+        
+        let isValidCreate = Observable.combineLatest(isChangedImage, isValidName) {
+            return $0 && $1
+        }
+        
+        let completeButtonTapped = Observable.combineLatest(completeButton.rx.tap, isValidCreate)
+
+        
+        completeButtonTapped
+            .bind(with: self) { owner, value in
+                value.1 ? print("성공") : owner.showToast(view: owner.validLabel, title: "생성 불가")
             }
             .disposed(by: disposeBag)
     }
@@ -152,8 +184,11 @@ extension WorkspaceAddViewController: PHPickerViewControllerDelegate, UIImagePic
                     self.profileImage.image = image as? UIImage
                     self.cameraImage.isHidden = true
                     self.bubbleImage.isHidden = true
+                    self.isChangedImage.onNext(true)
                 }
             }
+        } else {
+            print("실패")
         }
     }
         
