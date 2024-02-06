@@ -35,7 +35,7 @@ class LoginViewModel {
     func loginAPI(email: String, pw: String, handler: @escaping (Result<Decodable, Error>) -> Void) {
         let data = Login.Request(email: email, password: pw, deviceToken: nil)
         
-        NetworkManager.shared.request(endpoint: .login(data: data), type: Login.Response.self) { result in
+        UserNetworkManager.shared.request(endpoint: .login(data: data), type: Login.Response.self) { result in
             switch result {
             case .success(let success):
                 Token.access = success.token.accessToken

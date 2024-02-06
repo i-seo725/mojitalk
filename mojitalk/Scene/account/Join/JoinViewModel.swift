@@ -62,7 +62,7 @@ class JoinViewModel {
         if isEmailOK && isNicknameOK && isContactOK && isPasswordOK && isCheckedPW {
             let data = Join.Request(email: email, password: password, nickname: nickname, deviceToken: nil, phone: contact)
             
-            NetworkManager.shared.request(endpoint: .join(data: data), type: Join.Response.self) { result in
+            UserNetworkManager.shared.request(endpoint: .join(data: data), type: Join.Response.self) { result in
                 print(result)
                 switch result {
                 case .success(let success):
@@ -81,7 +81,7 @@ class JoinViewModel {
     
     func emailValidateAPI(_ value: String, handler: @escaping (Int) -> Void) {
         let data = Email.Request(email: value)
-        NetworkManager.shared.requestEmailValidate(endpoint: .email(data: data)) { result in
+        UserNetworkManager.shared.requestEmailValidate(endpoint: .email(data: data)) { result in
             switch result {
             case .success(let success):
                 handler(200)

@@ -37,7 +37,7 @@
 		F4A2E88F2B59780B00D9E721 /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E88E2B59780B00D9E721 /* Interceptor.swift */; };
 		F4B353F02B56795100CC75E8 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F4B353EF2B56795100CC75E8 /* Moya */; };
 		F4B353F22B56795100CC75E8 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F4B353F12B56795100CC75E8 /* RxMoya */; };
-		F4B353F52B56796B00CC75E8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B353F42B56796B00CC75E8 /* NetworkManager.swift */; };
+		F4B353F52B56796B00CC75E8 /* UserNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B353F42B56796B00CC75E8 /* UserNetworkManager.swift */; };
 		F4B353F72B5679BB00CC75E8 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F4B353F62B5679BB00CC75E8 /* .gitignore */; };
 		F4B353FB2B567C0E00CC75E8 /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B353FA2B567C0E00CC75E8 /* UserRouter.swift */; };
 		F4B353FD2B567C6C00CC75E8 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B353FC2B567C6C00CC75E8 /* Secret.swift */; };
@@ -85,7 +85,7 @@
 		F4A2E8822B4D7A4300D9E721 /* JoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewModel.swift; sourceTree = "<group>"; };
 		F4A2E88C2B596ADF00D9E721 /* ContinueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueViewModel.swift; sourceTree = "<group>"; };
 		F4A2E88E2B59780B00D9E721 /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
-		F4B353F42B56796B00CC75E8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F4B353F42B56796B00CC75E8 /* UserNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkManager.swift; sourceTree = "<group>"; };
 		F4B353F62B5679BB00CC75E8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F4B353FA2B567C0E00CC75E8 /* UserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
 		F4B353FC2B567C6C00CC75E8 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 			children = (
 				F4A2E8792B4D72F000D9E721 /* Error */,
 				F4A2E8672B4D650000D9E721 /* Model */,
-				F4B353F42B56796B00CC75E8 /* NetworkManager.swift */,
+				F4B353F42B56796B00CC75E8 /* UserNetworkManager.swift */,
 				F4B353FA2B567C0E00CC75E8 /* UserRouter.swift */,
 				F4B353FC2B567C6C00CC75E8 /* Secret.swift */,
 				F4A2E88E2B59780B00D9E721 /* Interceptor.swift */,
@@ -403,7 +403,7 @@
 				F4A2E8742B4D696700D9E721 /* DeviceToken.swift in Sources */,
 				F4B353FB2B567C0E00CC75E8 /* UserRouter.swift in Sources */,
 				F4A2E8722B4D691B00D9E721 /* AppleLogin.swift in Sources */,
-				F4B353F52B56796B00CC75E8 /* NetworkManager.swift in Sources */,
+				F4B353F52B56796B00CC75E8 /* UserNetworkManager.swift in Sources */,
 				F4A2E86C2B4D67EF00D9E721 /* Email.swift in Sources */,
 				F4F8AD602B4986B300317F08 /* ImageButton.swift in Sources */,
 				F4F8AD3D2B456F2E00317F08 /* Font.swift in Sources */,

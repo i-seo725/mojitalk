@@ -9,8 +9,8 @@ import Foundation
 import Moya
 import Alamofire
 
-class NetworkManager {
-    static let shared = NetworkManager()
+class UserNetworkManager {
+    static let shared = UserNetworkManager()
     private init() { }
     
     let provider = MoyaProvider<UserRouter>()
