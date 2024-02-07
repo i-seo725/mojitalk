@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Create: Codable {
+//생성, 전체 조회, 편집, 퇴장, 관리자 변경
+struct WS: Codable {
     struct Response: Decodable {
         let id: Int
         let name: String

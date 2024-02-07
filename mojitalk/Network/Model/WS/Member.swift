@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Invite: Codable {
-    struct Request: Encodable {
+struct Member: Codable {
+    struct InviteRequest: Encodable {
         let email: String
     }
     
