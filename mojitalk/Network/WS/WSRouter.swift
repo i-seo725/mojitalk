@@ -14,7 +14,7 @@ enum WSRouter {
     case fetchOne(id: String)
     case edit(id: String)
     case delete(id: String)
-    case invite(id: String)
+    case invite(id: String, data: Member.InviteRequest)
     case fetchMember(id: String)
     case targetMember(id: String, userID: String)
     case search(id: String, keyword: String)
@@ -44,7 +44,7 @@ extension WSRouter: TargetType {
             "/\(id)"
         case .delete(let id):
             "/\(id)"
-        case .invite(let id):
+        case .invite(let id, _):
             "/\(id)/members"
         case .fetchMember(let id):
             "/\(id)/members"
@@ -80,13 +80,18 @@ extension WSRouter: TargetType {
             return .requestPlain
         case .edit(let id):
             return .uploadMultipart([])
-        case .invite(let id):
-            return .requestJSONEncodable(<#T##Encodable#>)
+        case .invite(_, let data):
+            return .requestJSONEncodable(data)
         }
     }
     
     var headers: [String : String]? {
-        return ["SesacKey": Secret.APIKey]
+        if let accessToken = Token.access {
+            return ["SesacKey": Secret.APIKey, "Authorization": accessToken]
+        } else {
+            return ["SesacKey": Secret.APIKey]
+        }
+        
     }
     
     var validationType: ValidationType {
