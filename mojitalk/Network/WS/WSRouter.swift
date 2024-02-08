@@ -86,11 +86,7 @@ extension WSRouter: TargetType {
     }
     
     var headers: [String : String]? {
-        if let accessToken = Token.access {
-            return ["SesacKey": Secret.APIKey, "Authorization": accessToken]
-        } else {
-            return ["SesacKey": Secret.APIKey]
-        }
+        return ["SesacKey": Secret.APIKey]
         
     }
     

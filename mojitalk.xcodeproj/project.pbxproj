@@ -18,6 +18,7 @@
 		F4281DDD2B736D8800E7D517 /* WS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4281DDC2B736D8800E7D517 /* WS.swift */; };
 		F4281DDF2B73702600E7D517 /* FetchOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4281DDE2B73702600E7D517 /* FetchOne.swift */; };
 		F4281DE12B73729800E7D517 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4281DE02B73729800E7D517 /* Member.swift */; };
+		F4281DE32B74CA7100E7D517 /* WSNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4281DE22B74CA7100E7D517 /* WSNetworkManager.swift */; };
 		F43E394A2B52800B00C6F1DE /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F43E39492B52800B00C6F1DE /* IQKeyboardManagerSwift */; };
 		F43E394C2B52800B00C6F1DE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43E394B2B52800B00C6F1DE /* LoginViewController.swift */; };
 		F48235A32B53D8D200C9768A /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48235A22B53D8D200C9768A /* ToastView.swift */; };
@@ -76,6 +77,7 @@
 		F4281DDC2B736D8800E7D517 /* WS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WS.swift; sourceTree = "<group>"; };
 		F4281DDE2B73702600E7D517 /* FetchOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchOne.swift; sourceTree = "<group>"; };
 		F4281DE02B73729800E7D517 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
+		F4281DE22B74CA7100E7D517 /* WSNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSNetworkManager.swift; sourceTree = "<group>"; };
 		F43E394B2B52800B00C6F1DE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F48235A22B53D8D200C9768A /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		F48235A42B556DA200C9768A /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				F4281DD92B73666F00E7D517 /* WSRouter.swift */,
+				F4281DE22B74CA7100E7D517 /* WSNetworkManager.swift */,
 			);
 			path = WS;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4281DE32B74CA7100E7D517 /* WSNetworkManager.swift in Sources */,
 				F4A2E86E2B4D682D00D9E721 /* Login.swift in Sources */,
 				F4281DC12B6233DC00E7D517 /* String+Extension.swift in Sources */,
 				F4CFD89B2B4B00510024E28B /* TextButton.swift in Sources */,
