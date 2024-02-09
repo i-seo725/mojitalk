@@ -73,7 +73,15 @@ class WorkspaceInitialViewController: BaseViewController {
     }
     
     @objc func closeButtonTapped() {
-        changeRootView(WorkspaceHomeViewController())
+        WSNetworkManager.shared.request(endpoint: .fetch, type: WS.Response.self) { result in
+            switch result {
+            case .success(let success):
+                print("a")
+            case .failure(let failure):
+                print("b")
+            }
+        }
+//        changeRootView(WorkspaceHomeViewController())
     }
     
     override func bind() {

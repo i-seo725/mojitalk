@@ -19,6 +19,9 @@
 		F4281DDF2B73702600E7D517 /* FetchOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4281DDE2B73702600E7D517 /* FetchOne.swift */; };
 		F4281DE12B73729800E7D517 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4281DE02B73729800E7D517 /* Member.swift */; };
 		F4281DE32B74CA7100E7D517 /* WSNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4281DE22B74CA7100E7D517 /* WSNetworkManager.swift */; };
+		F4281DE62B84F7C700E7D517 /* Refresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4281DE52B84F7C700E7D517 /* Refresh.swift */; };
+		F4281DE82B84F7FD00E7D517 /* RefreshRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4281DE72B84F7FD00E7D517 /* RefreshRouter.swift */; };
+		F4281DEA2B84F97500E7D517 /* AuthNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4281DE92B84F97500E7D517 /* AuthNetworkManager.swift */; };
 		F43E394A2B52800B00C6F1DE /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F43E39492B52800B00C6F1DE /* IQKeyboardManagerSwift */; };
 		F43E394C2B52800B00C6F1DE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43E394B2B52800B00C6F1DE /* LoginViewController.swift */; };
 		F48235A32B53D8D200C9768A /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48235A22B53D8D200C9768A /* ToastView.swift */; };
@@ -78,6 +81,9 @@
 		F4281DDE2B73702600E7D517 /* FetchOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchOne.swift; sourceTree = "<group>"; };
 		F4281DE02B73729800E7D517 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		F4281DE22B74CA7100E7D517 /* WSNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSNetworkManager.swift; sourceTree = "<group>"; };
+		F4281DE52B84F7C700E7D517 /* Refresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refresh.swift; sourceTree = "<group>"; };
+		F4281DE72B84F7FD00E7D517 /* RefreshRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshRouter.swift; sourceTree = "<group>"; };
+		F4281DE92B84F97500E7D517 /* AuthNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNetworkManager.swift; sourceTree = "<group>"; };
 		F43E394B2B52800B00C6F1DE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F48235A22B53D8D200C9768A /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		F48235A42B556DA200C9768A /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
@@ -175,6 +181,17 @@
 			path = WS;
 			sourceTree = "<group>";
 		};
+		F4281DE42B84F7A400E7D517 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				F4A2E88E2B59780B00D9E721 /* Interceptor.swift */,
+				F4281DE52B84F7C700E7D517 /* Refresh.swift */,
+				F4281DE72B84F7FD00E7D517 /* RefreshRouter.swift */,
+				F4281DE92B84F97500E7D517 /* AuthNetworkManager.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		F43E394D2B52800B00C6F1DE /* account */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,12 +266,12 @@
 		F4B353F32B56796200CC75E8 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				F4281DE42B84F7A400E7D517 /* Auth */,
 				F4281DD82B73666400E7D517 /* WS */,
 				F4281DD72B7284CC00E7D517 /* User */,
 				F4A2E8792B4D72F000D9E721 /* Error */,
 				F4A2E8672B4D650000D9E721 /* Model */,
 				F4B353FC2B567C6C00CC75E8 /* Secret.swift */,
-				F4A2E88E2B59780B00D9E721 /* Interceptor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -434,6 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4281DE32B74CA7100E7D517 /* WSNetworkManager.swift in Sources */,
+				F4281DEA2B84F97500E7D517 /* AuthNetworkManager.swift in Sources */,
 				F4A2E86E2B4D682D00D9E721 /* Login.swift in Sources */,
 				F4281DC12B6233DC00E7D517 /* String+Extension.swift in Sources */,
 				F4CFD89B2B4B00510024E28B /* TextButton.swift in Sources */,
@@ -447,6 +465,7 @@
 				F4B353F52B56796B00CC75E8 /* UserNetworkManager.swift in Sources */,
 				F4A2E86C2B4D67EF00D9E721 /* Email.swift in Sources */,
 				F4F8AD602B4986B300317F08 /* ImageButton.swift in Sources */,
+				F4281DE82B84F7FD00E7D517 /* RefreshRouter.swift in Sources */,
 				F4F8AD3D2B456F2E00317F08 /* Font.swift in Sources */,
 				F4CFD8972B4ADF8C0024E28B /* JoinViewController.swift in Sources */,
 				F4A2E87B2B4D72FF00D9E721 /* Common.swift in Sources */,
@@ -477,6 +496,7 @@
 				F48235A52B556DA200C9768A /* Regex.swift in Sources */,
 				F4281DD62B6A47C500E7D517 /* WorkspaceHomeViewController.swift in Sources */,
 				F4F8AD452B45B3AD00317F08 /* BaseViewController.swift in Sources */,
+				F4281DE62B84F7C700E7D517 /* Refresh.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
