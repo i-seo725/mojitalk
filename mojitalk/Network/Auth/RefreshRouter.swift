@@ -38,4 +38,8 @@ enum RefreshRouter: TargetType {
         }
         return ["SesacKey": Secret.APIKey, "Authorization": access, "RefreshToken": refresh]
     }
+    
+    var validationType: ValidationType {
+        .successCodes
+    }
 }

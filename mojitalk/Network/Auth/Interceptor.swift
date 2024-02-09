@@ -25,11 +25,19 @@ class Interceptor: RequestInterceptor {
     
     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
         
-        guard let response = request.task?.response as? HTTPURLResponse else {
+        guard let request = request as? DataRequest, let data = request.data, let result = try? JSONDecoder().decode(ErrorResponse.self, from: data) else {
             completion(.doNotRetry)
             return
         }
         
+        if result.errorCode == "E05" {
+            AuthNetworkManager.shared.request()
+        } else if result.errorCode == "E06" {
+            print("재로그인 필요")
+        } else {
+            print(result)
+            completion(.doNotRetry)
+        }
         
     }
 }
