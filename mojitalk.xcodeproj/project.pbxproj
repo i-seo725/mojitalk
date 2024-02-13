@@ -57,6 +57,7 @@
 		F4CFD8992B4AE08A0024E28B /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD8982B4AE08A0024E28B /* JoinView.swift */; };
 		F4CFD89B2B4B00510024E28B /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD89A2B4B00510024E28B /* TextButton.swift */; };
 		F4CFD89E2B4EF7690024E28B /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD89D2B4EF7690024E28B /* UIResponder+Extension.swift */; };
+		F4EA15EA2B79ED9100A77E6E /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = F4EA15E92B79ED9100A77E6E /* RxDataSources */; };
 		F4F8AD282B456C6C00317F08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD272B456C6C00317F08 /* AppDelegate.swift */; };
 		F4F8AD2A2B456C6C00317F08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD292B456C6C00317F08 /* SceneDelegate.swift */; };
 		F4F8AD2C2B456C6C00317F08 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD2B2B456C6C00317F08 /* OnboardingViewController.swift */; };
@@ -135,6 +136,7 @@
 				F4B353F22B56795100CC75E8 /* RxMoya in Frameworks */,
 				F4CFD8942B4ADD700024E28B /* RxSwift in Frameworks */,
 				F43E394A2B52800B00C6F1DE /* IQKeyboardManagerSwift in Frameworks */,
+				F4EA15EA2B79ED9100A77E6E /* RxDataSources in Frameworks */,
 				F4CFD8922B4ADD700024E28B /* RxCocoa in Frameworks */,
 				F4B353F02B56795100CC75E8 /* Moya in Frameworks */,
 				F4F8AD422B4575BF00317F08 /* SnapKit in Frameworks */,
@@ -393,6 +395,7 @@
 				F4A2E8852B596AA400D9E721 /* KakaoSDK */,
 				F4A2E8872B596AA400D9E721 /* KakaoSDKAuth */,
 				F4A2E8892B596AA400D9E721 /* KakaoSDKUser */,
+				F4EA15E92B79ED9100A77E6E /* RxDataSources */,
 			);
 			productName = mojitalk;
 			productReference = F4F8AD242B456C6C00317F08 /* mojitalk.app */;
@@ -428,6 +431,7 @@
 				F43E39482B52800B00C6F1DE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				F4B353EE2B56795100CC75E8 /* XCRemoteSwiftPackageReference "Moya" */,
 				F4A2E8842B596AA400D9E721 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				F4EA15E82B79ED9100A77E6E /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = F4F8AD252B456C6C00317F08 /* Products */;
 			projectDirPath = "";
@@ -759,6 +763,14 @@
 				minimumVersion = 6.6.0;
 			};
 		};
+		F4EA15E82B79ED9100A77E6E /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 		F4F8AD402B4575BF00317F08 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -809,6 +821,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F4CFD8902B4ADD700024E28B /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		F4EA15E92B79ED9100A77E6E /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4EA15E82B79ED9100A77E6E /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 		F4F8AD412B4575BF00317F08 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
