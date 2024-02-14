@@ -104,7 +104,7 @@ class ContinueViewController: BaseViewController {
                     UIView.animate(withDuration: 0.3) {
                         owner.view.alpha = 0
                     } completion: { _ in
-                        owner.changeRootView(WorkspaceInitialViewController())
+                        owner.changeRootView(WSInitialViewController())
                     }
 
                 }

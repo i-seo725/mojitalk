@@ -10,7 +10,7 @@ import PhotosUI
 import RxSwift
 import RxCocoa
 
-class WorkspaceAddViewController: BaseViewController {
+class WSAddViewController: BaseViewController {
     
     let profileImage = {
         let image = UIImage(named: "DummyProfile")?.withRenderingMode(.alwaysTemplate)
@@ -171,7 +171,7 @@ class WorkspaceAddViewController: BaseViewController {
     }
 }
 
-extension WorkspaceAddViewController: PHPickerViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension WSAddViewController: PHPickerViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)

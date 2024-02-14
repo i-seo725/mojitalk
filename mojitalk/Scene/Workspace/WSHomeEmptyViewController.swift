@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class WorkspaceHomeViewController: BaseViewController {
+class WSHomeEmptyViewController: BaseViewController {
     
     let titleSeparatorView = UIView()
     let leftImage = {
@@ -139,7 +139,7 @@ class WorkspaceHomeViewController: BaseViewController {
     override func bind() {
         createButton.rx.tap
             .bind(with: self) { owner, _ in
-                let vc = UINavigationController(rootViewController: WorkspaceAddViewController())
+                let vc = UINavigationController(rootViewController: WSAddViewController())
                 owner.present(vc, animated: true)
             }
             .disposed(by: disposeBag)

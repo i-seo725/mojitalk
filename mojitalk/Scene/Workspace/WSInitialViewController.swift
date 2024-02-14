@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class WorkspaceInitialViewController: BaseViewController {
+class WSInitialViewController: BaseViewController {
     
     let titleLabel = {
         let view = UILabel()
@@ -81,13 +81,13 @@ class WorkspaceInitialViewController: BaseViewController {
                 print("b")
             }
         }
-//        changeRootView(WorkspaceHomeViewController())
+//        changeRootView(WSHomeEmptyViewController())
     }
     
     override func bind() {
         createButton.rx.tap
             .bind(with: self) { owner, _ in
-                let vc = WorkspaceAddViewController()
+                let vc = WSAddViewController()
                 let nav = UINavigationController(rootViewController: vc)
                 
                 owner.present(nav, animated: true)

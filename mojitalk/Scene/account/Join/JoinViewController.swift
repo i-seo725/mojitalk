@@ -106,7 +106,7 @@ class JoinViewController: BaseViewController {
                         UIView.animate(withDuration: 0.3) {
                             self.view.alpha = 0
                         } completion: { _ in
-                            self.changeRootView(WorkspaceInitialViewController())
+                            self.changeRootView(WSInitialViewController())
                         }
                     case .failure(let failure):
                         if let error = failure as? UserError {
