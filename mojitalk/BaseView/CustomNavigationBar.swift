@@ -42,6 +42,9 @@ class CustomNavigationBar: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        titleSeparatorView.backgroundColor = .seperator
+        addViews()
+        setConstraint()
     }
     
     required init?(coder: NSCoder) {
@@ -74,6 +77,12 @@ class CustomNavigationBar: UIView {
             make.trailing.equalTo(rightImage.snp.leading).inset(12)
             make.top.equalToSuperview().offset(51)
             make.height.equalTo(35)
+        }
+        
+        titleSeparatorView.snp.makeConstraints { make in
+            make.top.equalTo(leftImage.snp.bottom).offset(16)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(1)
         }
     }
 }
