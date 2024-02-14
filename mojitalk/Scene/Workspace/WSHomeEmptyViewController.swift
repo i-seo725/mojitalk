@@ -11,6 +11,7 @@ import RxCocoa
 
 class WSHomeEmptyViewController: BaseViewController {
     
+    let customNavBar = CustomNavigationBar()
     let titleSeparatorView = UIView()
     let leftImage = {
         let view = UIImageView(image: .vector)
