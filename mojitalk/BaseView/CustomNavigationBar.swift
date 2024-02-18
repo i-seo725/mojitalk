@@ -31,7 +31,7 @@ class CustomNavigationBar: UIView {
     }()
 
     let rightImage = {
-        let view = UIImageView(image: .noPhotoCProfile)
+        let view = UIImageView(image: .noPhotoBProfile)
         view.clipsToBounds = true
         view.layer.cornerRadius = 16
         view.layer.borderColor = UIColor.border.cgColor
