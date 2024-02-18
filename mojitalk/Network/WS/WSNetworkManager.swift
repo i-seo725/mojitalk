@@ -19,9 +19,14 @@ class WSNetworkManager {
         provider.request(endpoint) { result in
             switch result {
             case .success(let response):
-                print(response)
+                let result = try? JSONDecoder().decode(type, from: response.data)
+                if let result {
+                    handler(.success(result))
+                } else {
+                    print("디코딩 에러 발생@@@@@@\n", response)
+                }
             case .failure(let error):
-                print(error)
+                handler(.failure(error))
             }
         }
     }
