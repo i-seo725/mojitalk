@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum WSRouter {
-    case create
+    case create(Data, name: String, desc: String?)
     case fetch
     case fetchOne(id: String)
     case edit(id: String)
@@ -74,8 +74,15 @@ extension WSRouter: TargetType {
     
     var task: Moya.Task {
         switch self {
-        case .create:
-            return .uploadMultipart([])
+        case .create(let data, let name, let desc):
+            let image = MultipartFormData(provider: .data(data), name: "image", fileName: "profile.jpeg", mimeType: "image/jpeg")
+            let name = MultipartFormData(provider: .data(name.data(using: .utf8)!), name: "name")
+            if let desc {
+                let descData = MultipartFormData(provider: .data(desc.data(using: .utf8)!), name: "description")
+                return .uploadMultipart([image, name, descData])
+            }
+            let multipartData = [image, name]
+            return .uploadMultipart(multipartData)
         case .fetch, .fetchOne, .delete, .fetchMember, .targetMember, .leave, .search, .changeAdmin:
             return .requestPlain
         case .edit(let id):

@@ -25,4 +25,15 @@ class WSNetworkManager {
             }
         }
     }
+    
+    func request(endpoint: WSRouter, handler: @escaping ((Result<Response, Error>) -> Void)) {
+        provider.request(endpoint) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }

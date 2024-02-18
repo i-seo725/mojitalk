@@ -53,6 +53,7 @@ class WSAddViewController: BaseViewController {
     let completeButton = TextButton(title: "완료")
     
     var isChangedImage = BehaviorSubject(value: false)
+    var selectedImage: UIImage?
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -165,9 +166,21 @@ class WSAddViewController: BaseViewController {
         
         completeButtonTapped
             .bind(with: self) { owner, value in
-                value.1 ? print("성공") : owner.showToast(view: owner.validLabel, title: "생성 불가")
+                value.1 ? owner.requestWSAdd() : owner.showToast(view: owner.validLabel, title: "생성 불가")
             }
             .disposed(by: disposeBag)
+    }
+    
+    func requestWSAdd() {
+        guard let dataImage = selectedImage?.jpegData(compressionQuality: 0.3) else { return }
+        WSNetworkManager.shared.request(endpoint: .create(dataImage, name: name.textField.text!, desc: desc.textField.text)) { result in
+            switch result {
+            case .success(let success):
+                print("a")
+            case .failure(let failure):
+                print("B")
+            }
+        }
     }
 }
 
@@ -181,15 +194,20 @@ extension WSAddViewController: PHPickerViewControllerDelegate, UIImagePickerCont
         if let itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
             itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
                 DispatchQueue.main.async {
-                    self.profileImage.image = image as? UIImage
+                    guard let image = image as? UIImage else { return }
+                    self.profileImage.image = image
                     self.cameraImage.isHidden = true
                     self.bubbleImage.isHidden = true
                     self.isChangedImage.onNext(true)
+                    self.selectedImage = image
                 }
             }
         } else {
             print("실패")
         }
     }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
+    }
 }

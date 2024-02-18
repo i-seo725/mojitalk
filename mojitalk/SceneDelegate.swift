@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         
         
-        window?.rootViewController = UINavigationController(rootViewController: WSInitialViewController())
+        window?.rootViewController = UINavigationController(rootViewController: WSAddViewController())
         window?.makeKeyAndVisible()
     }
     
