@@ -31,8 +31,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         
         
-        window?.rootViewController = UINavigationController(rootViewController: WSAddViewController())
-        window?.makeKeyAndVisible()
+        WSNetworkManager.shared.request(endpoint: .fetch, type: [WS.Response].self) { result in
+            switch result {
+            case .success(let success):
+                let vc = success.isEmpty ? WSHomeEmptyViewController() : WSHomeViewController()
+                self.window?.rootViewController = UINavigationController(rootViewController: vc)
+                self.window?.makeKeyAndVisible()
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+        
+        
+        
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
