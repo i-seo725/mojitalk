@@ -17,7 +17,7 @@ class WSHomeViewController: BaseViewController {
     let disposeBag = DisposeBag()
     
     var currentID: Int?
-    var currentWS: FetchOne?
+    var currentWS: FetchOne.Response?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +88,7 @@ class WSHomeViewController: BaseViewController {
                     guard let ws = success.first, let url = URL(string: Secret.BaseURL + "/v1" + ws.thumbnail) else { return }
                     self.customNavBar.titleLabel.text = ws.name
                     self.currentID = ws.id
+                    self.requestChannel()
                     
                     self.requestImage(path: ws.thumbnail) {
                         self.customNavBar.leftImage.image = $0
@@ -110,6 +111,20 @@ class WSHomeViewController: BaseViewController {
                 }
             case .failure(let failure):
                 print(failure)
+            }
+        }
+    }
+    
+    func requestChannel() {
+        guard let currentID else { return }
+        
+        WSNetworkManager.shared.request(endpoint: .fetchOne(id: currentID), type: FetchOne.Response.self) { result in
+            switch result {
+            case .success(let success):
+                print(success)
+                self.currentWS = success
+            case .failure(let failure):
+                print("현재 워크스페이스 정보 가져오기 실패")
             }
         }
     }

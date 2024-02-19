@@ -11,7 +11,7 @@ import Moya
 enum WSRouter {
     case create(Data, name: String, desc: String?)
     case fetch
-    case fetchOne(id: String)
+    case fetchOne(id: Int)
     case edit(id: String)
     case delete(id: String)
     case invite(id: String, data: Member.InviteRequest)

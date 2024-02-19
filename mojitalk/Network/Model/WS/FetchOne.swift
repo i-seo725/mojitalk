@@ -34,7 +34,7 @@ struct FetchOne: Codable {
         let name: String
         let desc: String?
         let ownerID: Int
-        let isPrivate: Bool?
+        let isPrivate: Int? //0: 공개, 1: 비공개
         let createdAt: String
         
         enum CodingKeys: String, CodingKey {

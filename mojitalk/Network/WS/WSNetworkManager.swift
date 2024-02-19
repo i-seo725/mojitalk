@@ -19,11 +19,11 @@ class WSNetworkManager {
         provider.request(endpoint) { result in
             switch result {
             case .success(let response):
-                let result = try? JSONDecoder().decode(type, from: response.data)
-                if let result {
+                do {
+                    let result = try JSONDecoder().decode(type, from: response.data)
                     handler(.success(result))
-                } else {
-                    print("디코딩 에러 발생@@@@@@\n", response)
+                } catch {
+                    print(error)
                 }
             case .failure(let error):
                 handler(.failure(error))
