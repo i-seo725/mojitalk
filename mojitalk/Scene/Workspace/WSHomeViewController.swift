@@ -16,6 +16,9 @@ class WSHomeViewController: BaseViewController {
     let listTableView = UITableView()
     let disposeBag = DisposeBag()
     
+    var currentID: Int?
+    var currentWS: FetchOne?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +30,7 @@ class WSHomeViewController: BaseViewController {
         view.addSubview(customNavBar)
         view.addSubview(listTableView)
         configureTableView()
+        requestWS()
     }
     
     override func setConstraints() {
@@ -74,8 +78,40 @@ class WSHomeViewController: BaseViewController {
         Observable.just(sections)
             .bind(to: listTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
-        
-        
+    }
+    
+    func requestWS() {
+        WSNetworkManager.shared.request(endpoint: .fetch, type: [WS.Response].self) { result in
+            switch result {
+            case .success(let success):
+                DispatchQueue.main.async {
+                    guard let ws = success.first, let url = URL(string: Secret.BaseURL + "/v1" + ws.thumbnail) else { return }
+                    self.customNavBar.titleLabel.text = ws.name
+                    self.currentID = ws.id
+                    
+                    self.requestImage(path: ws.thumbnail) {
+                        self.customNavBar.leftImage.image = $0
+                    }
+                }
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
+    
+    func requestImage(path: String, handler: @escaping (UIImage) -> Void) {
+        WSNetworkManager.shared.request(endpoint: .image(path: path)) { result in
+            switch result {
+            case .success(let success):
+                DispatchQueue.main.async {
+                    if let image = UIImage(data: success.data) {
+                        handler(image)
+                    }
+                }
+            case .failure(let failure):
+                print(failure)
+            }
+        }
     }
 }
 

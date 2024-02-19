@@ -35,9 +35,9 @@ class WSNetworkManager {
         provider.request(endpoint) { result in
             switch result {
             case .success(let response):
-                print(response)
+                handler(.success(response))
             case .failure(let error):
-                print(error)
+                handler(.failure(error))
             }
         }
     }

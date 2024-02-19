@@ -20,11 +20,12 @@ enum WSRouter {
     case search(id: String, keyword: String)
     case leave(id: String)
     case changeAdmin(id: String, userID: String)
+    case image(path: String)
 }
 
 extension WSRouter: TargetType {
     var baseURL: URL {
-        if let url = URL(string: Secret.BaseURL + "/v1/workspaces") {
+        if let url = URL(string: Secret.BaseURL + "/v1") {
             return url
         } else {
             print("유효하지 않은 url")
@@ -34,28 +35,28 @@ extension WSRouter: TargetType {
     
     var path: String {
         switch self {
-        case .create:
-            ""
-        case .fetch:
-            ""
+        case .create, .fetch:
+            "/workspaces"
+        case .image(let path):
+            "\(path)"
         case .fetchOne(let id):
-            "/\(id)"
+            "/workspaces/\(id)"
         case .edit(let id):
-            "/\(id)"
+            "/workspaces/\(id)"
         case .delete(let id):
-            "/\(id)"
+            "/workspaces/\(id)"
         case .invite(let id, _):
-            "/\(id)/members"
+            "/workspaces/\(id)/members"
         case .fetchMember(let id):
-            "/\(id)/members"
+            "/workspaces/\(id)/members"
         case .targetMember(let id, let userID):
-            "/\(id)/members/\(userID)"
+            "/workspaces/\(id)/members/\(userID)"
         case .search(let id, let keyword):
-            "\(id)/search/?keyword=\(keyword)"
+            "/workspaces\(id)/search/?keyword=\(keyword)"
         case .leave(let id):
-            "\(id)/leave"
+            "/workspaces\(id)/leave"
         case .changeAdmin(let id, let userID):
-            "\(id)/change/admin/\(userID)"
+            "/workspaces\(id)/change/admin/\(userID)"
         }
     }
     
@@ -63,7 +64,7 @@ extension WSRouter: TargetType {
         switch self {
         case .create, .invite:
             return .post
-        case .fetch, .fetchOne, .fetchMember, .targetMember, .search, .leave:
+        case .fetch, .fetchOne, .fetchMember, .targetMember, .search, .leave, .image:
             return .get
         case .edit, .changeAdmin:
             return .put
@@ -83,7 +84,7 @@ extension WSRouter: TargetType {
             }
             let multipartData = [image, name]
             return .uploadMultipart(multipartData)
-        case .fetch, .fetchOne, .delete, .fetchMember, .targetMember, .leave, .search, .changeAdmin:
+        case .fetch, .fetchOne, .delete, .fetchMember, .targetMember, .leave, .search, .changeAdmin, .image:
             return .requestPlain
         case .edit(let id):
             return .uploadMultipart([])
