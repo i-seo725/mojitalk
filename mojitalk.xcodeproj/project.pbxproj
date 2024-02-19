@@ -61,6 +61,10 @@
 		F4EA15EC2B7B473C00A77E6E /* WSListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA15EB2B7B473C00A77E6E /* WSListTableViewCell.swift */; };
 		F4EA15EF2B8C725700A77E6E /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA15EE2B8C725700A77E6E /* CellModel.swift */; };
 		F4EA15F12B8C885C00A77E6E /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA15F02B8C885C00A77E6E /* CustomHeader.swift */; };
+		F4EA15F62B8C885C00A77E6E /* Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA15F52B8C885C00A77E6E /* Create.swift */; };
+		F4EA15F82B8C885C00A77E6E /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA15F72B8C885C00A77E6E /* Channel.swift */; };
+		F4EA15FB2B8C885C00A77E6E /* ChannelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA15FA2B8C885C00A77E6E /* ChannelRouter.swift */; };
+		F4EA15FD2B8C885C00A77E6E /* ChannelNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA15FC2B8C885C00A77E6E /* ChannelNetworkManager.swift */; };
 		F4F8AD282B456C6C00317F08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD272B456C6C00317F08 /* AppDelegate.swift */; };
 		F4F8AD2A2B456C6C00317F08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD292B456C6C00317F08 /* SceneDelegate.swift */; };
 		F4F8AD2C2B456C6C00317F08 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD2B2B456C6C00317F08 /* OnboardingViewController.swift */; };
@@ -120,6 +124,10 @@
 		F4EA15EB2B7B473C00A77E6E /* WSListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSListTableViewCell.swift; sourceTree = "<group>"; };
 		F4EA15EE2B8C725700A77E6E /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
 		F4EA15F02B8C885C00A77E6E /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
+		F4EA15F52B8C885C00A77E6E /* Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create.swift; sourceTree = "<group>"; };
+		F4EA15F72B8C885C00A77E6E /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		F4EA15FA2B8C885C00A77E6E /* ChannelRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRouter.swift; sourceTree = "<group>"; };
+		F4EA15FC2B8C885C00A77E6E /* ChannelNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelNetworkManager.swift; sourceTree = "<group>"; };
 		F4F8AD242B456C6C00317F08 /* mojitalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mojitalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4F8AD272B456C6C00317F08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4F8AD292B456C6C00317F08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -219,6 +227,7 @@
 		F4A2E8672B4D650000D9E721 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F4EA15F42B8C885C00A77E6E /* Channel */,
 				F4281DDB2B736D6400E7D517 /* WS */,
 				F4A2E8682B4D650700D9E721 /* Users */,
 				F4281DC22B63A60F00E7D517 /* ErrorResponse.swift */,
@@ -281,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				F4281DE42B84F7A400E7D517 /* Auth */,
+				F4EA15F92B8C885C00A77E6E /* Channel */,
 				F4281DD82B73666400E7D517 /* WS */,
 				F4281DD72B7284CC00E7D517 /* User */,
 				F4A2E8792B4D72F000D9E721 /* Error */,
@@ -307,6 +317,24 @@
 				F4EA15F02B8C885C00A77E6E /* CustomHeader.swift */,
 			);
 			path = CustomTableView;
+			sourceTree = "<group>";
+		};
+		F4EA15F42B8C885C00A77E6E /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				F4EA15F52B8C885C00A77E6E /* Create.swift */,
+				F4EA15F72B8C885C00A77E6E /* Channel.swift */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
+		F4EA15F92B8C885C00A77E6E /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				F4EA15FA2B8C885C00A77E6E /* ChannelRouter.swift */,
+				F4EA15FC2B8C885C00A77E6E /* ChannelNetworkManager.swift */,
+			);
+			path = Channel;
 			sourceTree = "<group>";
 		};
 		F4F8AD1B2B456C6C00317F08 = {
@@ -484,10 +512,12 @@
 				F4CFD89B2B4B00510024E28B /* TextButton.swift in Sources */,
 				F4F8AD5E2B492D7300317F08 /* ContinueViewController.swift in Sources */,
 				F4CFD89E2B4EF7690024E28B /* UIResponder+Extension.swift in Sources */,
+				F4EA15F82B8C885C00A77E6E /* Channel.swift in Sources */,
 				F4281DE12B73729800E7D517 /* Member.swift in Sources */,
 				F4F8AD472B45B4C000317F08 /* Image.swift in Sources */,
 				F4A2E8742B4D696700D9E721 /* DeviceToken.swift in Sources */,
 				F4B353FB2B567C0E00CC75E8 /* UserRouter.swift in Sources */,
+				F4EA15FD2B8C885C00A77E6E /* ChannelNetworkManager.swift in Sources */,
 				F4A2E8722B4D691B00D9E721 /* AppleLogin.swift in Sources */,
 				F4B54DB72B7C830E00D35694 /* CustomNavigationBar.swift in Sources */,
 				F4EA15EC2B7B473C00A77E6E /* WSListTableViewCell.swift in Sources */,
@@ -517,6 +547,7 @@
 				F4281DC72B63C0F400E7D517 /* TokenManager.swift in Sources */,
 				F4F8AD2A2B456C6C00317F08 /* SceneDelegate.swift in Sources */,
 				F4CFD8992B4AE08A0024E28B /* JoinView.swift in Sources */,
+				F4EA15F62B8C885C00A77E6E /* Create.swift in Sources */,
 				F4B54DB92B7C830E00D35694 /* WSHomeViewController.swift in Sources */,
 				F4281DDF2B73702600E7D517 /* FetchOne.swift in Sources */,
 				F4A2E88F2B59780B00D9E721 /* Interceptor.swift in Sources */,
@@ -528,6 +559,7 @@
 				F4281DD62B6A47C500E7D517 /* WSHomeEmptyViewController.swift in Sources */,
 				F4F8AD452B45B3AD00317F08 /* BaseViewController.swift in Sources */,
 				F4281DE62B84F7C700E7D517 /* Refresh.swift in Sources */,
+				F4EA15FB2B8C885C00A77E6E /* ChannelRouter.swift in Sources */,
 				F4EA15EF2B8C725700A77E6E /* CellModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

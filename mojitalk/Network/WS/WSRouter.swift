@@ -52,7 +52,7 @@ extension WSRouter: TargetType {
         case .targetMember(let id, let userID):
             "/workspaces/\(id)/members/\(userID)"
         case .search(let id, let keyword):
-            "/workspaces\(id)/search/?keyword=\(keyword)"
+            "/workspaces\(id)/search"
         case .leave(let id):
             "/workspaces\(id)/leave"
         case .changeAdmin(let id, let userID):
@@ -84,12 +84,14 @@ extension WSRouter: TargetType {
             }
             let multipartData = [image, name]
             return .uploadMultipart(multipartData)
-        case .fetch, .fetchOne, .delete, .fetchMember, .targetMember, .leave, .search, .changeAdmin, .image:
+        case .fetch, .fetchOne, .delete, .fetchMember, .targetMember, .leave, .changeAdmin, .image:
             return .requestPlain
         case .edit(let id):
             return .uploadMultipart([])
         case .invite(_, let data):
             return .requestJSONEncodable(data)
+        case .search(let id, let keyword):
+            return .requestParameters(parameters: ["keyword": keyword], encoding: URLEncoding.queryString)
         }
     }
     

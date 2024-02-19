@@ -19,6 +19,8 @@ class WSHomeViewController: BaseViewController {
     var currentID: Int?
     var currentWS: FetchOne.Response?
     
+    var channelListModel: [CellModel] = [.init(text: "채널 추가", image: .plusIcon)]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,8 +72,9 @@ class WSHomeViewController: BaseViewController {
             return dataSource.sectionModels[index].header
         }
         
+        
         let sections = [
-            CustomSection(header: "채널", items: [CellModel(text: "일반", image: .hashtagThick), CellModel(text: "기타", image: .hashtagThin)]),
+            CustomSection(header: "채널", items: channelListModel),
             CustomSection(header: "다이렉트 메시지", items: [CellModel(text: "비어 있음", image: .plusIcon)])
             ]
         
@@ -88,7 +91,7 @@ class WSHomeViewController: BaseViewController {
                     guard let ws = success.first, let url = URL(string: Secret.BaseURL + "/v1" + ws.thumbnail) else { return }
                     self.customNavBar.titleLabel.text = ws.name
                     self.currentID = ws.id
-                    self.requestChannel()
+                    self.requestCurrentWS()
                     
                     self.requestImage(path: ws.thumbnail) {
                         self.customNavBar.leftImage.image = $0
@@ -115,7 +118,7 @@ class WSHomeViewController: BaseViewController {
         }
     }
     
-    func requestChannel() {
+    func requestCurrentWS() {
         guard let currentID else { return }
         
         WSNetworkManager.shared.request(endpoint: .fetchOne(id: currentID), type: FetchOne.Response.self) { result in
@@ -123,6 +126,10 @@ class WSHomeViewController: BaseViewController {
             case .success(let success):
                 print(success)
                 self.currentWS = success
+                guard let channel = self.currentWS?.channels else { return }
+                channel.forEach { item in
+                    self.channelListModel.insert(.init(text: item.name, image: .hashtagThin), at: 0)
+                }
             case .failure(let failure):
                 print("현재 워크스페이스 정보 가져오기 실패")
             }
