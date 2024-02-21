@@ -26,7 +26,11 @@ class WSHomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(channelAddViewDismissed), name: NSNotification.Name("dismissChannelAddView"), object: nil)
+    }
+    
+    @objc func channelAddViewDismissed() {
+        requestChannel()
     }
     
     override func configureView() {
@@ -81,9 +85,22 @@ class WSHomeViewController: BaseViewController {
             .drive(listTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
-//        Observable.just(sections)
-//            .bind(to: listTableView.rx.items(dataSource: dataSource))
-//            .disposed(by: disposeBag)
+        
+        Observable.zip(listTableView.rx.modelSelected(CellModel.self), listTableView.rx.itemSelected)
+            .bind(with: self, onNext: { owner, data in
+                if data.1.row == owner.myChannels.items.count - 1 {
+                    let vc = WSAddViewController()
+                    vc.viewCase = .channel
+                    vc.wsID = owner.currentID
+                    vc.profileImage.isHidden = true
+                    vc.bubbleImage.isHidden = true
+                    vc.cameraImage.isHidden = true
+                    owner.present(UINavigationController(rootViewController: vc), animated: true)
+                } else {
+                    owner.navigationController?.pushViewController(WSHomeEmptyViewController(), animated: true)
+                }
+            })
+            .disposed(by: disposeBag)
         
     }
     
@@ -142,10 +159,12 @@ class WSHomeViewController: BaseViewController {
         ChannelNetworkManager.shared.request(endpoint: .fetchJoined(id: currentID), type: [Channel].self) { result in
             switch result {
             case .success(let success):
+                self.myChannels.items = []
                 success.forEach { channel in
-                    self.myChannels.items.insert(.init(text: channel.name, image: .hashtagThin), at: self.myChannels.items.count - 1)
-                    self.model.accept([self.myChannels, self.myDMs])
+                    self.myChannels.items.append(.init(text: channel.name, image: .hashtagThin))
                 }
+                self.myChannels.items.append(.init(text: "채널 추가", image: .plusIcon))
+                self.model.accept([self.myChannels, self.myDMs])
             case .failure(let failure):
                 print(failure)
             }

@@ -12,6 +12,11 @@ import RxCocoa
 
 class WSAddViewController: BaseViewController {
     
+    enum ViewType: String {
+        case ws = "워크스페이스"
+        case channel = "채널"
+    }
+    
     let profileImage = {
         let image = UIImage(named: "DummyProfile")?.withRenderingMode(.alwaysTemplate)
         let view = UIImageView(image: image)
@@ -48,16 +53,29 @@ class WSAddViewController: BaseViewController {
     
     let validLabel = ToastView()
     
-    let name = JoinView(title: "워크스페이스 이름", placeholder: "워크스페이스 이름을 입력하세요 (필수)")
-    let desc = JoinView(title: "워크스페이스 설명", placeholder: "워크스페이스를 설명하세요 (옵션)")
+    lazy var name = JoinView(title: "\(viewCase.rawValue) 이름", placeholder: "\(viewCase.rawValue) 이름을 입력하세요 (필수)")
+    lazy var desc = JoinView(title: "\(viewCase.rawValue) 설명", placeholder: "워크스페이스를 설명하세요 (옵션)")
     let completeButton = TextButton(title: "완료")
+    
+    var viewCase: ViewType = .ws
     
     var isChangedImage = BehaviorSubject(value: false)
     var selectedImage: UIImage?
+    
+    var wsID: Int?
+
+    
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if viewCase == .channel {
+            NotificationCenter.default.post(name: NSNotification.Name("dismissChannelAddView"), object: nil, userInfo: nil)
+        }
     }
     
     override func configureView() {
@@ -72,10 +90,17 @@ class WSAddViewController: BaseViewController {
         view.addSubview(clearButton)
         view.addSubview(validLabel)
         name.textField.becomeFirstResponder()
+        
+        switch viewCase {
+        case .ws:
+            desc.textField.placeholder = "워크스페이스를 설명하세요 (옵션)"
+        case .channel:
+            desc.textField.placeholder = "채널을 설명하세요 (옵션)"
+        }
     }
     
     func configureNavBar() {
-        navigationItem.title = "워크스페이스 생성"
+        navigationItem.title = "\(viewCase.rawValue) 생성"
         let closeButton = UIBarButtonItem(image: .closeIcon, style: .plain, target: self, action: #selector(closeButtonTapped))
         navigationItem.leftBarButtonItem = closeButton
     }
@@ -111,10 +136,20 @@ class WSAddViewController: BaseViewController {
         }
         //트러블슈팅 - UIView 안에 있는 텍스트필드 터치 안 먹음
         //-> 뷰의 높이 지정 안해서 에러 발생, debug view hierarchy로 디버깅
-        name.snp.makeConstraints { make in
-            make.top.equalTo(profileImage.snp.bottom).offset(16)
-            make.horizontalEdges.equalToSuperview().inset(24)
-            make.height.equalTo(76)
+        
+        switch viewCase {
+        case .ws:
+            name.snp.makeConstraints { make in
+                make.top.equalTo(profileImage.snp.bottom).offset(16)
+                make.horizontalEdges.equalToSuperview().inset(24)
+                make.height.equalTo(76)
+            }
+        case .channel:
+            name.snp.makeConstraints { make in
+                make.top.equalTo(view.safeAreaLayoutGuide).offset(16)
+                make.horizontalEdges.equalToSuperview().inset(24)
+                make.height.equalTo(76)
+            }
         }
         
         desc.snp.makeConstraints { make in
@@ -153,34 +188,55 @@ class WSAddViewController: BaseViewController {
         
         name.textField.rx.text.orEmpty
             .map { !$0.isEmpty && $0.count <= 30 }
-            .debug()
+            .observe(on:MainScheduler.asyncInstance)
             .bind(to: isValidName)
             .disposed(by: disposeBag)
         
-        let isValidCreate = Observable.combineLatest(isChangedImage, isValidName) {
+        let isValidCreate = viewCase == .ws ? Observable.combineLatest(isChangedImage, isValidName) {
             return $0 && $1
-        }
+        } : isValidName
         
         let completeButtonTapped = Observable.combineLatest(completeButton.rx.tap, isValidCreate)
 
         
         completeButtonTapped
             .bind(with: self) { owner, value in
-                value.1 ? owner.requestWSAdd() : owner.showToast(view: owner.validLabel, title: "생성 불가")
+                if value.1 {
+                    owner.requestWSAdd()
+                    owner.dismiss(animated: true)
+                } else {
+                    owner.showToast(view: owner.validLabel, title: "생성 불가")
+                }
+                
             }
             .disposed(by: disposeBag)
     }
     
     func requestWSAdd() {
-        guard let dataImage = selectedImage?.jpegData(compressionQuality: 0.3) else { return }
-        WSNetworkManager.shared.request(endpoint: .create(dataImage, name: name.textField.text!, desc: desc.textField.text)) { result in
-            switch result {
-            case .success(let success):
-                print("a")
-            case .failure(let failure):
-                print("B")
+        switch viewCase {
+        case .ws:
+            guard let dataImage = selectedImage?.jpegData(compressionQuality: 0.3) else { return }
+            WSNetworkManager.shared.request(endpoint: .create(dataImage, name: name.textField.text!, desc: desc.textField.text)) { result in
+                switch result {
+                case .success(let success):
+                    print("a")
+                case .failure(let failure):
+                    print("B")
+                }
+            }
+        case .channel:
+            guard let name = name.textField.text, let wsID else { return }
+            let data = Create.Request(name: name, description: desc.textField.text ?? "")
+            ChannelNetworkManager.shared.request(endpoint: .create(id: wsID, data: data), type: Channel.self) { result in
+                switch result {
+                case .success(let success):
+                    print(success)
+                case .failure(let failure):
+                    print(failure)
+                }
             }
         }
+        
     }
 }
 
