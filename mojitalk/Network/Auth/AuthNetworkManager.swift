@@ -19,7 +19,6 @@ class AuthNetworkManager {
         provider.request(.refresh) { result in
             switch result {
             case .success(let response):
-                print(result)
                 let result = try? JSONDecoder().decode(Refresh.self, from: response.data)
                 if let result {
                     print("액세스 토큰 받기")

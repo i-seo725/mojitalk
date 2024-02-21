@@ -32,6 +32,7 @@ class Interceptor: RequestInterceptor {
         
         if result.errorCode == "E05" {
             AuthNetworkManager.shared.request()
+            completion(.retry)
         } else if result.errorCode == "E06" {
             print("재로그인 필요")
         } else {

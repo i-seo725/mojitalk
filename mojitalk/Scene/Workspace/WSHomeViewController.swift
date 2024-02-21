@@ -19,7 +19,10 @@ class WSHomeViewController: BaseViewController {
     var currentID: Int?
     var currentWS: FetchOne.Response?
     
-    var channelListModel: [CellModel] = [.init(text: "채널 추가", image: .plusIcon)]
+    var myChannels = CustomSection(header: "채널", items: [CellModel(text: "채널 추가", image: .plusIcon)])
+    var myDMs = CustomSection(header: "다이렉트 메시지", items: [CellModel(text: "새 메시지 보내기", image: .plusIcon)])
+    
+    lazy var model = BehaviorRelay(value: [myChannels, myDMs])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +62,7 @@ class WSHomeViewController: BaseViewController {
             guard let cell = self.listTableView.dequeueReusableCell(withIdentifier: "cell") as? WSListTableViewCell else {
                 print("d")
                 return UITableViewCell()
-                    }
+            }
             
             tableView.sectionHeaderTopPadding = .zero
             cell.titleLabel.text = item.text
@@ -72,15 +75,16 @@ class WSHomeViewController: BaseViewController {
             return dataSource.sectionModels[index].header
         }
         
-        
-        let sections = [
-            CustomSection(header: "채널", items: channelListModel),
-            CustomSection(header: "다이렉트 메시지", items: [CellModel(text: "비어 있음", image: .plusIcon)])
-            ]
-        
-        Observable.just(sections)
-            .bind(to: listTableView.rx.items(dataSource: dataSource))
+
+        model
+            .asDriver()
+            .drive(listTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
+        
+//        Observable.just(sections)
+//            .bind(to: listTableView.rx.items(dataSource: dataSource))
+//            .disposed(by: disposeBag)
+        
     }
     
     func requestWS() {
@@ -124,14 +128,26 @@ class WSHomeViewController: BaseViewController {
         WSNetworkManager.shared.request(endpoint: .fetchOne(id: currentID), type: FetchOne.Response.self) { result in
             switch result {
             case .success(let success):
-                print(success)
                 self.currentWS = success
-                guard let channel = self.currentWS?.channels else { return }
-                channel.forEach { item in
-                    self.channelListModel.insert(.init(text: item.name, image: .hashtagThin), at: 0)
-                }
+                self.requestChannel()
             case .failure(let failure):
                 print("현재 워크스페이스 정보 가져오기 실패")
+            }
+        }
+    }
+    
+    func requestChannel() {
+        guard let currentID else { return }
+        
+        ChannelNetworkManager.shared.request(endpoint: .fetchJoined(id: currentID), type: [Channel].self) { result in
+            switch result {
+            case .success(let success):
+                success.forEach { channel in
+                    self.myChannels.items.insert(.init(text: channel.name, image: .hashtagThin), at: self.myChannels.items.count - 1)
+                    self.model.accept([self.myChannels, self.myDMs])
+                }
+            case .failure(let failure):
+                print(failure)
             }
         }
     }
