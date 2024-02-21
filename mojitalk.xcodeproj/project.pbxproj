@@ -65,6 +65,9 @@
 		F4EA15F82B8C885C00A77E6E /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA15F72B8C885C00A77E6E /* Channel.swift */; };
 		F4EA15FB2B8C885C00A77E6E /* ChannelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA15FA2B8C885C00A77E6E /* ChannelRouter.swift */; };
 		F4EA15FD2B8C885C00A77E6E /* ChannelNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA15FC2B8C885C00A77E6E /* ChannelNetworkManager.swift */; };
+		F4EA15FF2B8C885C00A77E6E /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA15FE2B8C885C00A77E6E /* Chat.swift */; };
+		F4EA16012B8C885C00A77E6E /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA16002B8C885C00A77E6E /* UserInfo.swift */; };
+		F4EA16032B8C885C00A77E6E /* UnreadChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA16022B8C885C00A77E6E /* UnreadChat.swift */; };
 		F4F8AD282B456C6C00317F08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD272B456C6C00317F08 /* AppDelegate.swift */; };
 		F4F8AD2A2B456C6C00317F08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD292B456C6C00317F08 /* SceneDelegate.swift */; };
 		F4F8AD2C2B456C6C00317F08 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD2B2B456C6C00317F08 /* OnboardingViewController.swift */; };
@@ -128,6 +131,9 @@
 		F4EA15F72B8C885C00A77E6E /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		F4EA15FA2B8C885C00A77E6E /* ChannelRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRouter.swift; sourceTree = "<group>"; };
 		F4EA15FC2B8C885C00A77E6E /* ChannelNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelNetworkManager.swift; sourceTree = "<group>"; };
+		F4EA15FE2B8C885C00A77E6E /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		F4EA16002B8C885C00A77E6E /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		F4EA16022B8C885C00A77E6E /* UnreadChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadChat.swift; sourceTree = "<group>"; };
 		F4F8AD242B456C6C00317F08 /* mojitalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mojitalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4F8AD272B456C6C00317F08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4F8AD292B456C6C00317F08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -199,6 +205,7 @@
 				F4281DDC2B736D8800E7D517 /* WS.swift */,
 				F4281DDE2B73702600E7D517 /* FetchOne.swift */,
 				F4281DE02B73729800E7D517 /* Member.swift */,
+				F4EA16002B8C885C00A77E6E /* UserInfo.swift */,
 			);
 			path = WS;
 			sourceTree = "<group>";
@@ -324,6 +331,8 @@
 			children = (
 				F4EA15F52B8C885C00A77E6E /* Create.swift */,
 				F4EA15F72B8C885C00A77E6E /* Channel.swift */,
+				F4EA15FE2B8C885C00A77E6E /* Chat.swift */,
+				F4EA16022B8C885C00A77E6E /* UnreadChat.swift */,
 			);
 			path = Channel;
 			sourceTree = "<group>";
@@ -541,13 +550,16 @@
 				F4281DD22B64D11100E7D517 /* AccountManager.swift in Sources */,
 				F4A2E87F2B4D77F600D9E721 /* LoginViewModel.swift in Sources */,
 				F4A2E8782B4D6A4800D9E721 /* MyImage.swift in Sources */,
+				F4EA16012B8C885C00A77E6E /* UserInfo.swift in Sources */,
 				F4281DC32B63A60F00E7D517 /* ErrorResponse.swift in Sources */,
 				F4281DDA2B73666F00E7D517 /* WSRouter.swift in Sources */,
 				F4281DD02B64BE7100E7D517 /* WSInitialViewController.swift in Sources */,
 				F4281DC72B63C0F400E7D517 /* TokenManager.swift in Sources */,
+				F4EA15FF2B8C885C00A77E6E /* Chat.swift in Sources */,
 				F4F8AD2A2B456C6C00317F08 /* SceneDelegate.swift in Sources */,
 				F4CFD8992B4AE08A0024E28B /* JoinView.swift in Sources */,
 				F4EA15F62B8C885C00A77E6E /* Create.swift in Sources */,
+				F4EA16032B8C885C00A77E6E /* UnreadChat.swift in Sources */,
 				F4B54DB92B7C830E00D35694 /* WSHomeViewController.swift in Sources */,
 				F4281DDF2B73702600E7D517 /* FetchOne.swift in Sources */,
 				F4A2E88F2B59780B00D9E721 /* Interceptor.swift in Sources */,
