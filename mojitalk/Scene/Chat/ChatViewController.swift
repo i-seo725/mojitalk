@@ -8,18 +8,11 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
-class ChatViewController: BaseViewController {
+class ChatViewController: BaseViewController, UIScrollViewDelegate {
     
-    lazy var chatCollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = .init(top: 16, left: 16, bottom: 8, right: 16)
-        layout.minimumLineSpacing = 0
-        layout.scrollDirection = .vertical
-        layout.itemSize = .init(width: view.frame.width - 32, height: 100)
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        return collectionView
-    }()
+    lazy var chatTableView = UITableView()
     
     let typingView = {
         let view = UIView()
@@ -49,30 +42,33 @@ class ChatViewController: BaseViewController {
         return view
     }()
     
+    let disposeBag = DisposeBag()
+    
     var members = " 1"
     var channelName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        chatCollectionView.dataSource = self
     }
     
     override func configureView() {
         configureNavBar()
         
         view.backgroundColor = .backgroundSecondary
-        view.addSubview(chatCollectionView)
+        view.addSubview(chatTableView)
         view.addSubview(typingView)
         typingView.addSubview(plusButton)
         typingView.addSubview(textField)
         typingView.addSubview(sendButton)
         
-        chatCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        configureTableView()
     }
     
     override func setConstraints() {
-        chatCollectionView.snp.makeConstraints { make in
-            make.size.equalTo(view.safeAreaLayoutGuide)
+        chatTableView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.equalToSuperview().inset(16)
+            make.bottom.equalTo(typingView.snp.top).offset(8)
         }
         
         typingView.snp.makeConstraints { make in
@@ -109,14 +105,7 @@ class ChatViewController: BaseViewController {
         
         
         navigationItem.titleView = attributeTitleView()
-        let attributedStr = NSMutableAttributedString(string: title!)
 
-        // text의 range 중에서 "Bonus"라는 글자는 UIColor를 blue로 변경
-        attributedStr.addAttribute(.foregroundColor, value: UIColor.textSecondary, range: (title! as NSString).range(of: "#" + channelName))
-        // text의 range 중에서 "Point"라는 글자는 UIColor를 orange로 변경
-        attributedStr.addAttribute(.foregroundColor, value: UIColor.brandBlack, range: (title! as NSString).range(of: members))
-
-        
         let listButton = UIBarButtonItem(image: .list, style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem = listButton
     }
@@ -133,18 +122,45 @@ class ChatViewController: BaseViewController {
             
             return label
     }
-}
+    
+    func configureTableView() {
+        chatTableView.register(ChatTableViewCell.self, forCellReuseIdentifier: "cell")
+//        chatTableView.estimatedRowHeight = 180
+//        chatTableView.rowHeight = UITableView.automaticDimension
+        chatTableView.rx.setDelegate(self).disposed(by: disposeBag)
+        chatTableView.separatorStyle = .none
+        
+        let model = [ChatTableModel(name: "d", content: "adsfadf", date: "\(Date())"),
+                     ChatTableModel(name: "은서", content: "ads!@#ㄴ리마ㅓㄹ1fadf", date: "\(Date())"),
+                     ChatTableModel(name: "은", content: "ads13092댜ㅓㅏㅣㄴfadf", date: "\(Date())"),
+                     ChatTableModel(name: "은", content: "ads13092댜ㅓㅏㅣㄴfadf", date: "\(Date())"),
+                     ChatTableModel(name: "은", content: "ads13092댜ㅇ139!!@#!@#", date: "\(Date())"),
+                     ChatTableModel(name: "은", content: "141ㅕㅐ멀댜ㅓㅏㅣㄴfadf", date: "\(Date())")
+        ]
+        
+        let modelObservable = Observable.of(model.map { $0 })
 
-extension ChatViewController: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        Observable.just(model)
+            .bind(to: chatTableView.rx.items) { tableView, indexPath, item in
+                
+                tableView.estimatedRowHeight = 100
+                tableView.rowHeight = UITableView.automaticDimension
+                
+                if let cell = self.chatTableView.dequeueReusableCell(withIdentifier: "cell") as? ChatTableViewCell {
+                    cell.nameLabel.text = item.name
+                    cell.profileImage.image = item.image
+                    cell.contentLabel.text = item.content
+                    cell.dateLabel.text = item.date
+                    
+                    return cell
+                } else {
+                    let cell = UITableViewCell()
+                    cell.backgroundColor = .gray
+                    return cell
+                }
+            }
+            .disposed(by: disposeBag)
+            
+
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .red
-        return cell
-    }
-    
 }

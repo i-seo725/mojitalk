@@ -63,7 +63,7 @@ class WSHomeViewController: BaseViewController {
         listTableView.register(WSListTableViewCell.self, forCellReuseIdentifier: "cell")
         listTableView.rowHeight = 41
         listTableView.sectionHeaderHeight = 56
-        listTableView.delegate = self
+        listTableView.rx.setDelegate(self).disposed(by: disposeBag)
         listTableView.separatorStyle = .none
         
         let dataSource = RxTableViewSectionedReloadDataSource<CustomSection> { datasource, tableView, indexPath, item in

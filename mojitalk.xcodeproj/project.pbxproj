@@ -58,6 +58,8 @@
 		F4CFD89B2B4B00510024E28B /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD89A2B4B00510024E28B /* TextButton.swift */; };
 		F4CFD89E2B4EF7690024E28B /* UIResponder+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD89D2B4EF7690024E28B /* UIResponder+Extension.swift */; };
 		F4E7790A2B85ED2B00167937 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E779092B85ED2B00167937 /* ChatViewController.swift */; };
+		F4E7790C2B875AAC00167937 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E7790B2B875AAC00167937 /* ChatTableViewCell.swift */; };
+		F4E7790E2B87604D00167937 /* ChatTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E7790D2B87604D00167937 /* ChatTableModel.swift */; };
 		F4EA15EA2B79ED9100A77E6E /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = F4EA15E92B79ED9100A77E6E /* RxDataSources */; };
 		F4EA15EC2B7B473C00A77E6E /* WSListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA15EB2B7B473C00A77E6E /* WSListTableViewCell.swift */; };
 		F4EA15EF2B8C725700A77E6E /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA15EE2B8C725700A77E6E /* CellModel.swift */; };
@@ -126,6 +128,8 @@
 		F4CFD89A2B4B00510024E28B /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		F4CFD89D2B4EF7690024E28B /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
 		F4E779092B85ED2B00167937 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		F4E7790B2B875AAC00167937 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		F4E7790D2B87604D00167937 /* ChatTableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableModel.swift; sourceTree = "<group>"; };
 		F4EA15EB2B7B473C00A77E6E /* WSListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSListTableViewCell.swift; sourceTree = "<group>"; };
 		F4EA15EE2B8C725700A77E6E /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
 		F4EA15F02B8C885C00A77E6E /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
@@ -322,6 +326,8 @@
 			isa = PBXGroup;
 			children = (
 				F4E779092B85ED2B00167937 /* ChatViewController.swift */,
+				F4E7790B2B875AAC00167937 /* ChatTableViewCell.swift */,
+				F4E7790D2B87604D00167937 /* ChatTableModel.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -548,6 +554,7 @@
 				F4F8AD3D2B456F2E00317F08 /* Font.swift in Sources */,
 				F4CFD8972B4ADF8C0024E28B /* JoinViewController.swift in Sources */,
 				F4A2E87B2B4D72FF00D9E721 /* Common.swift in Sources */,
+				F4E7790C2B875AAC00167937 /* ChatTableViewCell.swift in Sources */,
 				F4A2E8832B4D7A4300D9E721 /* JoinViewModel.swift in Sources */,
 				F4A2E8762B4D69BC00D9E721 /* MyEdit.swift in Sources */,
 				F4A2E8702B4D68DC00D9E721 /* KakaoLogin.swift in Sources */,
@@ -564,6 +571,7 @@
 				F4EA16012B8C885C00A77E6E /* UserInfo.swift in Sources */,
 				F4281DC32B63A60F00E7D517 /* ErrorResponse.swift in Sources */,
 				F4281DDA2B73666F00E7D517 /* WSRouter.swift in Sources */,
+				F4E7790E2B87604D00167937 /* ChatTableModel.swift in Sources */,
 				F4281DD02B64BE7100E7D517 /* WSInitialViewController.swift in Sources */,
 				F4281DC72B63C0F400E7D517 /* TokenManager.swift in Sources */,
 				F4EA15FF2B8C885C00A77E6E /* Chat.swift in Sources */,
