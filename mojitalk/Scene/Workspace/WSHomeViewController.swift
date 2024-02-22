@@ -42,6 +42,11 @@ class WSHomeViewController: BaseViewController {
         requestWS()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     override func setConstraints() {
         customNavBar.snp.makeConstraints { make in
             make.top.horizontalEdges.equalToSuperview()
@@ -97,7 +102,9 @@ class WSHomeViewController: BaseViewController {
                     vc.cameraImage.isHidden = true
                     owner.present(UINavigationController(rootViewController: vc), animated: true)
                 } else {
-                    owner.navigationController?.pushViewController(WSHomeEmptyViewController(), animated: true)
+                    let vc = ChatViewController()
+                    vc.channelName = data.0.text
+                    owner.navigationController?.pushViewController(vc, animated: true)
                 }
             })
             .disposed(by: disposeBag)
