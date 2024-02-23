@@ -51,6 +51,9 @@
 		F4B353FD2B567C6C00CC75E8 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B353FC2B567C6C00CC75E8 /* Secret.swift */; };
 		F4B54DB72B7C830E00D35694 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B54DB62B7C830E00D35694 /* CustomNavigationBar.swift */; };
 		F4B54DB92B7C830E00D35694 /* WSHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B54DB82B7C830E00D35694 /* WSHomeViewController.swift */; };
+		F4C358FB2B88C08E006051D6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = F4C358FA2B88C08E006051D6 /* Realm */; };
+		F4C358FD2B88C08E006051D6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4C358FC2B88C08E006051D6 /* RealmSwift */; };
+		F4C359002B88C15A006051D6 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = F4C358FF2B88C15A006051D6 /* SocketIO */; };
 		F4CFD8922B4ADD700024E28B /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F4CFD8912B4ADD700024E28B /* RxCocoa */; };
 		F4CFD8942B4ADD700024E28B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4CFD8932B4ADD700024E28B /* RxSwift */; };
 		F4CFD8972B4ADF8C0024E28B /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */; };
@@ -159,7 +162,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4C358FD2B88C08E006051D6 /* RealmSwift in Frameworks */,
+				F4C358FB2B88C08E006051D6 /* Realm in Frameworks */,
 				F4B353F22B56795100CC75E8 /* RxMoya in Frameworks */,
+				F4C359002B88C15A006051D6 /* SocketIO in Frameworks */,
 				F4CFD8942B4ADD700024E28B /* RxSwift in Frameworks */,
 				F43E394A2B52800B00C6F1DE /* IQKeyboardManagerSwift in Frameworks */,
 				F4EA15EA2B79ED9100A77E6E /* RxDataSources in Frameworks */,
@@ -467,6 +473,9 @@
 				F4A2E8872B596AA400D9E721 /* KakaoSDKAuth */,
 				F4A2E8892B596AA400D9E721 /* KakaoSDKUser */,
 				F4EA15E92B79ED9100A77E6E /* RxDataSources */,
+				F4C358FA2B88C08E006051D6 /* Realm */,
+				F4C358FC2B88C08E006051D6 /* RealmSwift */,
+				F4C358FF2B88C15A006051D6 /* SocketIO */,
 			);
 			productName = mojitalk;
 			productReference = F4F8AD242B456C6C00317F08 /* mojitalk.app */;
@@ -503,6 +512,8 @@
 				F4B353EE2B56795100CC75E8 /* XCRemoteSwiftPackageReference "Moya" */,
 				F4A2E8842B596AA400D9E721 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				F4EA15E82B79ED9100A77E6E /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				F4C358F92B88C08E006051D6 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				F4C358FE2B88C15A006051D6 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
 			);
 			productRefGroup = F4F8AD252B456C6C00317F08 /* Products */;
 			projectDirPath = "";
@@ -839,6 +850,22 @@
 				minimumVersion = 15.0.3;
 			};
 		};
+		F4C358F92B88C08E006051D6 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		F4C358FE2B88C15A006051D6 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		F4CFD8902B4ADD700024E28B /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -895,6 +922,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F4B353EE2B56795100CC75E8 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = RxMoya;
+		};
+		F4C358FA2B88C08E006051D6 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C358F92B88C08E006051D6 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		F4C358FC2B88C08E006051D6 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C358F92B88C08E006051D6 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		F4C358FF2B88C15A006051D6 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F4C358FE2B88C15A006051D6 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
+			productName = SocketIO;
 		};
 		F4CFD8912B4ADD700024E28B /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
