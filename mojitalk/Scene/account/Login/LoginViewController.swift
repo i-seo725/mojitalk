@@ -57,6 +57,17 @@ class LoginViewController: BaseViewController {
                     UIView.animate(withDuration: 0.3) {
                         self.view.alpha = 0
                     } completion: { _ in
+                        
+                        WSNetworkManager.shared.request(endpoint: .fetch, type: [WS.Response].self) { result in
+                            switch result {
+                            case .success(let success):
+                                let vc = success.isEmpty ? WSHomeEmptyViewController() : WSHomeViewController()
+                                self.changeRootView(vc)
+                            case .failure(let failure):
+                                let vc = OnboardingViewController()
+                                self.changeRootView(vc)
+                            }
+                        }
                         self.changeRootView(WSInitialViewController())
                     }
                 case .failure(let failure):

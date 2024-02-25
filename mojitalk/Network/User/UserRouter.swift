@@ -105,7 +105,12 @@ extension UserRouter: TargetType {
     
     
     var headers: [String : String]? {
-        return ["SesacKey": Secret.APIKey]
+        switch self {
+        case .deviceToken:
+            return ["SesacKey": Secret.APIKey, "Authorization": Token.access!]
+        default:
+            return ["SesacKey": Secret.APIKey]
+        }
     }
     
     var validationType: ValidationType {

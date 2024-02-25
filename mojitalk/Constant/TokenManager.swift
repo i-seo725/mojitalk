@@ -27,6 +27,7 @@ enum Token {
         case access
         case refresh
         case idToken
+        case fcm
     }
     
     @TokenManager(key: Key.access.rawValue)
@@ -37,4 +38,7 @@ enum Token {
     
     @TokenManager(key: Key.idToken.rawValue)
     static var idToken
+    
+    @TokenManager(key: Key.fcm.rawValue)
+    static var fcm
 }

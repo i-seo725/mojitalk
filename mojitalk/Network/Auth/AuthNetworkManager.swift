@@ -13,7 +13,7 @@ class AuthNetworkManager {
     static let shared = AuthNetworkManager()
     private init() { }
     
-    let provider = MoyaProvider<RefreshRouter>()
+    let provider = MoyaProvider<RefreshRouter>(session: Session(interceptor: Interceptor()))
     
     func request() {
         provider.request(.refresh) { result in
