@@ -63,6 +63,10 @@
 		F4C3590F2B88C5A9006051D6 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = F4C3590E2B88C5A9006051D6 /* FirebaseRemoteConfig */; };
 		F4C359112B88C5A9006051D6 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4C359102B88C5A9006051D6 /* FirebaseRemoteConfigSwift */; };
 		F4C359132B88C5A9006051D6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F4C359122B88C5A9006051D6 /* FirebaseStorage */; };
+		F4C359172B8BAD16006051D6 /* ChatTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C359162B8BAD16006051D6 /* ChatTable.swift */; };
+		F4C359192B8BAFE7006051D6 /* UserTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C359182B8BAFE7006051D6 /* UserTable.swift */; };
+		F4C3591B2B8BB092006051D6 /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C3591A2B8BB092006051D6 /* ChatRepository.swift */; };
+		F4C3591D2B8BB176006051D6 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C3591C2B8BB176006051D6 /* ChatViewModel.swift */; };
 		F4CFD8922B4ADD700024E28B /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F4CFD8912B4ADD700024E28B /* RxCocoa */; };
 		F4CFD8942B4ADD700024E28B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4CFD8932B4ADD700024E28B /* RxSwift */; };
 		F4CFD8972B4ADF8C0024E28B /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */; };
@@ -137,6 +141,10 @@
 		F4B54DB82B7C830E00D35694 /* WSHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSHomeViewController.swift; sourceTree = "<group>"; };
 		F4C359012B88C4FC006051D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F4C359142B88C9E4006051D6 /* mojitalk.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = mojitalk.entitlements; sourceTree = "<group>"; };
+		F4C359162B8BAD16006051D6 /* ChatTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTable.swift; sourceTree = "<group>"; };
+		F4C359182B8BAFE7006051D6 /* UserTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTable.swift; sourceTree = "<group>"; };
+		F4C3591A2B8BB092006051D6 /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
+		F4C3591C2B8BB176006051D6 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		F4CFD8982B4AE08A0024E28B /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
 		F4CFD89A2B4B00510024E28B /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
@@ -338,6 +346,16 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		F4C359152B8BACFC006051D6 /* Chatting */ = {
+			isa = PBXGroup;
+			children = (
+				F4C359162B8BAD16006051D6 /* ChatTable.swift */,
+				F4C359182B8BAFE7006051D6 /* UserTable.swift */,
+				F4C3591A2B8BB092006051D6 /* ChatRepository.swift */,
+			);
+			path = Chatting;
+			sourceTree = "<group>";
+		};
 		F4CFD89C2B4EF75F0024E28B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +368,7 @@
 		F4E779082B85ED1F00167937 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				F4C3591C2B8BB176006051D6 /* ChatViewModel.swift */,
 				F4E779092B85ED2B00167937 /* ChatViewController.swift */,
 				F4E7790B2B875AAC00167937 /* ChatTableViewCell.swift */,
 				F4E7790D2B87604D00167937 /* ChatTableModel.swift */,
@@ -381,6 +400,7 @@
 		F4EA15F92B8C885C00A77E6E /* Channel */ = {
 			isa = PBXGroup;
 			children = (
+				F4C359152B8BACFC006051D6 /* Chatting */,
 				F4EA15FA2B8C885C00A77E6E /* ChannelRouter.swift */,
 				F4EA15FC2B8C885C00A77E6E /* ChannelNetworkManager.swift */,
 			);
@@ -617,19 +637,23 @@
 				F4281DD02B64BE7100E7D517 /* WSInitialViewController.swift in Sources */,
 				F4281DC72B63C0F400E7D517 /* TokenManager.swift in Sources */,
 				F4EA15FF2B8C885C00A77E6E /* Chat.swift in Sources */,
+				F4C359172B8BAD16006051D6 /* ChatTable.swift in Sources */,
 				F4F8AD2A2B456C6C00317F08 /* SceneDelegate.swift in Sources */,
 				F4CFD8992B4AE08A0024E28B /* JoinView.swift in Sources */,
 				F4EA15F62B8C885C00A77E6E /* Create.swift in Sources */,
 				F4EA16032B8C885C00A77E6E /* UnreadChat.swift in Sources */,
+				F4C359192B8BAFE7006051D6 /* UserTable.swift in Sources */,
 				F4B54DB92B7C830E00D35694 /* WSHomeViewController.swift in Sources */,
 				F4281DDF2B73702600E7D517 /* FetchOne.swift in Sources */,
 				F4A2E88F2B59780B00D9E721 /* Interceptor.swift in Sources */,
 				F43E394C2B52800B00C6F1DE /* LoginViewController.swift in Sources */,
+				F4C3591B2B8BB092006051D6 /* ChatRepository.swift in Sources */,
 				F4281DD42B64D30800E7D517 /* WSAddViewController.swift in Sources */,
 				F4A2E86A2B4D653600D9E721 /* Join.swift in Sources */,
 				F4281DDD2B736D8800E7D517 /* WS.swift in Sources */,
 				F48235A52B556DA200C9768A /* Regex.swift in Sources */,
 				F4281DD62B6A47C500E7D517 /* WSHomeEmptyViewController.swift in Sources */,
+				F4C3591D2B8BB176006051D6 /* ChatViewModel.swift in Sources */,
 				F4F8AD452B45B3AD00317F08 /* BaseViewController.swift in Sources */,
 				F4281DE62B84F7C700E7D517 /* Refresh.swift in Sources */,
 				F4EA15FB2B8C885C00A77E6E /* ChannelRouter.swift in Sources */,

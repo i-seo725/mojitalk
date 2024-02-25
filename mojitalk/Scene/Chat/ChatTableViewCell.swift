@@ -52,6 +52,14 @@ class ChatTableViewCell: UITableViewCell {
         configureView()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        nameLabel.sizeToFit()
+        contentLabel.sizeToFit()
+        setNeedsLayout()
+        layoutIfNeeded()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -60,7 +68,7 @@ class ChatTableViewCell: UITableViewCell {
         addSubview(profileImage)
         addSubview(nameLabel)
         addSubview(bubbleView)
-        addSubview(dateLabel)
+//        addSubview(dateLabel)
         bubbleView.addSubview(contentLabel)
         
         profileImage.snp.makeConstraints { make in
@@ -77,18 +85,20 @@ class ChatTableViewCell: UITableViewCell {
         bubbleView.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp.bottom).offset(5)
             make.leading.equalTo(nameLabel.snp.leading)
-            make.width.lessThanOrEqualTo(244)
-            make.height.greaterThanOrEqualTo(34)
+            make.width.equalTo(244)
+            make.height.equalTo(34)
+//            make.width.lessThanOrEqualTo(244)
+//            make.height.greaterThanOrEqualTo(34)
         }
         
         contentLabel.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(8)
         }
-        
-        dateLabel.snp.makeConstraints { make in
-            make.leading.equalTo(bubbleView.snp.trailing).offset(8)
-            make.bottom.equalTo(bubbleView.snp.bottom)
-        }
+//        
+//        dateLabel.snp.makeConstraints { make in
+//            make.leading.equalTo(bubbleView.snp.trailing).offset(8)
+//            make.bottom.equalTo(bubbleView.snp.bottom)
+//        }
     }
     
 }

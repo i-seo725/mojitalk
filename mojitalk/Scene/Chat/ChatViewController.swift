@@ -125,13 +125,12 @@ class ChatViewController: BaseViewController, UIScrollViewDelegate {
     
     func configureTableView() {
         chatTableView.register(ChatTableViewCell.self, forCellReuseIdentifier: "cell")
-//        chatTableView.estimatedRowHeight = 180
-//        chatTableView.rowHeight = UITableView.automaticDimension
+        chatTableView.rowHeight = 70//UITableView.automaticDimension
         chatTableView.rx.setDelegate(self).disposed(by: disposeBag)
         chatTableView.separatorStyle = .none
         
-        let model = [ChatTableModel(name: "d", content: "adsfadf", date: "\(Date())"),
-                     ChatTableModel(name: "은서", content: "ads!@#ㄴ리마ㅓㄹ1fadf", date: "\(Date())"),
+        let model = [ChatTableModel(name: "dddddddddddddddddddddddddddddddddddddddddddddddddddd", content: "adsfadf", date: "\(Date())"),
+                     ChatTableModel(name: "은서", content: "은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 ads!@#ㄴ리마ㅓㄹ1fadf", date: "\(Date())"),
                      ChatTableModel(name: "은", content: "ads13092댜ㅓㅏㅣㄴfadf", date: "\(Date())"),
                      ChatTableModel(name: "은", content: "ads13092댜ㅓㅏㅣㄴfadf", date: "\(Date())"),
                      ChatTableModel(name: "은", content: "ads13092댜ㅇ139!!@#!@#", date: "\(Date())"),
@@ -143,14 +142,14 @@ class ChatViewController: BaseViewController, UIScrollViewDelegate {
         Observable.just(model)
             .bind(to: chatTableView.rx.items) { tableView, indexPath, item in
                 
-                tableView.estimatedRowHeight = 100
-                tableView.rowHeight = UITableView.automaticDimension
+//                tableView.estimatedRowHeight = 100
+//                tableView.rowHeight = UITableView.automaticDimension
                 
                 if let cell = self.chatTableView.dequeueReusableCell(withIdentifier: "cell") as? ChatTableViewCell {
                     cell.nameLabel.text = item.name
                     cell.profileImage.image = item.image
                     cell.contentLabel.text = item.content
-                    cell.dateLabel.text = item.date
+//                    cell.dateLabel.text = item.date
                     
                     return cell
                 } else {
@@ -162,5 +161,15 @@ class ChatViewController: BaseViewController, UIScrollViewDelegate {
             .disposed(by: disposeBag)
             
 
+    }
+    
+    override func bind() {
+        textField.rx.text.orEmpty
+            .map{ $0.isEmpty }
+            .bind(with: self) { owner, value in
+                let image = value ? UIImage.sendEmpty : UIImage.send
+                owner.sendButton.setImage(image, for: .normal)
+            }
+            .disposed(by: disposeBag)
     }
 }
