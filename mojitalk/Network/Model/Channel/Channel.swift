@@ -15,6 +15,7 @@ struct Channel: Decodable {
     let ownerID: Int
     let isPrivate: Int? //0: 공개, 1: 비공개
     let createdAt: String
+    let channelMembers: [UserInfo]?
     
     enum CodingKeys: String, CodingKey {
         case wsID = "workspace_id"
@@ -22,6 +23,6 @@ struct Channel: Decodable {
         case desc = "description"
         case ownerID = "owner_id"
         case isPrivate = "private"
-        case name, createdAt
+        case name, createdAt, channelMembers
     }
 }

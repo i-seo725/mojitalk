@@ -103,7 +103,7 @@ class WSHomeViewController: BaseViewController {
                     owner.present(UINavigationController(rootViewController: vc), animated: true)
                 } else {
                     let vc = ChatViewController()
-                    vc.channelName = data.0.text
+                    vc.viewModel.chName = data.0.text
                     owner.navigationController?.pushViewController(vc, animated: true)
                 }
             })

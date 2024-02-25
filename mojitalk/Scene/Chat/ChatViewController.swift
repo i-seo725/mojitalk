@@ -42,10 +42,8 @@ class ChatViewController: BaseViewController, UIScrollViewDelegate {
         return view
     }()
     
+    let viewModel = ChatViewModel()
     let disposeBag = DisposeBag()
-    
-    var members = " 1"
-    var channelName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,11 +95,11 @@ class ChatViewController: BaseViewController, UIScrollViewDelegate {
     }
     
     func configureNavBar() {
-        guard let channelName else { return }
+        guard let channel = viewModel.channelInfo, let members = channel.channelMembers else { return }
         navigationController?.navigationBar.topItem?.title = ""
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.tintColor = .brandBlack
-        title = "#" + channelName + members
+        title = "#\(channel.name) \(members.count)"
         
         
         navigationItem.titleView = attributeTitleView()
@@ -111,16 +109,24 @@ class ChatViewController: BaseViewController, UIScrollViewDelegate {
     }
     
     func attributeTitleView() -> UIView {
-            let label: UILabel = UILabel()
-        let blackText: NSMutableAttributedString = NSMutableAttributedString(string: "#" + (channelName ?? "일반"), attributes: [.foregroundColor: UIColor.brandBlack])
-            let grayText: NSMutableAttributedString =
-            NSMutableAttributedString(string: members, attributes: [.foregroundColor: UIColor.textSecondary])
-            
-            let naviTitle: NSMutableAttributedString = blackText
-            naviTitle.append(grayText)
-            label.attributedText = naviTitle
-            
-            return label
+        let label: UILabel = UILabel()
+        var chName = "기타"
+        var chMembers = "1"
+        
+        if let name = viewModel.chName, let members = viewModel.channelInfo?.channelMembers {
+            chName = name
+            chMembers = "\(members.count)"
+        }
+        
+        let blackText: NSMutableAttributedString = NSMutableAttributedString(string: "#" + (chName), attributes: [.foregroundColor: UIColor.brandBlack])
+        let grayText: NSMutableAttributedString =
+        NSMutableAttributedString(string: chMembers, attributes: [.foregroundColor: UIColor.textSecondary])
+        
+        let naviTitle: NSMutableAttributedString = blackText
+        naviTitle.append(grayText)
+        label.attributedText = naviTitle
+        
+        return label
     }
     
     func configureTableView() {
@@ -139,7 +145,7 @@ class ChatViewController: BaseViewController, UIScrollViewDelegate {
         
         let modelObservable = Observable.of(model.map { $0 })
 
-        Observable.just(model)
+        Observable.just(viewModel.chatModel())
             .bind(to: chatTableView.rx.items) { tableView, indexPath, item in
                 
 //                tableView.estimatedRowHeight = 100

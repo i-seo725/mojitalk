@@ -67,6 +67,7 @@
 		F4C359192B8BAFE7006051D6 /* UserTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C359182B8BAFE7006051D6 /* UserTable.swift */; };
 		F4C3591B2B8BB092006051D6 /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C3591A2B8BB092006051D6 /* ChatRepository.swift */; };
 		F4C3591D2B8BB176006051D6 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C3591C2B8BB176006051D6 /* ChatViewModel.swift */; };
+		F4C359202B8BC219006051D6 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C3591F2B8BC219006051D6 /* UserRepository.swift */; };
 		F4CFD8922B4ADD700024E28B /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = F4CFD8912B4ADD700024E28B /* RxCocoa */; };
 		F4CFD8942B4ADD700024E28B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F4CFD8932B4ADD700024E28B /* RxSwift */; };
 		F4CFD8972B4ADF8C0024E28B /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */; };
@@ -145,6 +146,7 @@
 		F4C359182B8BAFE7006051D6 /* UserTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTable.swift; sourceTree = "<group>"; };
 		F4C3591A2B8BB092006051D6 /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
 		F4C3591C2B8BB176006051D6 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		F4C3591F2B8BC219006051D6 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		F4CFD8962B4ADF8C0024E28B /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		F4CFD8982B4AE08A0024E28B /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
 		F4CFD89A2B4B00510024E28B /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
@@ -352,8 +354,17 @@
 				F4C359162B8BAD16006051D6 /* ChatTable.swift */,
 				F4C359182B8BAFE7006051D6 /* UserTable.swift */,
 				F4C3591A2B8BB092006051D6 /* ChatRepository.swift */,
+				F4C3591F2B8BC219006051D6 /* UserRepository.swift */,
 			);
 			path = Chatting;
+			sourceTree = "<group>";
+		};
+		F4C3591E2B8BC1E9006051D6 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				F4C359152B8BACFC006051D6 /* Chatting */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		F4CFD89C2B4EF75F0024E28B /* Extension */ = {
@@ -400,7 +411,6 @@
 		F4EA15F92B8C885C00A77E6E /* Channel */ = {
 			isa = PBXGroup;
 			children = (
-				F4C359152B8BACFC006051D6 /* Chatting */,
 				F4EA15FA2B8C885C00A77E6E /* ChannelRouter.swift */,
 				F4EA15FC2B8C885C00A77E6E /* ChannelNetworkManager.swift */,
 			);
@@ -426,6 +436,7 @@
 		F4F8AD262B456C6C00317F08 /* mojitalk */ = {
 			isa = PBXGroup;
 			children = (
+				F4C3591E2B8BC1E9006051D6 /* Realm */,
 				F4C359142B88C9E4006051D6 /* mojitalk.entitlements */,
 				F4B353F32B56796200CC75E8 /* Network */,
 				F4CFD89C2B4EF75F0024E28B /* Extension */,
@@ -642,6 +653,7 @@
 				F4CFD8992B4AE08A0024E28B /* JoinView.swift in Sources */,
 				F4EA15F62B8C885C00A77E6E /* Create.swift in Sources */,
 				F4EA16032B8C885C00A77E6E /* UnreadChat.swift in Sources */,
+				F4C359202B8BC219006051D6 /* UserRepository.swift in Sources */,
 				F4C359192B8BAFE7006051D6 /* UserTable.swift in Sources */,
 				F4B54DB92B7C830E00D35694 /* WSHomeViewController.swift in Sources */,
 				F4281DDF2B73702600E7D517 /* FetchOne.swift in Sources */,
