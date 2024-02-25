@@ -68,7 +68,7 @@ class ChatTableViewCell: UITableViewCell {
         addSubview(profileImage)
         addSubview(nameLabel)
         addSubview(bubbleView)
-//        addSubview(dateLabel)
+        addSubview(dateLabel)
         bubbleView.addSubview(contentLabel)
         
         profileImage.snp.makeConstraints { make in
@@ -94,11 +94,11 @@ class ChatTableViewCell: UITableViewCell {
         contentLabel.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(8)
         }
-//        
-//        dateLabel.snp.makeConstraints { make in
-//            make.leading.equalTo(bubbleView.snp.trailing).offset(8)
-//            make.bottom.equalTo(bubbleView.snp.bottom)
-//        }
+        
+        dateLabel.snp.makeConstraints { make in
+            make.leading.equalTo(bubbleView.snp.trailing).offset(8)
+            make.bottom.equalTo(bubbleView.snp.bottom)
+        }
     }
     
 }

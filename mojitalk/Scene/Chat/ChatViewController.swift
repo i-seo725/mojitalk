@@ -50,8 +50,6 @@ class ChatViewController: BaseViewController, UIScrollViewDelegate {
     }
     
     override func configureView() {
-        configureNavBar()
-        
         view.backgroundColor = .backgroundSecondary
         view.addSubview(chatTableView)
         view.addSubview(typingView)
@@ -60,6 +58,11 @@ class ChatViewController: BaseViewController, UIScrollViewDelegate {
         typingView.addSubview(sendButton)
         
         configureTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureNavBar()
     }
     
     override func setConstraints() {
@@ -95,17 +98,16 @@ class ChatViewController: BaseViewController, UIScrollViewDelegate {
     }
     
     func configureNavBar() {
-        guard let channel = viewModel.channelInfo, let members = channel.channelMembers else { return }
         navigationController?.navigationBar.topItem?.title = ""
         navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.tintColor = .brandBlack
-        title = "#\(channel.name) \(members.count)"
-        
-        
-        navigationItem.titleView = attributeTitleView()
 
         let listButton = UIBarButtonItem(image: .list, style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem = listButton
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+            self.navigationItem.titleView = self.attributeTitleView()
+        }
     }
     
     func attributeTitleView() -> UIView {
@@ -121,8 +123,9 @@ class ChatViewController: BaseViewController, UIScrollViewDelegate {
         let blackText: NSMutableAttributedString = NSMutableAttributedString(string: "#" + (chName), attributes: [.foregroundColor: UIColor.brandBlack])
         let grayText: NSMutableAttributedString =
         NSMutableAttributedString(string: chMembers, attributes: [.foregroundColor: UIColor.textSecondary])
-        
+        let space: NSAttributedString = NSAttributedString(string: " ")
         let naviTitle: NSMutableAttributedString = blackText
+        naviTitle.append(space)
         naviTitle.append(grayText)
         label.attributedText = naviTitle
         
@@ -144,18 +147,15 @@ class ChatViewController: BaseViewController, UIScrollViewDelegate {
         ]
         
         let modelObservable = Observable.of(model.map { $0 })
-
-        Observable.just(viewModel.chatModel())
-            .bind(to: chatTableView.rx.items) { tableView, indexPath, item in
-                
-//                tableView.estimatedRowHeight = 100
-//                tableView.rowHeight = UITableView.automaticDimension
-                
+        
+        viewModel.chatModel
+            .asDriver()
+            .drive(chatTableView.rx.items) { tableView, indexPath, item in
                 if let cell = self.chatTableView.dequeueReusableCell(withIdentifier: "cell") as? ChatTableViewCell {
                     cell.nameLabel.text = item.name
                     cell.profileImage.image = item.image
                     cell.contentLabel.text = item.content
-//                    cell.dateLabel.text = item.date
+                    cell.dateLabel.text = item.date
                     
                     return cell
                 } else {
@@ -165,6 +165,27 @@ class ChatViewController: BaseViewController, UIScrollViewDelegate {
                 }
             }
             .disposed(by: disposeBag)
+        
+//        Observable.just(viewModel.chatModel)
+//            .bind(to: chatTableView.rx.items) { tableView, indexPath, item in
+//                
+////                tableView.estimatedRowHeight = 100
+////                tableView.rowHeight = UITableView.automaticDimension
+//                
+//                if let cell = self.chatTableView.dequeueReusableCell(withIdentifier: "cell") as? ChatTableViewCell {
+//                    cell.nameLabel.text = item.name
+//                    cell.profileImage.image = item.image
+//                    cell.contentLabel.text = item.content
+////                    cell.dateLabel.text = item.date
+//                    
+//                    return cell
+//                } else {
+//                    let cell = UITableViewCell()
+//                    cell.backgroundColor = .gray
+//                    return cell
+//                }
+//            }
+//            .disposed(by: disposeBag)
             
 
     }

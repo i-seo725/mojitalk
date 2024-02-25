@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 class ChatViewModel {
     
@@ -13,9 +15,16 @@ class ChatViewModel {
     
     var wsID: Int?
     var chName: String?
-    var channelInfo: Channel?
     
-    func chatModel() -> [ChatTableModel] {
+    var handler: (() -> Void)?
+    var channelInfo: Channel? {
+        didSet {
+            chatModel.accept(fetchChatModel())
+        }
+    }
+    lazy var chatModel = BehaviorRelay(value: fetchChatModel())
+    
+    func fetchChatModel() -> [ChatTableModel] {
         guard let channelInfo else { return [] }
         
         let repoData = repository.fetchFilter(channel: channelInfo.channelID)

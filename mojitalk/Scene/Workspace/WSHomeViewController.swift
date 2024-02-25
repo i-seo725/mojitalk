@@ -104,6 +104,8 @@ class WSHomeViewController: BaseViewController {
                 } else {
                     let vc = ChatViewController()
                     vc.viewModel.chName = data.0.text
+                    vc.viewModel.wsID = owner.currentID
+                    vc.viewModel.fetchChannelInfo()
                     owner.navigationController?.pushViewController(vc, animated: true)
                 }
             })
