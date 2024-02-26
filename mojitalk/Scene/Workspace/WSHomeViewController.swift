@@ -8,18 +8,25 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class WSHomeViewController: BaseViewController {
     
     let customNavBar = CustomNavigationBar()
+    let listTableView = UITableView()
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func configureView() {
+        navigationController?.navigationBar.isHidden = true
         view.backgroundColor = .backgroundSecondary
         view.addSubview(customNavBar)
+        view.addSubview(listTableView)
+        configureTableView()
     }
     
     override func setConstraints() {
@@ -27,10 +34,66 @@ class WSHomeViewController: BaseViewController {
             make.top.horizontalEdges.equalToSuperview()
             make.height.equalTo(98)
         }
+        
+        listTableView.snp.makeConstraints { make in
+            make.top.equalTo(customNavBar.snp.bottom)
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
     }
     
     func configureTableView() {
+        listTableView.register(WSListTableViewCell.self, forCellReuseIdentifier: "cell")
+        listTableView.rowHeight = 41
+        listTableView.sectionHeaderHeight = 56
+        listTableView.delegate = self
+        listTableView.separatorStyle = .none
         
+        let dataSource = RxTableViewSectionedReloadDataSource<CustomSection> { datasource, tableView, indexPath, item in
+            
+            guard let cell = self.listTableView.dequeueReusableCell(withIdentifier: "cell") as? WSListTableViewCell else {
+                print("d")
+                return UITableViewCell()
+                    }
+            
+            tableView.sectionHeaderTopPadding = .zero
+            cell.titleLabel.text = item.text
+            cell.setImageView.image = UIImage(named: item.image.rawValue)
+            
+            return cell
+        }
+        
+        dataSource.titleForHeaderInSection = { dataSource, index in
+            return dataSource.sectionModels[index].header
+        }
+        
+        let sections = [
+            CustomSection(header: "채널", items: [CellModel(text: "일반", image: .hashtagThick), CellModel(text: "기타", image: .hashtagThin)]),
+            CustomSection(header: "다이렉트 메시지", items: [CellModel(text: "비어 있음", image: .plusIcon)])
+            ]
+        
+        Observable.just(sections)
+            .bind(to: listTableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        
+    }
+}
+
+extension WSHomeViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            let view = CustomHeader()
+            view.titleLabel.text = "채널"
+            return view
+        case 1:
+            let view = CustomHeader()
+            view.titleLabel.text = "다이렉트 메시지"
+            return view
+        default:
+            return nil
+        }
     }
     
 }
