@@ -60,6 +60,7 @@
 		F4EA15EA2B79ED9100A77E6E /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = F4EA15E92B79ED9100A77E6E /* RxDataSources */; };
 		F4EA15EC2B7B473C00A77E6E /* WSListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA15EB2B7B473C00A77E6E /* WSListTableViewCell.swift */; };
 		F4EA15EF2B8C725700A77E6E /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA15EE2B8C725700A77E6E /* CellModel.swift */; };
+		F4EA15F12B8C885C00A77E6E /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4EA15F02B8C885C00A77E6E /* CustomHeader.swift */; };
 		F4F8AD282B456C6C00317F08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD272B456C6C00317F08 /* AppDelegate.swift */; };
 		F4F8AD2A2B456C6C00317F08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD292B456C6C00317F08 /* SceneDelegate.swift */; };
 		F4F8AD2C2B456C6C00317F08 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F8AD2B2B456C6C00317F08 /* OnboardingViewController.swift */; };
@@ -118,6 +119,7 @@
 		F4CFD89D2B4EF7690024E28B /* UIResponder+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Extension.swift"; sourceTree = "<group>"; };
 		F4EA15EB2B7B473C00A77E6E /* WSListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSListTableViewCell.swift; sourceTree = "<group>"; };
 		F4EA15EE2B8C725700A77E6E /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
+		F4EA15F02B8C885C00A77E6E /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
 		F4F8AD242B456C6C00317F08 /* mojitalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mojitalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4F8AD272B456C6C00317F08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4F8AD292B456C6C00317F08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 			children = (
 				F4EA15EB2B7B473C00A77E6E /* WSListTableViewCell.swift */,
 				F4EA15EE2B8C725700A77E6E /* CellModel.swift */,
+				F4EA15F02B8C885C00A77E6E /* CustomHeader.swift */,
 			);
 			path = CustomTableView;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				F4A2E8762B4D69BC00D9E721 /* MyEdit.swift in Sources */,
 				F4A2E8702B4D68DC00D9E721 /* KakaoLogin.swift in Sources */,
 				F4A2E88D2B596ADF00D9E721 /* ContinueViewModel.swift in Sources */,
+				F4EA15F12B8C885C00A77E6E /* CustomHeader.swift in Sources */,
 				F4B353FD2B567C6C00CC75E8 /* Secret.swift in Sources */,
 				F4F8AD2C2B456C6C00317F08 /* OnboardingViewController.swift in Sources */,
 				F48235A32B53D8D200C9768A /* ToastView.swift in Sources */,
