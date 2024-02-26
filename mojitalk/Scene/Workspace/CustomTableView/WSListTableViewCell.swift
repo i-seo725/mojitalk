@@ -10,8 +10,8 @@ import SnapKit
 
 class WSListTableViewCell: UITableViewCell {
     
-    let image = UIImageView()
-    let text = UIButton()
+    let setImageView = UIImageView()
+    let titleLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -23,20 +23,20 @@ class WSListTableViewCell: UITableViewCell {
     }
     
     func configureCell() {
-        contentView.addSubview(image)
-        contentView.addSubview(text)
-        text.isEnabled = false
-        text.configuration?.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 16)
+        addSubview(setImageView)
+        addSubview(titleLabel)
+        titleLabel.textColor = .textPrimary
+        titleLabel.font = Font.body
         
-        image.snp.makeConstraints { make in
+        setImageView.snp.makeConstraints { make in
             make.size.equalTo(18)
             make.leading.equalToSuperview().offset(16)
             make.centerY.equalToSuperview()
         }
         
-        text.snp.makeConstraints { make in
-            make.leading.equalTo(image.snp.trailing)
-            make.width.equalTo(314)
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalTo(setImageView.snp.trailing).offset(8)
+            make.trailing.equalToSuperview().inset(61)
             make.centerY.equalToSuperview()
         }
     }
