@@ -47,6 +47,9 @@ class ChatViewController: BaseViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.viewModel.fetchChat()
+        }
     }
     
     override func configureView() {
@@ -138,24 +141,22 @@ class ChatViewController: BaseViewController, UIScrollViewDelegate {
         chatTableView.rx.setDelegate(self).disposed(by: disposeBag)
         chatTableView.separatorStyle = .none
         
-        let model = [ChatTableModel(name: "dddddddddddddddddddddddddddddddddddddddddddddddddddd", content: "adsfadf", date: "\(Date())"),
-                     ChatTableModel(name: "은서", content: "은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 은서은서은서 ads!@#ㄴ리마ㅓㄹ1fadf", date: "\(Date())"),
-                     ChatTableModel(name: "은", content: "ads13092댜ㅓㅏㅣㄴfadf", date: "\(Date())"),
-                     ChatTableModel(name: "은", content: "ads13092댜ㅓㅏㅣㄴfadf", date: "\(Date())"),
-                     ChatTableModel(name: "은", content: "ads13092댜ㅇ139!!@#!@#", date: "\(Date())"),
-                     ChatTableModel(name: "은", content: "141ㅕㅐ멀댜ㅓㅏㅣㄴfadf", date: "\(Date())")
-        ]
-        
-        let modelObservable = Observable.of(model.map { $0 })
         
         viewModel.chatModel
             .asDriver()
             .drive(chatTableView.rx.items) { tableView, indexPath, item in
                 if let cell = self.chatTableView.dequeueReusableCell(withIdentifier: "cell") as? ChatTableViewCell {
                     cell.nameLabel.text = item.name
-                    cell.profileImage.image = item.image
                     cell.contentLabel.text = item.content
                     cell.dateLabel.text = item.date
+                    
+                    if item.image == "noPhotoA" {
+                        cell.profileImage.image = .noPhotoAProfile
+                    } else if item.image == "noPhotoB" {
+                        cell.profileImage.image = .noPhotoBProfile
+                    } else {
+                        cell.profileImage.image = .noPhotoCProfile
+                    }
                     
                     return cell
                 } else {
@@ -198,5 +199,23 @@ class ChatViewController: BaseViewController, UIScrollViewDelegate {
                 owner.sendButton.setImage(image, for: .normal)
             }
             .disposed(by: disposeBag)
+        
+        textField.rx.controlEvent(.editingDidEndOnExit)
+            .withLatestFrom(textField.rx.text.orEmpty)
+            .bind(with: self, onNext: { owner, content in
+                owner.viewModel.sendMessageAPI(content)
+                owner.textField.text = nil
+            })
+            .disposed(by: disposeBag)
+            
+        sendButton.rx.tap
+            .withLatestFrom(textField.rx.text.orEmpty)
+            .bind(with: self, onNext: { owner, content in
+                owner.viewModel.sendMessageAPI(content)
+                owner.textField.text = nil
+            })
+            .disposed(by: disposeBag)
+            
+        
     }
 }

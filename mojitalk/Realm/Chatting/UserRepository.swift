@@ -22,11 +22,20 @@ final class UserRepository {
     }
     
     func fetchFilter(channel: Int) -> Results<UserTable> {
-        
-        let data = realm.objects(UserTable.self)
+        let data = realm.objects(UserTable.self).where { table in
+            table.id == channel
+        }
         return data
-        
     }
+    
+    func fetchFilter(user: Int) -> Results<UserTable> {
+        let data = realm.objects(UserTable.self).where {
+            $0.id == user
+        }
+        
+        return data
+    }
+    
     
     func create(_ item: UserTable) {
         do {

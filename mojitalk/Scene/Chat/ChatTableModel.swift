@@ -9,13 +9,13 @@ import UIKit
 
 struct ChatTableModel {
     
-    let image: UIImage
+    let image: String
     let name: String
     let content: String
     let date: String
     
-    init(name: String, content: String, date: String) {
-        self.image = [UIImage.noPhotoAProfile, UIImage.noPhotoBProfile, UIImage.noPhotoCProfile].randomElement()!
+    init(image: String, name: String, content: String, date: String) {
+        self.image = image
         self.name = name
         self.content = content
         self.date = date

@@ -19,7 +19,7 @@ enum UserRouter {
     case myView
     case myEdit(data: MyEdit.Request)
     case image
-    case users(id: String)
+    case users(id: Int)
 }
 
 extension UserRouter: TargetType {
@@ -107,7 +107,11 @@ extension UserRouter: TargetType {
     var headers: [String : String]? {
         switch self {
         case .deviceToken:
-            return ["SesacKey": Secret.APIKey, "Authorization": Token.access!]
+            if let token = Token.access {
+                return ["SesacKey": Secret.APIKey, "Authorization": token]
+            } else {
+                return ["SesacKey": Secret.APIKey]
+            }
         default:
             return ["SesacKey": Secret.APIKey]
         }

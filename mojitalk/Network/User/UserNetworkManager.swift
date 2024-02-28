@@ -13,7 +13,7 @@ class UserNetworkManager {
     static let shared = UserNetworkManager()
     private init() { }
     
-    let provider = MoyaProvider<UserRouter>()
+    let provider = MoyaProvider<UserRouter>(session: Session(interceptor: Interceptor()))
     
     func requestEmailValidate(endpoint: UserRouter, handler: @escaping (Result<Int, Error>) -> Void) {
         provider.request(endpoint) { result in

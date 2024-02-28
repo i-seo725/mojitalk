@@ -7,16 +7,329 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DBED45B5-C4F9-4FB2-8166-7825A21EEAC3"
+            uuid = "3FAD842A-9D5E-429C-87F6-2569947FA472"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "mojitalk/Network/Channel/ChannelNetworkManager.swift"
+            filePath = "mojitalk/Scene/Chat/ChatViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "request(endpoint:type:handler:)"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "fetchUserInfo(chatinfo:handler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3FAD842A-9D5E-429C-87F6-2569947FA472 - 5719b422dac9b132"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mojitalk.ChatViewModel.fetchUserInfo(handler: (mojitalk.UserInfo) -&gt; ()) -&gt; ()"
+                  moduleName = "mojitalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ieunseo/Documents/project/%E1%84%89%E1%85%A2%E1%84%8A%E1%85%A1%E1%86%A8%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8/mojitalk/mojitalk/Scene/Chat/ChatViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "3FAD842A-9D5E-429C-87F6-2569947FA472 - 1fe66bd8b5192c6c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mojitalk.ChatViewModel.fetchUserInfo(chatinfo: mojitalk.Chat, handler: (mojitalk.UserInfo) -&gt; ()) -&gt; ()"
+                  moduleName = "mojitalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ieunseo/Documents/project/%E1%84%89%E1%85%A2%E1%84%8A%E1%85%A1%E1%86%A8%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8/mojitalk/mojitalk/Scene/Chat/ChatViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6B0618C6-15D1-48D9-BF49-FBD553B3B2AC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mojitalk/Scene/Chat/ChatViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "fetchUserInfo(chatinfo:handler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6B0618C6-15D1-48D9-BF49-FBD553B3B2AC - 5719b422dac9b132"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mojitalk.ChatViewModel.fetchUserInfo(handler: (mojitalk.UserInfo) -&gt; ()) -&gt; ()"
+                  moduleName = "mojitalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ieunseo/Documents/project/%E1%84%89%E1%85%A2%E1%84%8A%E1%85%A1%E1%86%A8%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8/mojitalk/mojitalk/Scene/Chat/ChatViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "6B0618C6-15D1-48D9-BF49-FBD553B3B2AC - 1fe66bd8b5192c6c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mojitalk.ChatViewModel.fetchUserInfo(chatinfo: mojitalk.Chat, handler: (mojitalk.UserInfo) -&gt; ()) -&gt; ()"
+                  moduleName = "mojitalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ieunseo/Documents/project/%E1%84%89%E1%85%A2%E1%84%8A%E1%85%A1%E1%86%A8%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8/mojitalk/mojitalk/Scene/Chat/ChatViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "92"
+                  endingLineNumber = "92"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FE2CED0F-16B1-4B84-BA51-569C5FAA68C8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mojitalk/Scene/Chat/ChatViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "writeChat(chat:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FE2CED0F-16B1-4B84-BA51-569C5FAA68C8 - a1366c0c21b1e3c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mojitalk.ChatViewModel.writeChat(chat: mojitalk.Chat) -&gt; ()"
+                  moduleName = "mojitalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ieunseo/Documents/project/%E1%84%89%E1%85%A2%E1%84%8A%E1%85%A1%E1%86%A8%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8/mojitalk/mojitalk/Scene/Chat/ChatViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "224">
+               </Location>
+               <Location
+                  uuid = "FE2CED0F-16B1-4B84-BA51-569C5FAA68C8 - a1366c0c21b1e3c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mojitalk.ChatViewModel.writeChat(chat: mojitalk.Chat) -&gt; ()"
+                  moduleName = "mojitalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ieunseo/Documents/project/%E1%84%89%E1%85%A2%E1%84%8A%E1%85%A1%E1%86%A8%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8/mojitalk/mojitalk/Scene/Chat/ChatViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "220">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8696F0FF-0603-496F-BA20-465E26351B68"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mojitalk/Scene/Chat/ChatViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "writeChat(chat:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8696F0FF-0603-496F-BA20-465E26351B68 - a1366c0c21b1e32f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mojitalk.ChatViewModel.writeChat(chat: mojitalk.Chat) -&gt; ()"
+                  moduleName = "mojitalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ieunseo/Documents/project/%E1%84%89%E1%85%A2%E1%84%8A%E1%85%A1%E1%86%A8%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8/mojitalk/mojitalk/Scene/Chat/ChatViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "376">
+               </Location>
+               <Location
+                  uuid = "8696F0FF-0603-496F-BA20-465E26351B68 - a1366c0c21b1e32f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mojitalk.ChatViewModel.writeChat(chat: mojitalk.Chat) -&gt; ()"
+                  moduleName = "mojitalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ieunseo/Documents/project/%E1%84%89%E1%85%A2%E1%84%8A%E1%85%A1%E1%86%A8%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8/mojitalk/mojitalk/Scene/Chat/ChatViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "512">
+               </Location>
+               <Location
+                  uuid = "8696F0FF-0603-496F-BA20-465E26351B68 - a1366c0c21b1e32f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mojitalk.ChatViewModel.writeChat(chat: mojitalk.Chat) -&gt; ()"
+                  moduleName = "mojitalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ieunseo/Documents/project/%E1%84%89%E1%85%A2%E1%84%8A%E1%85%A1%E1%86%A8%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8/mojitalk/mojitalk/Scene/Chat/ChatViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "612">
+               </Location>
+               <Location
+                  uuid = "8696F0FF-0603-496F-BA20-465E26351B68 - a1366c0c21b1e30e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mojitalk.ChatViewModel.writeChat(chat: mojitalk.Chat) -&gt; ()"
+                  moduleName = "mojitalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ieunseo/Documents/project/%E1%84%89%E1%85%A2%E1%84%8A%E1%85%A1%E1%86%A8%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8/mojitalk/mojitalk/Scene/Chat/ChatViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "352">
+               </Location>
+               <Location
+                  uuid = "8696F0FF-0603-496F-BA20-465E26351B68 - a1366c0c21b1e30e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mojitalk.ChatViewModel.writeChat(chat: mojitalk.Chat) -&gt; ()"
+                  moduleName = "mojitalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ieunseo/Documents/project/%E1%84%89%E1%85%A2%E1%84%8A%E1%85%A1%E1%86%A8%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8/mojitalk/mojitalk/Scene/Chat/ChatViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "488">
+               </Location>
+               <Location
+                  uuid = "8696F0FF-0603-496F-BA20-465E26351B68 - a1366c0c21b1e30e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mojitalk.ChatViewModel.writeChat(chat: mojitalk.Chat) -&gt; ()"
+                  moduleName = "mojitalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ieunseo/Documents/project/%E1%84%89%E1%85%A2%E1%84%8A%E1%85%A1%E1%86%A8%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8/mojitalk/mojitalk/Scene/Chat/ChatViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "588">
+               </Location>
+               <Location
+                  uuid = "8696F0FF-0603-496F-BA20-465E26351B68 - a1366c0c21b1e30e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mojitalk.ChatViewModel.writeChat(chat: mojitalk.Chat) -&gt; ()"
+                  moduleName = "mojitalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ieunseo/Documents/project/%E1%84%89%E1%85%A2%E1%84%8A%E1%85%A1%E1%86%A8%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8/mojitalk/mojitalk/Scene/Chat/ChatViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "360">
+               </Location>
+               <Location
+                  uuid = "8696F0FF-0603-496F-BA20-465E26351B68 - a1366c0c21b1e30e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mojitalk.ChatViewModel.writeChat(chat: mojitalk.Chat) -&gt; ()"
+                  moduleName = "mojitalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ieunseo/Documents/project/%E1%84%89%E1%85%A2%E1%84%8A%E1%85%A1%E1%86%A8%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8/mojitalk/mojitalk/Scene/Chat/ChatViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "496">
+               </Location>
+               <Location
+                  uuid = "8696F0FF-0603-496F-BA20-465E26351B68 - a1366c0c21b1e30e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mojitalk.ChatViewModel.writeChat(chat: mojitalk.Chat) -&gt; ()"
+                  moduleName = "mojitalk"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ieunseo/Documents/project/%E1%84%89%E1%85%A2%E1%84%8A%E1%85%A1%E1%86%A8%20%E1%84%8B%E1%85%A7%E1%86%AB%E1%84%89%E1%85%B3%E1%86%B8/mojitalk/mojitalk/Scene/Chat/ChatViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "596">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5DCD6906-AB73-40BE-AF12-1BB4A297C573"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mojitalk/Scene/Chat/ChatViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "fetchChatModel()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "32512CDE-5EE3-4CED-A9B4-D6897AD874BC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mojitalk/Scene/Chat/ChatViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "fetchChatModel()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

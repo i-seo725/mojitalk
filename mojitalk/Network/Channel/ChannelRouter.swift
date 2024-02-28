@@ -12,8 +12,8 @@ enum ChannelRouter {
     case create(id: Int, data: Create.Request)
     case fetch(id: Int)
     case fetchJoined(id: Int)
-    case pushChat(id: Int, name: String)
-    case fetchChat(id: Int, name: String)
+    case pushChat(id: Int, name: String, content: String, files: Data)
+    case fetchChat(id: Int, name: String, date: String)
     case unreadChat(id: Int, name: String, date: String)
 }
 
@@ -35,9 +35,9 @@ extension ChannelRouter: TargetType {
             "/\(id)/channels"
         case .fetchJoined(let id):
             "/\(id)/channels/my"
-        case .pushChat(let id, let name):
-            "/\(id)/channels/\(name)"
-        case .fetchChat(let id, let name):
+        case .pushChat(let id, let name, _, _):
+            "/\(id)/channels/\(name)/chats"
+        case .fetchChat(let id, let name, _):
             "/\(id)/channels/\(name)"
         case .unreadChat(let id, let name, _):
             "/\(id)/channels/\(name)/unread"
@@ -50,7 +50,7 @@ extension ChannelRouter: TargetType {
             return .post
         case .fetch, .fetchJoined:
             return .get
-        case .pushChat(let id, let name):
+        case .pushChat:
             return .post
         case .fetchChat, .unreadChat:
             return .get
@@ -63,10 +63,15 @@ extension ChannelRouter: TargetType {
             return .requestJSONEncodable(data)
         case .fetch, .fetchJoined:
             return .requestPlain
-        case .pushChat(let id, let name):
-            return .uploadMultipart([])
-        case .fetchChat(let id, let name):
-            return .requestPlain
+        case .pushChat(let id, let name, let content, let files):
+            
+            let content = MultipartFormData(provider: .data(content.data(using: .utf8)!), name: "content")
+            let files = MultipartFormData(provider: .data(files), name: "files", fileName: "profile.jpeg", mimeType: "image/jpeg")
+
+            let multipartData = [content, files]
+            return .uploadMultipart(multipartData)
+        case .fetchChat(let id, let name, let date):
+            return .requestParameters(parameters: ["cursor_date": date], encoding: URLEncoding.queryString)
         case .unreadChat(let id, let name, let date):
             return .requestParameters(parameters: ["after": date], encoding: URLEncoding.queryString)
         }

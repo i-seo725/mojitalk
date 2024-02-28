@@ -43,6 +43,7 @@
 		F4A2E88A2B596AA400D9E721 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = F4A2E8892B596AA400D9E721 /* KakaoSDKUser */; };
 		F4A2E88D2B596ADF00D9E721 /* ContinueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E88C2B596ADF00D9E721 /* ContinueViewModel.swift */; };
 		F4A2E88F2B59780B00D9E721 /* Interceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E88E2B59780B00D9E721 /* Interceptor.swift */; };
+		F4A75DD22B8DF2AB00178532 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A75DD12B8DF2AB00178532 /* UIImage+Extension.swift */; };
 		F4B353F02B56795100CC75E8 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F4B353EF2B56795100CC75E8 /* Moya */; };
 		F4B353F22B56795100CC75E8 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F4B353F12B56795100CC75E8 /* RxMoya */; };
 		F4B353F52B56796B00CC75E8 /* UserNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B353F42B56796B00CC75E8 /* UserNetworkManager.swift */; };
@@ -134,6 +135,7 @@
 		F4A2E8822B4D7A4300D9E721 /* JoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewModel.swift; sourceTree = "<group>"; };
 		F4A2E88C2B596ADF00D9E721 /* ContinueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueViewModel.swift; sourceTree = "<group>"; };
 		F4A2E88E2B59780B00D9E721 /* Interceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interceptor.swift; sourceTree = "<group>"; };
+		F4A75DD12B8DF2AB00178532 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		F4B353F42B56796B00CC75E8 /* UserNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkManager.swift; sourceTree = "<group>"; };
 		F4B353F62B5679BB00CC75E8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F4B353FA2B567C0E00CC75E8 /* UserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 			children = (
 				F4CFD89D2B4EF7690024E28B /* UIResponder+Extension.swift */,
 				F4281DC02B6233DC00E7D517 /* String+Extension.swift */,
+				F4A75DD12B8DF2AB00178532 /* UIImage+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 				F4281DD62B6A47C500E7D517 /* WSHomeEmptyViewController.swift in Sources */,
 				F4C3591D2B8BB176006051D6 /* ChatViewModel.swift in Sources */,
 				F4F8AD452B45B3AD00317F08 /* BaseViewController.swift in Sources */,
+				F4A75DD22B8DF2AB00178532 /* UIImage+Extension.swift in Sources */,
 				F4281DE62B84F7C700E7D517 /* Refresh.swift in Sources */,
 				F4EA15FB2B8C885C00A77E6E /* ChannelRouter.swift in Sources */,
 				F4E7790A2B85ED2B00167937 /* ChatViewController.swift in Sources */,

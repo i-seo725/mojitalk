@@ -20,13 +20,16 @@ class ChannelNetworkManager {
         provider.request(endpoint) { result in
             switch result {
             case .success(let response):
+                print(response)
                 do {
                     let result = try JSONDecoder().decode(type, from: response.data)
+                    print(result)
                     handler(.success(result))
                 } catch {
                     print(error)
                 }
             case .failure(let error):
+                print(error)
                 handler(.failure(error))
             }
         }
