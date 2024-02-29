@@ -31,18 +31,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         
         
-        WSNetworkManager.shared.request(endpoint: .fetch, type: [WS.Response].self) { result in
-            switch result {
-            case .success(let success):
-                let vc = success.isEmpty ? WSHomeEmptyViewController() : WSHomeViewController()
+//        WSNetworkManager.shared.request(endpoint: .fetch, type: [WS.Response].self) { result in
+//            switch result {
+//            case .success(let success):
+//                let vc = success.isEmpty ? WSHomeEmptyViewController() : WSHomeViewController()
+//                self.window?.rootViewController = UINavigationController(rootViewController: vc)
+//                self.window?.makeKeyAndVisible()
+//            case .failure(let failure):
+                let vc = ChatViewController()
                 self.window?.rootViewController = UINavigationController(rootViewController: vc)
                 self.window?.makeKeyAndVisible()
-            case .failure(let failure):
-                let vc = OnboardingViewController()
-                self.window?.rootViewController = UINavigationController(rootViewController: vc)
-                self.window?.makeKeyAndVisible()
-            }
-        }
+//            }
+//        }
         
         
         

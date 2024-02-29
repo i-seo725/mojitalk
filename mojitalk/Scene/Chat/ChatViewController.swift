@@ -166,29 +166,6 @@ class ChatViewController: BaseViewController, UIScrollViewDelegate {
                 }
             }
             .disposed(by: disposeBag)
-        
-//        Observable.just(viewModel.chatModel)
-//            .bind(to: chatTableView.rx.items) { tableView, indexPath, item in
-//                
-////                tableView.estimatedRowHeight = 100
-////                tableView.rowHeight = UITableView.automaticDimension
-//                
-//                if let cell = self.chatTableView.dequeueReusableCell(withIdentifier: "cell") as? ChatTableViewCell {
-//                    cell.nameLabel.text = item.name
-//                    cell.profileImage.image = item.image
-//                    cell.contentLabel.text = item.content
-////                    cell.dateLabel.text = item.date
-//                    
-//                    return cell
-//                } else {
-//                    let cell = UITableViewCell()
-//                    cell.backgroundColor = .gray
-//                    return cell
-//                }
-//            }
-//            .disposed(by: disposeBag)
-            
-
     }
     
     override func bind() {
