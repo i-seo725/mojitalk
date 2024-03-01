@@ -38,7 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //                self.window?.rootViewController = UINavigationController(rootViewController: vc)
 //                self.window?.makeKeyAndVisible()
 //            case .failure(let failure):
-                let vc = OnboardingViewController()
+                let vc = WSInitialViewController()
                 self.window?.rootViewController = UINavigationController(rootViewController: vc)
                 self.window?.makeKeyAndVisible()
 //            }

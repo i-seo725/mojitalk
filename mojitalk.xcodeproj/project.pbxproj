@@ -24,6 +24,7 @@
 		F4281DEA2B84F97500E7D517 /* AuthNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4281DE92B84F97500E7D517 /* AuthNetworkManager.swift */; };
 		F43E394A2B52800B00C6F1DE /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F43E39492B52800B00C6F1DE /* IQKeyboardManagerSwift */; };
 		F43E394C2B52800B00C6F1DE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43E394B2B52800B00C6F1DE /* LoginViewController.swift */; };
+		F47F3CDD2B92129A008B66FA /* WSInitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F47F3CDC2B92129A008B66FA /* WSInitialViewModel.swift */; };
 		F48235A32B53D8D200C9768A /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48235A22B53D8D200C9768A /* ToastView.swift */; };
 		F48235A52B556DA200C9768A /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48235A42B556DA200C9768A /* Regex.swift */; };
 		F4A2E86A2B4D653600D9E721 /* Join.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A2E8692B4D653600D9E721 /* Join.swift */; };
@@ -119,6 +120,7 @@
 		F4281DE72B84F7FD00E7D517 /* RefreshRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshRouter.swift; sourceTree = "<group>"; };
 		F4281DE92B84F97500E7D517 /* AuthNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNetworkManager.swift; sourceTree = "<group>"; };
 		F43E394B2B52800B00C6F1DE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F47F3CDC2B92129A008B66FA /* WSInitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSInitialViewModel.swift; sourceTree = "<group>"; };
 		F48235A22B53D8D200C9768A /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		F48235A42B556DA200C9768A /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		F4A2E8692B4D653600D9E721 /* Join.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Join.swift; sourceTree = "<group>"; };
@@ -215,8 +217,8 @@
 		F4281DCE2B64BE5E00E7D517 /* Workspace */ = {
 			isa = PBXGroup;
 			children = (
+				F47F3CDB2B921289008B66FA /* InitialView */,
 				F4EA15ED2B8C724700A77E6E /* CustomTableView */,
-				F4281DCF2B64BE7100E7D517 /* WSInitialViewController.swift */,
 				F4281DD32B64D30800E7D517 /* WSAddViewController.swift */,
 				F4281DD52B6A47C500E7D517 /* WSHomeEmptyViewController.swift */,
 				F4B54DB82B7C830E00D35694 /* WSHomeViewController.swift */,
@@ -272,6 +274,15 @@
 				F4A2E8802B4D7A2B00D9E721 /* Login */,
 			);
 			path = account;
+			sourceTree = "<group>";
+		};
+		F47F3CDB2B921289008B66FA /* InitialView */ = {
+			isa = PBXGroup;
+			children = (
+				F4281DCF2B64BE7100E7D517 /* WSInitialViewController.swift */,
+				F47F3CDC2B92129A008B66FA /* WSInitialViewModel.swift */,
+			);
+			path = InitialView;
 			sourceTree = "<group>";
 		};
 		F4A2E8672B4D650000D9E721 /* Model */ = {
@@ -663,6 +674,7 @@
 				F4A2E88F2B59780B00D9E721 /* Interceptor.swift in Sources */,
 				F43E394C2B52800B00C6F1DE /* LoginViewController.swift in Sources */,
 				F4C3591B2B8BB092006051D6 /* ChatRepository.swift in Sources */,
+				F47F3CDD2B92129A008B66FA /* WSInitialViewModel.swift in Sources */,
 				F4281DD42B64D30800E7D517 /* WSAddViewController.swift in Sources */,
 				F4A2E86A2B4D653600D9E721 /* Join.swift in Sources */,
 				F4281DDD2B736D8800E7D517 /* WS.swift in Sources */,

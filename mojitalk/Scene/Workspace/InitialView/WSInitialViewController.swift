@@ -30,6 +30,7 @@ class WSInitialViewController: BaseViewController {
         return view
     }()
     
+    let viewModel = WSInitialViewModel()
     let launchingImage = UIImageView(image: .launching)
     let createButton = TextButton(title: "워크스페이스 생성")
     let disposeBag = DisposeBag()
@@ -73,15 +74,13 @@ class WSInitialViewController: BaseViewController {
     }
     
     @objc func closeButtonTapped() {
-        WSNetworkManager.shared.request(endpoint: .fetch, type: WS.Response.self) { result in
-            switch result {
-            case .success(let success):
-                print("a")
-            case .failure(let failure):
-                print("b")
+        viewModel.isJoinAnyWS { count in
+            if count == 0 {
+                self.changeRootView(WSHomeEmptyViewController())
+            } else {
+                self.changeRootView(WSHomeViewController())
             }
         }
-//        changeRootView(WSHomeEmptyViewController())
     }
     
     override func bind() {
