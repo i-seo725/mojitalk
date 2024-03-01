@@ -51,13 +51,14 @@ class OnboardingViewController: BaseViewController {
     override func setConstraints() {
         contentLabel.snp.makeConstraints { make in
             make.bottom.equalTo(onboardingImage.snp.top).inset(-89)
-            make.horizontalEdges.equalToSuperview().inset(24)
+            make.centerX.equalToSuperview()
         }
         
         onboardingImage.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().inset(12)
             make.trailing.equalToSuperview().inset(13)
+            make.height.equalTo(onboardingImage.snp.width)
         }
         
         startButton.snp.makeConstraints { make in
@@ -67,7 +68,7 @@ class OnboardingViewController: BaseViewController {
         }
         
         bgView.snp.makeConstraints { make in
-            make.size.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     
