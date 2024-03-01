@@ -22,7 +22,12 @@ class WSInitialViewController: BaseViewController {
     
     let welcomeLabel = {
         let view = UILabel()
-        view.text = "\(Account.nickname!)님의 조직을 위해 새로운 새싹톡 워크스페이스를 시작할 준비가 완료되었어요!"
+        if let nickname = Account.nickname {
+            view.text = "\(nickname)님의 조직을 위해 새로운 새싹톡 워크스페이스를 시작할 준비가 완료되었어요!"
+        } else {
+            view.text = "회원님의 조직을 위해 새로운 새싹톡 워크스페이스를 시작할 준비가 완료되었어요!"
+        }
+        
         view.font = Font.body
         view.textColor = .brandBlack
         view.textAlignment = .center

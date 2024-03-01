@@ -12,16 +12,13 @@ import RxCocoa
 class WSInitialViewModel {
     
     func isJoinAnyWS(handler: @escaping (Int) -> Void) {
-        
         WSNetworkManager.shared.request(endpoint: .fetch, type: [WS.Response].self) { result in
             switch result {
             case .success(let success):
                 handler(success.count)
             case .failure(let failure):
-                print("b")
+                print("오류 발생 :\n", failure)
             }
         }
-
     }
-    
 }
