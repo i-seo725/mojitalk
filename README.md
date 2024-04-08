@@ -1,5 +1,5 @@
 ## Mojitalk - 언제 어디서나 팀과 소통하기
-<img width="1018" alt="스크린샷 2023-11-12 오전 10 55 52" src="https://github.com/i-seo725/PodoTodo/assets/140357379/901e9bd8-1d6f-4dd6-bd61-eb324756a777">
+<img width="1018" alt="스크린샷 2023-11-12 오전 10 55 52" src="./image.png">
 
 
 ## 앱 소개
