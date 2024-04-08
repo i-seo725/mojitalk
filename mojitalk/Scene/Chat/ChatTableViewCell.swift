@@ -85,10 +85,10 @@ class ChatTableViewCell: UITableViewCell {
         bubbleView.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp.bottom).offset(5)
             make.leading.equalTo(nameLabel.snp.leading)
-            make.width.equalTo(244)
-            make.height.equalTo(34)
-//            make.width.lessThanOrEqualTo(244)
-//            make.height.greaterThanOrEqualTo(34)
+//            make.width.equalTo(244)
+//            make.height.equalTo(34)
+            make.width.lessThanOrEqualTo(244)
+            make.height.greaterThanOrEqualTo(34)
         }
         
         contentLabel.snp.makeConstraints { make in

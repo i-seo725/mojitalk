@@ -19,7 +19,7 @@ class WSHomeViewController: BaseViewController {
     var currentID: Int?
     var currentWS: FetchOne.Response?
     
-    var myChannels = CustomSection(header: "채널", items: [CellModel(text: "채널 추가", image: .plusIcon)])
+    var myChannels = CustomSection(header: "채널", items: [CellModel(text: "이른 기상 스터디", image: .hashtagThin), CellModel(text: "swift 문법 공부 스터디", image: .hashtagThin), CellModel(text: "새로운 iOS 소식", image: .hashtagThin), CellModel(text: "코딩 혼잣말", image: .hashtagThin), CellModel(text: "채널 추가", image: .plusIcon)])
     var myDMs = CustomSection(header: "다이렉트 메시지", items: [CellModel(text: "새 메시지 보내기", image: .plusIcon)])
     
     lazy var model = BehaviorRelay(value: [myChannels, myDMs])
@@ -40,6 +40,9 @@ class WSHomeViewController: BaseViewController {
         view.addSubview(listTableView)
         configureTableView()
         requestWS()
+        customNavBar.titleLabel.text = "iOS 개발자 되기"
+        customNavBar.leftImage.image = .ws
+        customNavBar.rightImage.image = .profile
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -114,23 +117,23 @@ class WSHomeViewController: BaseViewController {
     }
     
     func requestWS() {
-        WSNetworkManager.shared.request(endpoint: .fetch, type: [WS.Response].self) { result in
-            switch result {
-            case .success(let success):
-                DispatchQueue.main.async {
-                    guard let ws = success.first, let url = URL(string: Secret.BaseURL + "/v1" + ws.thumbnail) else { return }
-                    self.customNavBar.titleLabel.text = ws.name
-                    self.currentID = ws.id
-                    self.requestCurrentWS()
-                    
-                    self.requestImage(path: ws.thumbnail) {
-                        self.customNavBar.leftImage.image = $0
-                    }
-                }
-            case .failure(let failure):
-                print(failure)
-            }
-        }
+//        WSNetworkManager.shared.request(endpoint: .fetch, type: [WS.Response].self) { result in
+//            switch result {
+//            case .success(let success):
+//                DispatchQueue.main.async {
+//                    guard let ws = success.first, let url = URL(string: Secret.BaseURL + "/v1" + ws.thumbnail) else { return }
+//                    self.customNavBar.titleLabel.text = ws.name
+//                    self.currentID = ws.id
+//                    self.requestCurrentWS()
+//                    
+//                    self.requestImage(path: ws.thumbnail) {
+//                        self.customNavBar.leftImage.image = $0
+//                    }
+//                }
+//            case .failure(let failure):
+//                print(failure)
+//            }
+//        }
     }
     
     func requestImage(path: String, handler: @escaping (UIImage) -> Void) {
