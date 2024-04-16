@@ -16,7 +16,7 @@
  <br/>
 
 ## 개발 기간
- * 2024.01.10. ~ 2023.02.29.
+ * 2024.01.10. ~ 2024.02.29.
 <br/>
 
 
@@ -35,79 +35,36 @@
  <br/>
  
 ## 트러블 슈팅     
- ### 1. 날짜 변화에 따른 FSCalendar UI 업데이트 이슈
-   * 오후 11시 59분에서 자정으로 넘어갈 때 오늘 날짜로 표시되는 UI가 변경되지 않는 이슈 발생
-   * `viewWillAppear` 메서드에 캘린더 업데이트 구문을 작성하였으나 다른 탭을 선택했다 돌아와도 변경되지 않음
-   * NotificationCenter를 통해 날짜 변화 시점을 관찰하여 자정이 될 때 캘린더 UI가 업데이트 되도록 반영
+ ### 1. 반복되는 토큰 갱신 로직 모듈화
+   * 사용자가 로그인을 했을 때 access 토큰의 만료에 따른 네트워크 요청 로직이 반복되어 Interceptor를 구현하여 모듈화
+   * 상태코드 200에 응답 데이터로 에러 코드가 전달되어 다음과 같은 코드로 데이터에 접근하여 그에 따른 네트워크 요청 여부 등의 추가 동작 수행
 
      ```swift
-     override func viewDidLoad() {
-          super.viewDidLoad()
-          NotificationCenter.default.addObserver(self, selector: #selector(updateToday), name: NSNotification.Name.NSCalendarDayChanged, object: nil)
-      }
-  
-       @objc func updateToday() {
-          DispatchQueue.main.async {
-              self.todoCalendar.today = Date()
-              self.todoCalendar.reloadData()
-          }
-      }
-      
-       override func viewDidDisappear(_ animated: Bool) {
-          super.viewDidDisappear(animated)
-          NotificationCenter.default.removeObserver(self)
-      }
+     func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
+   
+       guard let request = request as? DataRequest, let data = request.data, let result = try? JSONDecoder().decode(ErrorResponse.self, from: data) else {
+          completion(.doNotRetry)
+          return
+       }
+        
+      if result.errorCode == "E05" {
+           AuthNetworkManager.shared.request()
+           completion(.retry)
+       }
+      ...
+     }
      ```
    
- ### 2. 포도알 채우는 로직 구현 시 예상보다 많은 고려 사항
-   * 화면이 나타날 때 로직 계산을 위해 `viewWillAppear`에 메서드를 작성하였는데, Todo를 모두 완료한 경우 화면을 볼 때마다 포도알이 늘어나는 버그 발생
-   * 오늘의 Todo를 모두 완료처리 했다가 사용자가 새로운 할 일을 추가하거나 완료 처리를 취소할 때 채웠던 포도알 스티커를 하나 회수해야 하는 상황 발생
-   * 다음과 같은 코드를 통한 예외 처리 구현
-
+ ### 2. Custom View 내부 객체에 대한 터치 이벤트 등의 상호작용 이슈
+   * 반복되는 형태의 view가 많아 custom view를 만들어 별도 관리하였으나 해당 뷰에 속한 객체들에 대해 터치 이벤트 등의 상호작용이 되지 않는 이슈 발생
+   * subView를 가지는 UIView의 높이를 지정하지 않아 발생한 이슈로 `debug view hierarchy`를 활용하여 디버깅
+   * 다음과 같이 custom view의 전체 높이를 지정하여 이슈 해결
      ```swift
-      func setNewPodo() {
-        guard let todayTodo else { return }
-        let validateIsDone = todayTodo.filter { $0.isDone == false }
-        let date = Date().addingTimeInterval(-86400).dateToString().stringToDate()
-        if currentPodoCount() == 10 && (todayTodo.count == 0 || validateIsDone.isEmpty) {
-            if let currentPodo {
-                podoRepo.update(id: currentPodo._id, isCurrent: false, fillCount: 10, completeDate: date, plusDate: date, deleteDate: nil)
-                podoRepo.create(GrapeList(isCurrent: true, completeDate: nil, plusDate: nil, deleteDate: nil))
-            }
-            currentPodo = podoRepo.fetchCurrent().first
-            podoList = podoRepo.fetch()
-         }
-       }
-
-     func updatePodo() {
-        guard let todayTodo else { return }
-        let count = currentPodoCount()
-        var changeCount = count
-        let today = Date().dateToString().stringToDate()
-        let validateIsDone = todayTodo.filter { $0.isDone == false }
-        
-        guard let currentPodo else {
-            return
-        }
-        
-        if validateIsDone.isEmpty && todayTodo.count != 0 {
-            if currentPodo.plusDate != today {
-                changeCount += 1
-                if changeCount > 10 || changeCount > count + 1 {
-                    return
-                }
-                podoRepo.update(id: currentPodo._id, isCurrent: true, fillCount: changeCount, completeDate: nil, plusDate: today, deleteDate: nil)
-            }
-        } else {
-            if currentPodo.deleteDate != today && currentPodo.plusDate == today {
-                changeCount -= 1
-                if changeCount < 0 || changeCount < count - 1 {
-                    return
-                }
-                podoRepo.update(id: currentPodo._id, isCurrent: true, fillCount: changeCount, completeDate: nil, plusDate: nil, deleteDate: today)
-            }
-        }
-    
+      name.snp.makeConstraints { make in
+         make.top.equalTo(profileImage.snp.bottom).offset(16)
+         make.horizontalEdges.equalToSuperview().inset(24)
+         make.height.equalTo(76)
+      }
      ```
 
 <br/>
